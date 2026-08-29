@@ -1,127 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Izak English Medium School and Junior College</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- SheetJS for Excel previews and Mammoth for DOCX previews -->
-  <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
-  <script src="https://unpkg.com/mammoth/mammoth.browser.min.js"></script>
   <style>
     .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 15px; padding: 20px; }
     .gallery img { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; }
-    .placeholder { display:flex; align-items:center; justify-content:center; background:#f3f4f6; color:#6b7280; height:200px; border-radius:8px }
-    .prose img { max-width: 100%; }
-    /* Horizontal photo strip */
-    .photo-strip { display:flex; gap:12px; overflow-x:auto; scroll-behavior:smooth; padding:12px; }
-    .photo-strip::-webkit-scrollbar { height:10px; }
-    .photo-strip::-webkit-scrollbar-thumb { background:#cbd5e1; border-radius:9999px; }
-    .photo-item { flex: 0 0 auto; width: 320px; height: 200px; border-radius:8px; overflow:hidden; box-shadow:0 2px 6px rgba(0,0,0,0.08); }
-    .photo-item img { width:100%; height:100%; object-fit:cover; display:block; }
-    .strip-controls { display:flex; gap:8px; justify-content:center; margin-top:8px; }
+    .doc-preview { border: 1px solid #e5e7eb; background: #fff; padding: 12px; border-radius: 6px; }
+    table { width:100%; border-collapse: collapse; }
+    table th, table td { border:1px solid #e2e8f0; padding:8px; text-align:left; }
   </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
-  <!-- Header -->
-  <header class="bg-blue-800 text-white p-4 shadow">
-    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+  <header class="bg-blue-800 text-white p-4">
+    <div class="max-w-6xl mx-auto flex justify-between items-center">
       <div class="flex items-center space-x-4">
-        <img src="logo.jpg" alt="School Logo" class="h-14 w-14 rounded-full object-cover" />
+        <img src="logo.jpg" alt="School Logo" class="h-14 w-14 rounded-full" />
         <div>
-          <h1 class="text-2xl font-bold">Izak English Medium School &amp; Junior College</h1>
+          <h1 class="text-2xl font-bold">Izak English Medium School and Junior College</h1>
           <h3 class="text-sm text-gray-200">Alfa Social and Educational Foundation (Since 2005)</h3>
         </div>
       </div>
-      <nav class="space-x-3 text-sm">
+      <nav class="space-x-4">
         <a href="#about" class="hover:underline">About</a>
         <a href="#office-hours" class="hover:underline">Office Hours</a>
         <a href="#admission" class="hover:underline">Admission</a>
-        <a href="#classes" class="hover:underline">Classes</a>
         <a href="#staff" class="hover:underline">Staff</a>
-        <a href="#gallery-section" class="hover:underline">Gallery</a>
-        <a href="#documents" class="hover:underline">Documents</a>
+        <a href="#gallery" class="hover:underline">Gallery</a>
         <a href="#contact" class="hover:underline">Contact</a>
       </nav>
     </div>
   </header>
 
-  <!-- Hero -->
-  <section class="text-center py-12 bg-white">
-    <h2 class="text-3xl md:text-4xl font-bold mb-2">Welcome to Izak English Medium School &amp; Junior College</h2>
+  <section class="text-center py-16 bg-white">
+    <h2 class="text-4xl font-bold mb-4">Welcome to Izak English Medium School and Junior College</h2>
     <p class="text-lg text-gray-600">"Learn. Grow. Lead." - Your path to excellence starts here.</p>
-    <p class="mt-3 text-gray-500 max-w-2xl mx-auto">We provide quality education from Nursery to Grade 12, supported by experienced staff, modern labs, a rich library and strong co-curricular programs.</p>
   </section>
 
-  <!-- Horizontal auto-scrolling photo strip -->
-  <section class="max-w-6xl mx-auto py-6 px-4">
-    <h3 class="text-xl font-semibold mb-3">Campus Highlights</h3>
-    <div id="photo-strip" class="photo-strip" tabindex="0" aria-label="Campus photos horizontally scrollable">
-      <!-- Images inserted by JS -->
-    </div>
-    <div class="strip-controls">
-      <button id="strip-prev" class="px-3 py-1 bg-blue-600 text-white rounded">◀</button>
-      <button id="strip-toggle" class="px-3 py-1 bg-gray-200 rounded">Pause</button>
-      <button id="strip-next" class="px-3 py-1 bg-blue-600 text-white rounded">▶</button>
-    </div>
-  </section>
+  <div id="gallery" class="gallery"></div>
 
-  <!-- About Us -->
   <section id="about" class="max-w-4xl mx-auto py-12 px-4">
     <h3 class="text-2xl font-semibold mb-4">About Us</h3>
-    <p class="text-gray-700">Izak English Medium School and Junior College has a proud history of providing quality education for over 20 years. Established by the Alfa Social and Educational Foundation, our institution focuses on holistic development, strong academic foundations, and building confident future leaders.</p>
-    <p class="text-gray-700 mt-3">We follow the State Board curriculum and offer modern facilities including science labs, computer education from Grade 1, a library with thousands of books, and robust sports and extracurricular programs.</p>
+    <p class="text-gray-700">Izak English Medium School and Junior College enjoys 20 years of glorious academic traditions. It was established to provide quality education to students from all backgrounds and to empower students with strong academic foundations and values. We focus on holistic development — academics, sports, arts and character-building.</p>
   </section>
 
-  <!-- Admission (populated from Excel client-side) -->
   <section id="admission" class="bg-gray-100 py-12 px-4">
     <div class="max-w-4xl mx-auto">
       <h3 class="text-2xl font-semibold mb-4">Admission</h3>
-      <div id="admission-content">
-        <ul class="list-disc list-inside text-gray-700">
-          <li>Admissions open from April 1st</li>
-          <li>Nursery to Grade 12 (State Board)</li>
-          <li>Application forms available online and at the school office</li>
-        </ul>
+      <div class="doc-preview mb-4">
+        <p class="text-sm text-gray-600">Admissions open from April 1st. Nursery to Grade 12 (State Board). Application forms available online and at the school office.</p>
+        <p class="mt-2 text-sm">Download documents: <a href="/website-new-doc-today.html" class="text-blue-700 underline">Excel (safe link)</a> • <a href="/website%20new%20doc%20TODAY.xlsx" class="text-blue-700 underline">Original XLSX</a></p>
+      </div>
+
+      <div id="admissions-table" class="bg-white p-4 rounded shadow">
+        <p class="text-gray-500">Loading admissions table from the provided Excel file... If it doesn't load, use the download link above.</p>
       </div>
     </div>
   </section>
 
-  <!-- Classes (populated from ABOUT CLASSES.docx client-side) -->
   <section id="classes" class="py-12 px-4">
     <div class="max-w-4xl mx-auto">
-      <h3 class="text-2xl font-semibold mb-4">Classes &amp; Curriculum</h3>
-      <div id="classes-content" class="prose text-gray-700">
-        <p>Class information will be loaded from the repository document if available. If the page cannot load the file, use the Download link in the Documents section to view the original.</p>
+      <h3 class="text-2xl font-semibold mb-4">About Classes</h3>
+      <div class="doc-preview mb-2">
+        <p class="text-sm text-gray-700">Below is the class information extracted from the uploaded document. Download: <a href="/about-classes.docx" class="text-blue-700 underline">about-classes.docx (safe)</a> • <a href="/ABOUT%20CLASSES.docx" class="text-blue-700 underline">original</a></p>
+      </div>
+      <div id="classes-content" class="bg-white p-4 rounded shadow">
+        <p class="text-gray-500">Loading classes content...</p>
       </div>
     </div>
   </section>
 
-  <!-- Staff -->
-  <section id="staff" class="py-12 px-4">
-    <div class="max-w-6xl mx-auto">
-      <h3 class="text-2xl font-semibold mb-4">Our Staff</h3>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="bg-white shadow rounded p-4 text-center">
-          <h4 class="font-bold">Shahid Kazi</h4>
-          <p>Chairman</p>
-          <p class="text-gray-700 mb-2">Phone: +91 8087235235</p>
-        </div>
-        <div class="bg-white shadow rounded p-4 text-center">
-          <h4 class="font-bold">Rehan Kazi</h4>
-          <p>Secretary</p>
-          <p class="text-gray-700 mb-2">Phone: +91 9422088991</p>
-        </div>
-        <div class="bg-white shadow rounded p-4 text-center">
-          <h4 class="font-bold">Shirin Pathan</h4>
-          <p>Principal</p>
-          <p class="text-gray-700 mb-2">Phone: +91 9890537444</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Gallery (static examples) -->
   <section id="gallery-section" class="bg-gray-100 py-12 px-4">
     <div class="max-w-6xl mx-auto">
       <h3 class="text-2xl font-semibold mb-4">Gallery</h3>
@@ -134,239 +84,96 @@
     </div>
   </section>
 
-  <!-- Office Hours -->
- <section id="office-hours" class="bg-gray-100 py-12 px-4">
+  <section id="office-hours" class="bg-gray-100 py-12 px-4">
      <div class="max-w-4xl mx-auto">
        <h3 class="text-2xl font-semibold mb-4">Office Hours</h3>
-       <p class="text-gray-700 mb-2">9:30 AM to 5:00 PM</p>
+       <p class="text-gray-700 mb-2">9.30 am to 5.00 pm</p>
        <br>
        <h3 class="text-2xl font-semibold mb-4">School Hours</h3>
-       <p class="text-gray-700 mb-2">10:00 AM to 4:00 PM</p>
+       <p class="text-gray-700 mb-2">10.00 am to 4.00 pm</p>
     </div>
   </section>
 
-  <!-- Documents: preview PDF, DOCX and XLSX -->
-  <section id="documents" class="py-12 px-4">
-    <div class="max-w-6xl mx-auto">
-      <h3 class="text-2xl font-semibold mb-4">Important Documents</h3>
-      <p class="text-gray-700 mb-4">Below are the documents included in the repository. Use the preview buttons to view them directly on the site (client-side previews). If a preview fails, use the download link.</p>
-
-      <div class="grid md:grid-cols-3 gap-4">
-        <!-- XLSX -->
-        <div class="bg-white rounded shadow p-4">
-          <h4 class="font-bold">Admission / Data (Excel)</h4>
-          <p class="text-sm text-gray-600 mb-2">File: website new doc TODAY.xlsx</p>
-          <div class="flex gap-2">
-            <button onclick="previewExcel('website%20new%20doc%20TODAY.xlsx')" class="bg-blue-600 text-white px-3 py-1 rounded">Preview Excel</button>
-            <a href="website%20new%20doc%20TODAY.xlsx" class="underline text-sm self-center">Download</a>
-          </div>
-          <div id="excel-preview" class="mt-4 overflow-auto text-sm"></div>
-        </div>
-
-        <!-- PDF -->
-        <div class="bg-white rounded shadow p-4">
-          <h4 class="font-bold">Digital भाळवणी (PDF)</h4>
-          <p class="text-sm text-gray-600 mb-2">File: Digital भाळवणी_655_Satbara.pdf</p>
-          <div class="flex gap-2">
-            <button onclick="previewPDF('Digital%20%E0%A4%AD%E0%A4%BE%E0%A4%B3%E0%A4%B5%E0%A4%A3%E0%A5%80_655_Satbara.pdf')" class="bg-blue-600 text-white px-3 py-1 rounded">Preview PDF</button>
-            <a href="Digital%20%E0%A4%AD%E0%A4%BE%E0%A4%B3%E0%A4%B5%E0%A4%A3%E0%A5%80_655_Satbara.pdf" class="underline text-sm self-center">Download</a>
-          </div>
-          <div id="pdf-preview" class="mt-4"></div>
-        </div>
-
-        <!-- DOCX -->
-        <div class="bg-white rounded shadow p-4">
-          <h4 class="font-bold">About Classes (DOCX)</h4>
-          <p class="text-sm text-gray-600 mb-2">File: ABOUT CLASSES.docx</p>
-          <div class="flex gap-2">
-            <button onclick="previewDocx('ABOUT%20CLASSES.docx')" class="bg-blue-600 text-white px-3 py-1 rounded">Preview DOCX</button>
-            <a href="ABOUT%20CLASSES.docx" class="underline text-sm self-center">Download</a>
-          </div>
-          <div id="docx-preview" class="mt-4 prose max-w-none text-sm"></div>
-        </div>
-      </div>
-
-      <p class="text-gray-500 text-sm mt-4">Note: Previews load files from the same repository path. If you moved the files or renamed them, update the links or filenames used in the buttons.</p>
-    </div>
-  </section>
-
-  <!-- Contact -->
   <section id="contact" class="py-12 px-4">
     <div class="max-w-4xl mx-auto">
       <h3 class="text-2xl font-semibold mb-4">Contact Us</h3>
       <p class="text-gray-700 mb-2">Izak English School and Junior College, Taluka- Bhalwani, Ahilyanagar - 414103, MH, India</p>
       <p class="text-gray-700 mb-2">Mayur Rohokale (Rector): +91 9545928233</p>
-      <p class="text-gray-700 mb-2">Email: <a href="mailto:izak4777@gmail.com" class="underline">izak4777@gmail.com</a></p>
-
-      <form id="contact-form" class="mt-6 grid gap-3">
-        <input class="p-2 border rounded" type="text" placeholder="Your name" name="name" required />
-        <input class="p-2 border rounded" type="email" placeholder="Your email" name="email" required />
-        <textarea class="p-2 border rounded" name="message" placeholder="Message" rows="4" required></textarea>
-        <div class="flex gap-2">
-          <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded">Send</button>
-          <button type="reset" class="px-4 py-2 border rounded">Reset</button>
-        </div>
-        <p id="contact-status" class="text-sm text-gray-600"></p>
-      </form>
+      <p class="text-gray-700 mb-2">Email: izak4777@gmail.com</p>
+      <div class="mt-4">
+        <h4 class="text-lg font-semibold">Important Documents</h4>
+        <ul class="list-disc list-inside">
+          <li><a href="/about-classes.docx" class="text-blue-700 underline">About Classes (DOCX)</a></li>
+          <li><a href="/digital-bhalvani.html" class="text-blue-700 underline">Digital भाळवणी_655_Satbara (PDF - safe)</a></li>
+          <li><a href="/website-new-doc-today.html" class="text-blue-700 underline">Admissions data (XLSX - safe)</a></li>
+        </ul>
+      </div>
     </div>
   </section>
 
-  <!-- Footer -->
   <footer class="bg-blue-800 text-white p-4 text-center">
-    <p>&copy; 2026 Izak English Medium School &amp; Junior College. All rights reserved.</p>
+    <p>&copy; 2025 Izak English Medium School and Junior College. All rights reserved.</p>
   </footer>
 
-  <script>
-    // Contact form: simple client-side feedback (no server)
-    document.getElementById('contact-form').addEventListener('submit', function (e) {
-      e.preventDefault();
-      document.getElementById('contact-status').innerText = 'Thank you! Your message was recorded locally. Please use the provided email for real submissions.';
-      this.reset();
-    });
+  <!-- Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="https://unpkg.com/mammoth/mammoth.browser.min.js"></script>
 
-    // Photo strip: populate, auto-scroll, controls
-    (function photoStripInit() {
-      const strip = document.getElementById('photo-strip');
-      const maxImages = 90; // your repo has images 1..90
-      for (let i = 1; i <= maxImages; i++) {
-        const item = document.createElement('div');
-        item.className = 'photo-item';
+  <script>
+    // Build gallery using available files 1..90 with fallback to images/ folder
+    (function buildGallery(){
+      const gallery = document.getElementById('gallery');
+      for(let i=1;i<=90;i++){
         const img = document.createElement('img');
         img.src = `${i}.jpg`;
-        img.alt = `Campus photo ${i}`;
-        img.loading = 'lazy';
-        img.onerror = () => { img.src = 'logo1.jpeg'; };
-        item.appendChild(img);
-        strip.appendChild(item);
+        img.alt = `School Photo ${i}`;
+        img.onerror = function(){
+          if(!this.dataset.fallback){
+            this.dataset.fallback = '1';
+            this.src = `images/${i}.jpg`;
+          } else {
+            this.style.display = 'none';
+          }
+        };
+        gallery.appendChild(img);
       }
-
-      let auto = true;
-      let speed = 1; // pixels per frame
-      let rafId;
-
-      function step() {
-        if (!auto) return;
-        strip.scrollLeft += speed;
-        // loop back to start when near end
-        if (strip.scrollLeft + strip.clientWidth >= strip.scrollWidth - 1) {
-          strip.scrollLeft = 0;
-        }
-        rafId = requestAnimationFrame(() => setTimeout(step, 16));
-      }
-
-      // start automatic scrolling
-      step();
-
-      // controls
-      document.getElementById('strip-toggle').addEventListener('click', function () {
-        auto = !auto;
-        this.innerText = auto ? 'Pause' : 'Play';
-        if (auto) step();
-      });
-      document.getElementById('strip-prev').addEventListener('click', function () {
-        strip.scrollLeft = Math.max(0, strip.scrollLeft - strip.clientWidth);
-      });
-      document.getElementById('strip-next').addEventListener('click', function () {
-        strip.scrollLeft = Math.min(strip.scrollWidth, strip.scrollLeft + strip.clientWidth);
-      });
-
-      // pause on hover/focus for accessibility
-      strip.addEventListener('mouseenter', () => { auto = false; document.getElementById('strip-toggle').innerText = 'Play'; });
-      strip.addEventListener('mouseleave', () => { auto = true; document.getElementById('strip-toggle').innerText = 'Pause'; step(); });
-      strip.addEventListener('focusin', () => { auto = false; document.getElementById('strip-toggle').innerText = 'Play'; });
-      strip.addEventListener('focusout', () => { auto = true; document.getElementById('strip-toggle').innerText = 'Pause'; step(); });
     })();
 
-    // Excel preview using SheetJS and populate structured admissions table
-    async function previewExcel(path) {
-      const previewEl = document.getElementById('excel-preview');
-      const admissionContent = document.getElementById('admission-content');
-      previewEl.innerHTML = 'Loading Excel...';
-      try {
-        const res = await fetch(decodeURIComponent(path));
-        if (!res.ok) throw new Error('File not found');
-        const ab = await res.arrayBuffer();
-        const data = new Uint8Array(ab);
-        const workbook = XLSX.read(data, { type: 'array' });
-        const firstSheetName = workbook.SheetNames[0];
-        const sheet = workbook.Sheets[firstSheetName];
-        const json = XLSX.utils.sheet_to_json(sheet, { defval: '' });
+    // Helper: fetch arrayBuffer
+    async function fetchArrayBuffer(url){
+      const res = await fetch(url);
+      if(!res.ok) throw new Error('Network error: ' + res.status);
+      return await res.arrayBuffer();
+    }
 
-        // Render the full table for the preview (full table per request)
-        const tableHtml = XLSX.utils.sheet_to_html(sheet);
-        previewEl.innerHTML = tableHtml;
-
-        // Also insert the full table into the Admissions section below the intro
-        if (json.length > 0) {
-          let fullTable = '<h4 class="mt-4 font-semibold">Admissions Data (Full table)</h4>';
-          fullTable += '<div class="overflow-auto"><table class="min-w-full text-sm text-gray-700 border-collapse">';
-          // headers
-          fullTable += '<thead class="bg-gray-200"><tr>';
-          Object.keys(json[0]).forEach(h => { fullTable += `<th class="p-2 text-left border">${h}</th>`; });
-          fullTable += '</tr></thead>';
-          // rows
-          fullTable += '<tbody>';
-          json.forEach(row => {
-            fullTable += '<tr>';
-            Object.values(row).forEach(v => { fullTable += `<td class="p-2 border">${String(v)}</td>`; });
-            fullTable += '</tr>';
-          });
-          fullTable += '</tbody></table></div>';
-
-          admissionContent.innerHTML = fullTable;
-        }
-      } catch (err) {
-        previewEl.innerHTML = '<div class="text-red-600">Unable to load Excel file. Please download it instead.</div>';
+    // Render XLSX into #admissions-table using SheetJS
+    (async function renderXLSX(){
+      const url = 'https://raw.githubusercontent.com/izakschool-ahilyanagar/my-school/main/website%20new%20doc%20TODAY.xlsx';
+      try{
+        const data = await fetchArrayBuffer(url);
+        const wb = XLSX.read(new Uint8Array(data), {type:'array'});
+        const first = wb.SheetNames[0];
+        const ws = wb.Sheets[first];
+        const html = XLSX.utils.sheet_to_html(ws, {id: 'admissions-table-sheet'});
+        document.getElementById('admissions-table').innerHTML = html;
+      }catch(err){
         console.error(err);
+        const el = document.getElementById('admissions-table');
+        el.innerHTML = '<p class="text-red-500">Could not load Excel file — you can download it <a href="/website-new-doc-today.html" class="underline">here</a>.</p>';
       }
-    }
+    })();
 
-    // DOCX preview using Mammoth and populate Classes section
-    async function previewDocx(path) {
-      const previewEl = document.getElementById('docx-preview');
-      const classesEl = document.getElementById('classes-content');
-      previewEl.innerHTML = 'Loading document...';
-      try {
-        const res = await fetch(decodeURIComponent(path));
-        if (!res.ok) throw new Error('File not found');
-        const ab = await res.arrayBuffer();
-        const result = await mammoth.convertToHtml({ arrayBuffer: ab });
-        previewEl.innerHTML = result.value;
-
-        // Insert the converted HTML into the classes section
-        classesEl.innerHTML = result.value;
-      } catch (err) {
-        previewEl.innerHTML = '<div class="text-red-600">Unable to load DOCX file. Please download it instead.</div>';
+    // Render DOCX into #classes-content using Mammoth
+    (async function renderDOCX(){
+      const url = 'https://raw.githubusercontent.com/izakschool-ahilyanagar/my-school/main/about-classes.docx';
+      try{
+        const arrayBuffer = await fetchArrayBuffer(url);
+        const result = await mammoth.convertToHtml({arrayBuffer: arrayBuffer});
+        document.getElementById('classes-content').innerHTML = result.value;
+      }catch(err){
         console.error(err);
+        document.getElementById('classes-content').innerHTML = '<p class="text-red-500">Could not load DOCX file — you can download it <a href="/about-classes.docx" class="underline">here</a>.</p>';
       }
-    }
-
-    // PDF preview
-    function previewPDF(path) {
-      const container = document.getElementById('pdf-preview');
-      container.innerHTML = '';
-      try {
-        const iframe = document.createElement('iframe');
-        iframe.src = decodeURIComponent(path);
-        iframe.width = '100%';
-        iframe.height = '600';
-        iframe.className = 'rounded border';
-        iframe.onload = () => { /* loaded */ };
-        iframe.onerror = () => {
-          container.innerHTML = '<div class="text-red-600">Unable to preview PDF. Use the download link.</div>';
-        };
-        container.appendChild(iframe);
-      } catch (err) {
-        container.innerHTML = '<div class="text-red-600">Unable to preview PDF. Use the download link.</div>';
-      }
-    }
-
-    // Auto-load document previews into structured sections if files exist
-    (function autoLoadDocs() {
-      const xlsxPath = 'website%20new%20doc%20TODAY.xlsx';
-      const docxPath = 'ABOUT%20CLASSES.docx';
-      previewExcel(xlsxPath).catch(()=>{});
-      previewDocx(docxPath).catch(()=>{});
     })();
   </script>
 </body>
