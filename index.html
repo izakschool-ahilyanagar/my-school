@@ -35,20 +35,7 @@
     <p class="text-lg text-gray-600">"Learn. Grow. Lead." - Your path to excellence starts here.</p>
   </section>
 
-  <div id="gallery" class="gallery"></div>
-
-<script>
-    const gallery = document.getElementById("gallery");
-
-    for (let i = 11; i <= 90; i++) {
-        const img = document.createElement("img");
-
-        img.src = `images/${i}.jpg`;
-        img.alt = `School Photo ${i}`;
-
-        gallery.appendChild(img);
-    }
-</script>
+  <div class="gallery-container"> <div class="gallery" id="gallery"></div> </div> <script> const gallery = document.getElementById("gallery"); // Change this to the number of images you have const totalImages = 100; for (let i = 11; i <= totalImages; i++) { const img = document.createElement("img"); img.src = `images/${i}.jpg`; img.alt = `School Photo ${i}`; gallery.appendChild(img); } // Automatic horizontal scrolling let autoScroll; function startAutoScroll() { autoScroll = setInterval(() => { gallery.scrollLeft += 1; // Start again from beginning if ( gallery.scrollLeft + gallery.clientWidth >= gallery.scrollWidth - 1 ) { gallery.scrollLeft = 0; } }, 20); } function stopAutoScroll() { clearInterval(autoScroll); } // Pause when mouse is over gallery gallery.addEventListener("mouseenter", stopAutoScroll); gallery.addEventListener("mouseleave", startAutoScroll); startAutoScroll(); </script>
   <!-- About Us -->
   <section id="about" class="max-w-4xl mx-auto py-12 px-4">
     <h3 class="text-2xl font-semibold mb-4">About Us</h3>
