@@ -34,6 +34,20 @@
     <p class="text-lg text-gray-600">"Learn. Grow. Lead." - Your path to excellence starts here.</p>
   </section>
 
+  <div id="gallery" class="gallery"></div>
+
+<script>
+    const gallery = document.getElementById("gallery");
+
+    for (let i = 11; i <= 90; i++) {
+        const img = document.createElement("img");
+
+        img.src = `images/${i}.jpg`;
+        img.alt = `School Photo ${i}`;
+
+        gallery.appendChild(img);
+    }
+</script>
   <!-- About Us -->
   <section id="about" class="max-w-4xl mx-auto py-12 px-4">
     <h3 class="text-2xl font-semibold mb-4">About Us</h3>
