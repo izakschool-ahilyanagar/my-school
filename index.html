@@ -55,7 +55,7 @@
     // Attempt to show images 1..20 (adjusted for expected repo size); missing images use a placeholder
     for (let i = 1; i <= 20; i++) {
         const img = document.createElement("img");
-        img.src = `images/${i}.jpg`;
+        img.src = `${i}.jpg`;
         img.alt = `School Photo ${i}`;
         img.className = 'rounded shadow';
         img.loading = 'lazy';
