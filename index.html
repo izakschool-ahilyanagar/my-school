@@ -14,6 +14,16 @@
     .top-shadow{box-shadow:0 8px 30px rgba(2,6,23,0.08)}
     .gradient-hero{background:linear-gradient(180deg, rgba(14,165,164,0.06), rgba(14,165,164,0.02))}
     .container{max-width:1100px}
+
+    /* Horizontal scroll panel */
+    .scroll-track{display:flex; gap:1rem; overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; padding:1rem 0}
+    .scroll-track::-webkit-scrollbar{height:8px}
+    .scroll-track::-webkit-scrollbar-thumb{background:rgba(15,23,42,0.12); border-radius:999px}
+    .card-snap{flex:0 0 260px; scroll-snap-align:start; background:white; border-radius:0.5rem; overflow:hidden; box-shadow:0 6px 20px rgba(2,6,23,0.06)}
+    .card-snap img{width:100%; height:160px; object-fit:cover}
+    .scroll-panel{position:relative}
+    .scroll-controls{position:absolute; right:8px; top:8px; display:flex; gap:6px}
+    .scroll-btn{background:rgba(255,255,255,0.85); border-radius:999px; padding:6px; box-shadow:0 4px 12px rgba(2,6,23,0.08)}
   </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -180,11 +190,24 @@
       </div>
     </section>
 
-    <!-- GALLERY -->
+    <!-- GALLERY (with horizontal scroll panel + grid fallback) -->
     <section id="gallery" class="py-16 gradient-hero">
       <div class="container mx-auto px-6">
         <h2 class="text-2xl font-semibold">Gallery</h2>
-        <div class="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4" id="galleryGrid"></div>
+
+        <!-- Horizontal auto-scroll panel -->
+        <div class="mt-6 scroll-panel">
+          <div class="scroll-controls" aria-hidden="true">
+            <button id="scrollPrev" class="scroll-btn">◀</button>
+            <button id="scrollNext" class="scroll-btn">▶</button>
+          </div>
+          <div class="scroll-track" id="horizontalTrack" tabindex="0" role="list" aria-label="Event highlights">
+            <!-- cards inserted by JS -->
+          </div>
+        </div>
+
+        <!-- Grid fallback -->
+        <div class="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4 hidden" id="galleryGrid"></div>
       </div>
     </section>
 
@@ -236,24 +259,72 @@
       el.classList.toggle('hidden');
     });
 
-    // Build gallery grid (1..90) with fallback
+    // Build horizontal scroll panel (auto-scroll + controls) and grid fallback
     (function(){
+      const track = document.getElementById('horizontalTrack');
       const grid = document.getElementById('galleryGrid');
-      for(let i=1;i<=90;i++){
+      const total = 30; // number of sample images to attempt
+
+      for(let i=1;i<=total;i++){
         const card = document.createElement('div');
-        card.className = 'overflow-hidden rounded-lg bg-white';
+        card.className = 'card-snap';
         const img = document.createElement('img');
         img.src = `${i}.jpg`;
         img.alt = `Event ${i}`;
-        img.className = 'w-full h-48 object-cover';
+        img.loading = 'lazy';
         img.onerror = function(){
-          if(!this.dataset.try){
-            this.dataset.try='1'; this.src = `images/${i}.jpg`;
-          } else this.parentElement.style.display='none';
+          if(!this.dataset.try){ this.dataset.try='1'; this.src = `images/${i}.jpg`; }
+          else { this.parentElement.remove(); }
         };
+        const caption = document.createElement('div');
+        caption.className = 'p-3 text-sm text-gray-700';
+        caption.innerText = `Event ${i}`;
         card.appendChild(img);
-        grid.appendChild(card);
+        card.appendChild(caption);
+        track.appendChild(card);
+
+        // also add to grid fallback (hidden unless JS toggles)
+        const gcard = card.cloneNode(true);
+        grid.appendChild(gcard);
       }
+
+      // Auto-scroll loop (gentle)
+      let pxPerStep = 1; // pixels
+      let msPerStep = 12; // ms
+      let auto;
+      function startAuto(){
+        stopAuto();
+        auto = setInterval(()=>{
+          if(!track) return;
+          track.scrollLeft += pxPerStep;
+          if(track.scrollLeft + track.clientWidth >= track.scrollWidth - 1){
+            // loop back smoothly
+            track.scrollTo({left:0, behavior:'smooth'});
+          }
+        }, msPerStep);
+      }
+      function stopAuto(){ if(auto) clearInterval(auto); }
+
+      // Pause on hover/focus
+      track.addEventListener('mouseenter', stopAuto);
+      track.addEventListener('mouseleave', startAuto);
+      track.addEventListener('focusin', stopAuto);
+      track.addEventListener('focusout', startAuto);
+
+      // Keyboard support
+      track.addEventListener('keydown', e=>{
+        if(e.key === 'ArrowRight') track.scrollBy({left:260, behavior:'smooth'});
+        if(e.key === 'ArrowLeft') track.scrollBy({left:-260, behavior:'smooth'});
+      });
+
+      // Controls
+      const prev = document.getElementById('scrollPrev');
+      const next = document.getElementById('scrollNext');
+      prev.addEventListener('click', ()=>{ track.scrollBy({left:-260, behavior:'smooth'}); });
+      next.addEventListener('click', ()=>{ track.scrollBy({left:260, behavior:'smooth'}); });
+
+      // start autoplay
+      startAuto();
     })();
 
     // Fetch helper
