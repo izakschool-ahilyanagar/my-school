@@ -30,6 +30,7 @@
         <a href="#about" class="hover:underline">About</a>
         <a href="#office-hours" class="hover:underline">Office Hours</a>
         <a href="#admission" class="hover:underline">Admission</a>
+        <a href="#classes" class="hover:underline">Classes</a>
         <a href="#staff" class="hover:underline">Staff</a>
         <a href="#gallery-section" class="hover:underline">Gallery</a>
         <a href="#documents" class="hover:underline">Documents</a>
@@ -49,18 +50,16 @@
   <div id="dynamic-gallery" class="gallery max-w-6xl mx-auto"></div>
 
 <script>
-    // Generate a dynamic gallery of images (tries numbered images in the images/ folder)
+    // Generate a dynamic gallery of images from numbered files at repo root (1.jpg .. 90.jpg)
     const dynamicGallery = document.getElementById("dynamic-gallery");
-
-    // Attempt to show images 1..20 (adjusted for expected repo size); missing images use a placeholder
-    for (let i = 1; i <= 20; i++) {
+    const maxImages = 90;
+    for (let i = 1; i <= maxImages; i++) {
         const img = document.createElement("img");
         img.src = `${i}.jpg`;
         img.alt = `School Photo ${i}`;
         img.className = 'rounded shadow';
         img.loading = 'lazy';
         img.onerror = () => {
-            // replace with placeholder element when image fails to load
             const ph = document.createElement('div');
             ph.className = 'placeholder';
             ph.innerText = `Image ${i} not available`;
@@ -77,27 +76,26 @@
     <p class="text-gray-700 mt-3">We follow the State Board curriculum and offer modern facilities including science labs, computer education from Grade 1, a library with thousands of books, and robust sports and extracurricular programs.</p>
   </section>
 
-  <!-- Admission -->
+  <!-- Admission (will be populated from Excel if available) -->
   <section id="admission" class="bg-gray-100 py-12 px-4">
     <div class="max-w-4xl mx-auto">
       <h3 class="text-2xl font-semibold mb-4">Admission</h3>
-      <ul class="list-disc list-inside text-gray-700">
-        <li>Admissions open from April 1st</li>
-        <li>Nursery to Grade 12 (State Board)</li>
-        <li>Application forms available online and at the school office</li>
-      </ul>
-      <div class="mt-4 text-gray-700">
-         <ul class="list-disc list-inside">
-         <li>Highly qualified and experienced staff and teachers</li>
-         <li>Computer education from Grade 1</li>
-         <li>Physics, Chemistry and Biology labs</li>
-         <li>Library with over 5000 books</li>
-         <li>School Bus Facility available (Max 10 Kms)</li>
-         <li>CCTV Covered Campus 24x7</li>
-         <li>Hostel with 1km radius</li>
-         <li>All types of sports equipment available</li>
-         <li>Clean and hygienic dining and kitchen area</li>
-         </ul>
+      <div id="admission-content">
+        <ul class="list-disc list-inside text-gray-700">
+          <li>Admissions open from April 1st</li>
+          <li>Nursery to Grade 12 (State Board)</li>
+          <li>Application forms available online and at the school office</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Classes (populated from ABOUT CLASSES.docx) -->
+  <section id="classes" class="py-12 px-4">
+    <div class="max-w-4xl mx-auto">
+      <h3 class="text-2xl font-semibold mb-4">Classes &amp; Curriculum</h3>
+      <div id="classes-content" class="prose text-gray-700">
+        <p>Class information will be loaded from the repository document if available.</p>
       </div>
     </div>
   </section>
@@ -176,7 +174,7 @@
             <button onclick="previewPDF('Digital%20%E0%A4%AD%E0%A4%BE%E0%A4%B3%E0%A4%B5%E0%A4%A3%E0%A5%80_655_Satbara.pdf')" class="bg-blue-600 text-white px-3 py-1 rounded">Preview PDF</button>
             <a href="Digital%20%E0%A4%AD%E0%A4%BE%E0%A4%B3%E0%A4%B5%E0%A4%A3%E0%A5%80_655_Satbara.pdf" class="underline text-sm self-center">Download</a>
           </div>
-          <div id="pdf-preview" class="mt-4">
+          <div id="pdf-preview" class("mt-4">
             <!-- iframe will be inserted here -->
           </div>
         </div>
@@ -231,9 +229,10 @@
       this.reset();
     });
 
-    // Excel preview using SheetJS
+    // Excel preview using SheetJS and populate structured admissions table
     async function previewExcel(path) {
       const previewEl = document.getElementById('excel-preview');
+      const admissionContent = document.getElementById('admission-content');
       previewEl.innerHTML = 'Loading Excel...';
       try {
         const res = await fetch(decodeURIComponent(path));
@@ -242,17 +241,43 @@
         const data = new Uint8Array(ab);
         const workbook = XLSX.read(data, { type: 'array' });
         const firstSheetName = workbook.SheetNames[0];
-        const html = XLSX.utils.sheet_to_html(workbook.Sheets[firstSheetName]);
-        previewEl.innerHTML = html;
+        const sheet = workbook.Sheets[firstSheetName];
+        const json = XLSX.utils.sheet_to_json(sheet, { defval: '' });
+
+        // Render a simple HTML table for the preview
+        const tableHtml = XLSX.utils.sheet_to_html(sheet);
+        previewEl.innerHTML = tableHtml;
+
+        // If sheet appears to contain admission rows (common headers), try to extract summary
+        if (json.length > 0) {
+          // Create a summary block: columns and a few first rows
+          let summary = '<h4 class="mt-4 font-semibold">Admissions Data (preview)</h4>';
+          summary += '<div class="overflow-auto"><table class="min-w-full text-sm text-gray-700 border-collapse">';
+          // headers
+          summary += '<thead class="bg-gray-200"><tr>';
+          Object.keys(json[0]).forEach(h => { summary += `<th class="p-2 text-left border">${h}</th>`; });
+          summary += '</tr></thead>';
+          // rows (limit to first 10)
+          summary += '<tbody>';
+          json.slice(0,10).forEach(row => {
+            summary += '<tr>';
+            Object.values(row).forEach(v => { summary += `<td class="p-2 border">${String(v)}</td>`; });
+            summary += '</tr>';
+          });
+          summary += '</tbody></table></div>';
+
+          admissionContent.innerHTML = summary;
+        }
       } catch (err) {
         previewEl.innerHTML = '<div class="text-red-600">Unable to load Excel file. Please download it instead.</div>';
         console.error(err);
       }
     }
 
-    // DOCX preview using Mammoth
+    // DOCX preview using Mammoth and populate Classes section
     async function previewDocx(path) {
       const previewEl = document.getElementById('docx-preview');
+      const classesEl = document.getElementById('classes-content');
       previewEl.innerHTML = 'Loading document...';
       try {
         const res = await fetch(decodeURIComponent(path));
@@ -260,6 +285,9 @@
         const ab = await res.arrayBuffer();
         const result = await mammoth.convertToHtml({ arrayBuffer: ab });
         previewEl.innerHTML = result.value;
+
+        // Insert the main converted HTML into the classes section as well (sanitized minimal)
+        classesEl.innerHTML = result.value;
       } catch (err) {
         previewEl.innerHTML = '<div class="text-red-600">Unable to load DOCX file. Please download it instead.</div>';
         console.error(err);
@@ -285,6 +313,17 @@
         container.innerHTML = '<div class="text-red-600">Unable to preview PDF. Use the download link.</div>';
       }
     }
+
+    // Auto-load document previews into structured sections if files exist
+    (function autoLoadDocs() {
+      // Try to auto-preview DOCX and XLSX into page sections (failures are console-logged)
+      // Use existing filenames in repo root
+      const xlsxPath = 'website%20new%20doc%20TODAY.xlsx';
+      const docxPath = 'ABOUT%20CLASSES.docx';
+      // Kick off previews, they will silently fail if files are missing
+      previewExcel(xlsxPath).catch(()=>{});
+      previewDocx(docxPath).catch(()=>{});
+    })();
   </script>
 </body>
 </html>
