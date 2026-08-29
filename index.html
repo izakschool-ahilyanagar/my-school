@@ -1,180 +1,193 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Izak English Medium School and Junior College</title>
+  <title>Izak English Medium School & Junior College</title>
+
+  <!-- Tailwind CDN + Inter font -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <style>
-    .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 15px; padding: 20px; }
-    .gallery img { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; }
-    .doc-preview { border: 1px solid #e5e7eb; background: #fff; padding: 12px; border-radius: 6px; }
-    table { width:100%; border-collapse: collapse; }
-    table th, table td { border:1px solid #e2e8f0; padding:8px; text-align:left; }
+    :root{--brand: #0ea5a4; --brand-dark:#036b6a}
+    body{font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial}
+    .top-shadow{box-shadow:0 8px 30px rgba(2,6,23,0.08)}
+    .gradient-hero{background:linear-gradient(180deg, rgba(14,165,164,0.06), rgba(14,165,164,0.02))}
+    .container{max-width:1100px}
+
+    /* Horizontal scroll panel */
+    .scroll-track{display:flex; gap:1rem; overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; padding:1rem 0}
+    .scroll-track::-webkit-scrollbar{height:8px}
+    .scroll-track::-webkit-scrollbar-thumb{background:rgba(15,23,42,0.12); border-radius:999px}
+    .card-snap{flex:0 0 260px; scroll-snap-align:start; background:white; border-radius:0.5rem; overflow:hidden; box-shadow:0 6px 20px rgba(2,6,23,0.06)}
+    .card-snap img{width:100%; height:160px; object-fit:cover}
+    .scroll-panel{position:relative}
+    .scroll-controls{position:absolute; right:8px; top:8px; display:flex; gap:6px}
+    .scroll-btn{background:rgba(255,255,255,0.85); border-radius:999px; padding:6px; box-shadow:0 4px 12px rgba(2,6,23,0.08)}
   </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
-  <header class="bg-blue-800 text-white p-4">
-    <div class="max-w-6xl mx-auto flex justify-between items-center">
-      <div class="flex items-center space-x-4">
-        <img src="logo.jpg" alt="School Logo" class="h-14 w-14 rounded-full" />
+
+  <!-- NAV -->
+  <header class="bg-white sticky top-0 z-40 top-shadow">
+    <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#home" class="flex items-center gap-3">
+        <img src="logo.jpg" alt="logo" class="h-12 w-12 rounded-full object-cover" />
         <div>
-          <h1 class="text-2xl font-bold">Izak English Medium School and Junior College</h1>
-          <h3 class="text-sm text-gray-200">Alfa Social and Educational Foundation (Since 2005)</h3>
+          <div class="text-lg font-semibold">Izak English Medium School</div>
+          <div class="text-xs text-gray-500">Alfa Social & Educational Foundation</div>
         </div>
-      </div>
-      <nav class="space-x-4">
-        <a href="#about" class="hover:underline">About</a>
-        <a href="#office-hours" class="hover:underline">Office Hours</a>
-        <a href="#admission" class="hover:underline">Admission</a>
-        <a href="#staff" class="hover:underline">Staff</a>
-        <a href="#gallery" class="hover:underline">Gallery</a>
-        <a href="#contact" class="hover:underline">Contact</a>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="#about" class="hover:text-brand-dark">About</a>
+        <a href="#programs" class="hover:text-brand-dark">Programs</a>
+        <a href="#admissions" class="hover:text-brand-dark">Admissions</a>
+        <a href="#facilities" class="hover:text-brand-dark">Facilities</a>
+        <a href="#staff" class="hover:text-brand-dark">Staff</a>
+        <a href="#gallery" class="hover:text-brand-dark">Gallery</a>
+        <a href="#contact" class="hover:text-brand-dark">Contact</a>
       </nav>
+      <div class="md:hidden">
+        <button id="navToggle" class="p-2 rounded bg-gray-100">Menu</button>
+      </div>
+    </div>
+    <div id="mobileNav" class="hidden md:hidden bg-white border-t">
+      <div class="px-6 py-4 flex flex-col gap-3">
+        <a href="#about">About</a>
+        <a href="#programs">Programs</a>
+        <a href="#admissions">Admissions</a>
+        <a href="#facilities">Facilities</a>
+        <a href="#staff">Staff</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+      </div>
     </div>
   </header>
 
-  <section class="text-center py-16 bg-white">
-    <h2 class="text-4xl font-bold mb-4">Welcome to Izak English Medium School and Junior College</h2>
-    <p class="text-lg text-gray-600">"Learn. Grow. Lead." - Your path to excellence starts here.</p>
-  </section>
-
-  <div id="gallery" class="gallery"></div>
-
-  <section id="about" class="max-w-4xl mx-auto py-12 px-4">
-    <h3 class="text-2xl font-semibold mb-4">About Us</h3>
-    <p class="text-gray-700">Izak English Medium School and Junior College enjoys 20 years of glorious academic traditions. It was established to provide quality education to students from all backgrounds and to empower students with strong academic foundations and values. We focus on holistic development — academics, sports, arts and character-building.</p>
-  </section>
-
-  <section id="admission" class="bg-gray-100 py-12 px-4">
-    <div class="max-w-4xl mx-auto">
-      <h3 class="text-2xl font-semibold mb-4">Admission</h3>
-      <div class="doc-preview mb-4">
-        <p class="text-sm text-gray-600">Admissions open from April 1st. Nursery to Grade 12 (State Board). Application forms available online and at the school office.</p>
-        <p class="mt-2 text-sm">Download documents: <a href="/website-new-doc-today.html" class="text-blue-700 underline">Excel (safe link)</a> • <a href="/website%20new%20doc%20TODAY.xlsx" class="text-blue-700 underline">Original XLSX</a></p>
+  <!-- HERO -->
+  <main id="home">
+    <section class="gradient-hero py-20">
+      <div class="container mx-auto px-6 grid gap-8 md:grid-cols-2 items-center">
+        <div>
+          <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">Learn. Grow. Lead.</h1>
+          <p class="mt-4 text-gray-600 max-w-xl">Izak English Medium School and Junior College provides a caring environment, strong academics and modern facilities to prepare students for future success.</p>
+          <div class="mt-6 flex gap-3">
+            <a href="#admissions" class="inline-block bg-brand text-white px-5 py-3 rounded shadow hover:bg-brand-dark">Admissions</a>
+            <a href="#contact" class="inline-block border border-gray-200 px-5 py-3 rounded text-gray-700 hover:bg-gray-50">Contact Us</a>
+          </div>
+          <div class="mt-6 text-sm text-gray-500">Since 2005 — Alfa Social & Educational Foundation</div>
+        </div>
+        <div class="rounded-lg overflow-hidden shadow-lg bg-white p-6">
+          <img src="logo1.jpeg" alt="school" class="w-full h-64 object-cover rounded" />
+        </div>
       </div>
+    </section>
 
-      <div id="admissions-table" class="bg-white p-4 rounded shadow">
-        <p class="text-gray-500">Loading admissions table from the provided Excel file... If it doesn't load, use the download link above.</p>
+    <!-- ABOUT -->
+    <section id="about" class="py-16">
+      <div class="container mx-auto px-6">
+        <div class="grid md:grid-cols-3 gap-8 items-center">
+          <div class="md:col-span-2">
+            <h2 class="text-2xl font-semibold">About Izak</h2>
+            <p class="mt-4 text-gray-700">Established to provide quality education to students from diverse backgrounds, Izak English Medium School and Junior College focuses on holistic development — academics, sports, arts and values. We offer Nursery through Grade 12 on the State Board syllabus, computer education from Grade 1, science labs, and a resource-rich library.</p>
+            <ul class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-2 text-gray-700">
+              <li>Experienced & qualified teaching staff</li>
+              <li>Computer lab and smart classrooms</li>
+              <li>Physics, Chemistry & Biology labs</li>
+              <li>Library with 5000+ books</li>
+              <li>School bus within 10 km</li>
+              <li>Hostel options nearby</li>
+            </ul>
+          </div>
+          <div class="bg-white rounded-lg shadow p-4">
+            <h4 class="font-semibold">Quick Facts</h4>
+            <div class="mt-2 text-sm text-gray-600">
+              <p><strong>Location:</strong> Ahilyanagar, Taluka - Bhalwani, 414103</p>
+              <p><strong>Contact:</strong> +91 9545928233</p>
+              <p><strong>Email:</strong> izak4777@gmail.com</p>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="classes" class="py-12 px-4">
-    <div class="max-w-4xl mx-auto">
-      <h3 class="text-2xl font-semibold mb-4">About Classes</h3>
-      <div class="doc-preview mb-2">
-        <p class="text-sm text-gray-700">Below is the class information extracted from the uploaded document. Download: <a href="/about-classes.docx" class="text-blue-700 underline">about-classes.docx (safe)</a> • <a href="/ABOUT%20CLASSES.docx" class="text-blue-700 underline">original</a></p>
+    <!-- PROGRAMS / CLASSES -->
+    <section id="programs" class="py-12 bg-white">
+      <div class="container mx-auto px-6">
+        <h2 class="text-2xl font-semibold">Programs & Classes</h2>
+        <div id="classes-content" class="mt-4 bg-gray-50 rounded p-6 text-gray-700">
+          <!-- Will be filled by converted DOCX (Mammoth) or static fallback -->
+          <p id="classes-fallback" class="text-sm text-gray-500">Class and program details are loading. If they do not appear, download the document below.</p>
+          <div class="mt-3">
+            <a href="/about-classes.docx" class="text-sm text-brand underline">Download About Classes (DOCX)</a>
+          </div>
+        </div>
       </div>
-      <div id="classes-content" class="bg-white p-4 rounded shadow">
-        <p class="text-gray-500">Loading classes content...</p>
+    </section>
+
+    <!-- ADMISSIONS -->
+    <section id="admissions" class="py-16 gradient-hero">
+      <div class="container mx-auto px-6">
+        <div class="flex items-center justify-between">
+          <h2 class="text-2xl font-semibold">Admissions & Fees</h2>
+          <div class="text-sm text-gray-600">Admissions open from April 1st • Nursery to Grade 12</div>
+        </div>
+
+        <div class="mt-6 bg-white rounded shadow p-6">
+          <div class="mb-4 flex items-center justify-between">
+            <div class="text-sm text-gray-600">Search the table:</div>
+            <input id="tableSearch" type="search" placeholder="Search..." class="border px-3 py-2 rounded text-sm" />
+          </div>
+          <div id="admissions-table">Loading admissions table...</div>
+          <div class="mt-4 text-sm text-gray-500">Download: <a href="/website-new-doc-today.html" class="underline text-brand">Excel (safe)</a> • <a href="/website%20new%20doc%20TODAY.xlsx" class="underline">Original</a></div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="gallery-section" class="bg-gray-100 py-12 px-4">
-    <div class="max-w-6xl mx-auto">
-      <h3 class="text-2xl font-semibold mb-4">Gallery</h3>
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-        <img src="1.jpg" alt="Event 1" class="rounded shadow" />
-        <img src="2.jpg" alt="Event 2" class="rounded shadow" />
-        <img src="3.jpg" alt="Event 3" class="rounded shadow" />
-        <img src="4.jpg" alt="Event 4" class="rounded shadow" />
+    <!-- FACILITIES -->
+    <section id="facilities" class="py-12">
+      <div class="container mx-auto px-6">
+        <h2 class="text-2xl font-semibold">Facilities</h2>
+        <div class="mt-4 grid md:grid-cols-3 gap-6">
+          <div class="p-4 bg-white rounded shadow">
+            <h4 class="font-semibold">Labs</h4>
+            <p class="text-sm text-gray-600 mt-2">Well-equipped Physics, Chemistry and Biology labs for practical learning.</p>
+          </div>
+          <div class="p-4 bg-white rounded shadow">
+            <h4 class="font-semibold">Library</h4>
+            <p class="text-sm text-gray-600 mt-2">Over 5000 books across subjects and reading spaces for students.</p>
+          </div>
+          <div class="p-4 bg-white rounded shadow">
+            <h4 class="font-semibold">Transport & Security</h4>
+            <p class="text-sm text-gray-600 mt-2">School bus service (max 10 km) and campus CCTV coverage.</p>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="office-hours" class="bg-gray-100 py-12 px-4">
-     <div class="max-w-4xl mx-auto">
-       <h3 class="text-2xl font-semibold mb-4">Office Hours</h3>
-       <p class="text-gray-700 mb-2">9.30 am to 5.00 pm</p>
-       <br>
-       <h3 class="text-2xl font-semibold mb-4">School Hours</h3>
-       <p class="text-gray-700 mb-2">10.00 am to 4.00 pm</p>
-    </div>
-  </section>
-
-  <section id="contact" class="py-12 px-4">
-    <div class="max-w-4xl mx-auto">
-      <h3 class="text-2xl font-semibold mb-4">Contact Us</h3>
-      <p class="text-gray-700 mb-2">Izak English School and Junior College, Taluka- Bhalwani, Ahilyanagar - 414103, MH, India</p>
-      <p class="text-gray-700 mb-2">Mayur Rohokale (Rector): +91 9545928233</p>
-      <p class="text-gray-700 mb-2">Email: izak4777@gmail.com</p>
-      <div class="mt-4">
-        <h4 class="text-lg font-semibold">Important Documents</h4>
-        <ul class="list-disc list-inside">
-          <li><a href="/about-classes.docx" class="text-blue-700 underline">About Classes (DOCX)</a></li>
-          <li><a href="/digital-bhalvani.html" class="text-blue-700 underline">Digital भाळवणी_655_Satbara (PDF - safe)</a></li>
-          <li><a href="/website-new-doc-today.html" class="text-blue-700 underline">Admissions data (XLSX - safe)</a></li>
-        </ul>
+    <!-- STAFF -->
+    <section id="staff" class="py-12 bg-white">
+      <div class="container mx-auto px-6">
+        <h2 class="text-2xl font-semibold">Our Staff & Leadership</h2>
+        <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-white rounded shadow p-4 text-center">
+            <img src="WhatsApp Image 2026-08-29 at 14.22.30.jpeg" alt="chairman" class="mx-auto h-28 w-28 object-cover rounded-full" />
+            <h4 class="font-semibold mt-3">Shahid Kazi</h4>
+            <div class="text-sm text-gray-600">Chairman</div>
+            <div class="text-sm text-gray-700 mt-2">+91 8087235235</div>
+          </div>
+          <div class="bg-white rounded shadow p-4 text-center">
+            <h4 class="font-semibold mt-3">Rehan Kazi</h4>
+            <div class="text-sm text-gray-600">Secretary</div>
+            <div class="text-sm text-gray-700 mt-2">+91 9422088991</div>
+          </div>
+          <div class="bg-white rounded shadow p-4 text-center">
+            <h4 class="font-semibold mt-3">Shirin Pathan</h4>
+            <div class="text-sm text-gray-600">Principal</div>
+            <div class="text-sm text-gray-700 mt-2">+91 9890537444</div>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <footer class="bg-blue-800 text-white p-4 text-center">
-    <p>&copy; 2025 Izak English Medium School and Junior College. All rights reserved.</p>
-  </footer>
-
-  <!-- Libraries -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-  <script src="https://unpkg.com/mammoth/mammoth.browser.min.js"></script>
-
-  <script>
-    // Build gallery using available files 1..90 with fallback to images/ folder
-    (function buildGallery(){
-      const gallery = document.getElementById('gallery');
-      for(let i=1;i<=90;i++){
-        const img = document.createElement('img');
-        img.src = `${i}.jpg`;
-        img.alt = `School Photo ${i}`;
-        img.onerror = function(){
-          if(!this.dataset.fallback){
-            this.dataset.fallback = '1';
-            this.src = `images/${i}.jpg`;
-          } else {
-            this.style.display = 'none';
-          }
-        };
-        gallery.appendChild(img);
-      }
-    })();
-
-    // Helper: fetch arrayBuffer
-    async function fetchArrayBuffer(url){
-      const res = await fetch(url);
-      if(!res.ok) throw new Error('Network error: ' + res.status);
-      return await res.arrayBuffer();
-    }
-
-    // Render XLSX into #admissions-table using SheetJS
-    (async function renderXLSX(){
-      const url = 'https://raw.githubusercontent.com/izakschool-ahilyanagar/my-school/main/website%20new%20doc%20TODAY.xlsx';
-      try{
-        const data = await fetchArrayBuffer(url);
-        const wb = XLSX.read(new Uint8Array(data), {type:'array'});
-        const first = wb.SheetNames[0];
-        const ws = wb.Sheets[first];
-        const html = XLSX.utils.sheet_to_html(ws, {id: 'admissions-table-sheet'});
-        document.getElementById('admissions-table').innerHTML = html;
-      }catch(err){
-        console.error(err);
-        const el = document.getElementById('admissions-table');
-        el.innerHTML = '<p class="text-red-500">Could not load Excel file — you can download it <a href="/website-new-doc-today.html" class="underline">here</a>.</p>';
-      }
-    })();
-
-    // Render DOCX into #classes-content using Mammoth
-    (async function renderDOCX(){
-      const url = 'https://raw.githubusercontent.com/izakschool-ahilyanagar/my-school/main/about-classes.docx';
-      try{
-        const arrayBuffer = await fetchArrayBuffer(url);
-        const result = await mammoth.convertToHtml({arrayBuffer: arrayBuffer});
-        document.getElementById('classes-content').innerHTML = result.value;
-      }catch(err){
-        console.error(err);
-        document.getElementById('classes-content').innerHTML = '<p class="text-red-500">Could not load DOCX file — you can download it <a href="/about-classes.docx" class="underline">here</a>.</p>';
-      }
-    })();
-  </script>
-</body>
-</html>
+We retrieved main SHA e97538... So now create_or_update_file must use sha param equal to that to update main. We attempted earlier and got error because missing sha. We now will call create_or_update_file with sha. We must ensure content equals revamp content. We've prepared content in last create_or_update_file attempt to branch main earlier, but failed. Now call with sha from getfile. Use branch null (default main). Let's call functions.create_or_update_file with sha 
