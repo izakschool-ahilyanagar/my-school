@@ -13,6 +13,13 @@
     .gallery img { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; }
     .placeholder { display:flex; align-items:center; justify-content:center; background:#f3f4f6; color:#6b7280; height:200px; border-radius:8px }
     .prose img { max-width: 100%; }
+    /* Horizontal photo strip */
+    .photo-strip { display:flex; gap:12px; overflow-x:auto; scroll-behavior:smooth; padding:12px; }
+    .photo-strip::-webkit-scrollbar { height:10px; }
+    .photo-strip::-webkit-scrollbar-thumb { background:#cbd5e1; border-radius:9999px; }
+    .photo-item { flex: 0 0 auto; width: 320px; height: 200px; border-radius:8px; overflow:hidden; box-shadow:0 2px 6px rgba(0,0,0,0.08); }
+    .photo-item img { width:100%; height:100%; object-fit:cover; display:block; }
+    .strip-controls { display:flex; gap:8px; justify-content:center; margin-top:8px; }
   </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -40,34 +47,24 @@
   </header>
 
   <!-- Hero -->
-  <section class="text-center py-16 bg-white">
-    <h2 class="text-4xl font-bold mb-4">Welcome to Izak English Medium School &amp; Junior College</h2>
+  <section class="text-center py-12 bg-white">
+    <h2 class="text-3xl md:text-4xl font-bold mb-2">Welcome to Izak English Medium School &amp; Junior College</h2>
     <p class="text-lg text-gray-600">"Learn. Grow. Lead." - Your path to excellence starts here.</p>
-    <p class="mt-4 text-gray-500 max-w-2xl mx-auto">We provide quality education from Nursery to Grade 12, supported by experienced staff, modern labs, a rich library and strong co-curricular programs.</p>
+    <p class="mt-3 text-gray-500 max-w-2xl mx-auto">We provide quality education from Nursery to Grade 12, supported by experienced staff, modern labs, a rich library and strong co-curricular programs.</p>
   </section>
 
-  <!-- Dynamic Image Grid (top of the page) -->
-  <div id="dynamic-gallery" class="gallery max-w-6xl mx-auto"></div>
-
-<script>
-    // Generate a dynamic gallery of images from numbered files at repo root (1.jpg .. 90.jpg)
-    const dynamicGallery = document.getElementById("dynamic-gallery");
-    const maxImages = 90;
-    for (let i = 1; i <= maxImages; i++) {
-        const img = document.createElement("img");
-        img.src = `${i}.jpg`;
-        img.alt = `School Photo ${i}`;
-        img.className = 'rounded shadow';
-        img.loading = 'lazy';
-        img.onerror = () => {
-            const ph = document.createElement('div');
-            ph.className = 'placeholder';
-            ph.innerText = `Image ${i} not available`;
-            img.replaceWith(ph);
-        }
-        dynamicGallery.appendChild(img);
-    }
-</script>
+  <!-- Horizontal auto-scrolling photo strip -->
+  <section class="max-w-6xl mx-auto py-6 px-4">
+    <h3 class="text-xl font-semibold mb-3">Campus Highlights</h3>
+    <div id="photo-strip" class="photo-strip" tabindex="0" aria-label="Campus photos horizontally scrollable">
+      <!-- Images inserted by JS -->
+    </div>
+    <div class="strip-controls">
+      <button id="strip-prev" class="px-3 py-1 bg-blue-600 text-white rounded">◀</button>
+      <button id="strip-toggle" class="px-3 py-1 bg-gray-200 rounded">Pause</button>
+      <button id="strip-next" class="px-3 py-1 bg-blue-600 text-white rounded">▶</button>
+    </div>
+  </section>
 
   <!-- About Us -->
   <section id="about" class="max-w-4xl mx-auto py-12 px-4">
@@ -76,7 +73,7 @@
     <p class="text-gray-700 mt-3">We follow the State Board curriculum and offer modern facilities including science labs, computer education from Grade 1, a library with thousands of books, and robust sports and extracurricular programs.</p>
   </section>
 
-  <!-- Admission (will be populated from Excel if available) -->
+  <!-- Admission (populated from Excel client-side) -->
   <section id="admission" class="bg-gray-100 py-12 px-4">
     <div class="max-w-4xl mx-auto">
       <h3 class="text-2xl font-semibold mb-4">Admission</h3>
@@ -90,12 +87,12 @@
     </div>
   </section>
 
-  <!-- Classes (populated from ABOUT CLASSES.docx) -->
+  <!-- Classes (populated from ABOUT CLASSES.docx client-side) -->
   <section id="classes" class="py-12 px-4">
     <div class="max-w-4xl mx-auto">
       <h3 class="text-2xl font-semibold mb-4">Classes &amp; Curriculum</h3>
       <div id="classes-content" class="prose text-gray-700">
-        <p>Class information will be loaded from the repository document if available.</p>
+        <p>Class information will be loaded from the repository document if available. If the page cannot load the file, use the Download link in the Documents section to view the original.</p>
       </div>
     </div>
   </section>
@@ -174,9 +171,7 @@
             <button onclick="previewPDF('Digital%20%E0%A4%AD%E0%A4%BE%E0%A4%B3%E0%A4%B5%E0%A4%A3%E0%A5%80_655_Satbara.pdf')" class="bg-blue-600 text-white px-3 py-1 rounded">Preview PDF</button>
             <a href="Digital%20%E0%A4%AD%E0%A4%BE%E0%A4%B3%E0%A4%B5%E0%A4%A3%E0%A5%80_655_Satbara.pdf" class="underline text-sm self-center">Download</a>
           </div>
-          <div id="pdf-preview" class("mt-4">
-            <!-- iframe will be inserted here -->
-          </div>
+          <div id="pdf-preview" class="mt-4"></div>
         </div>
 
         <!-- DOCX -->
@@ -229,6 +224,59 @@
       this.reset();
     });
 
+    // Photo strip: populate, auto-scroll, controls
+    (function photoStripInit() {
+      const strip = document.getElementById('photo-strip');
+      const maxImages = 90; // your repo has images 1..90
+      for (let i = 1; i <= maxImages; i++) {
+        const item = document.createElement('div');
+        item.className = 'photo-item';
+        const img = document.createElement('img');
+        img.src = `${i}.jpg`;
+        img.alt = `Campus photo ${i}`;
+        img.loading = 'lazy';
+        img.onerror = () => { img.src = 'logo1.jpeg'; };
+        item.appendChild(img);
+        strip.appendChild(item);
+      }
+
+      let auto = true;
+      let speed = 1; // pixels per frame
+      let rafId;
+
+      function step() {
+        if (!auto) return;
+        strip.scrollLeft += speed;
+        // loop back to start when near end
+        if (strip.scrollLeft + strip.clientWidth >= strip.scrollWidth - 1) {
+          strip.scrollLeft = 0;
+        }
+        rafId = requestAnimationFrame(() => setTimeout(step, 16));
+      }
+
+      // start automatic scrolling
+      step();
+
+      // controls
+      document.getElementById('strip-toggle').addEventListener('click', function () {
+        auto = !auto;
+        this.innerText = auto ? 'Pause' : 'Play';
+        if (auto) step();
+      });
+      document.getElementById('strip-prev').addEventListener('click', function () {
+        strip.scrollLeft = Math.max(0, strip.scrollLeft - strip.clientWidth);
+      });
+      document.getElementById('strip-next').addEventListener('click', function () {
+        strip.scrollLeft = Math.min(strip.scrollWidth, strip.scrollLeft + strip.clientWidth);
+      });
+
+      // pause on hover/focus for accessibility
+      strip.addEventListener('mouseenter', () => { auto = false; document.getElementById('strip-toggle').innerText = 'Play'; });
+      strip.addEventListener('mouseleave', () => { auto = true; document.getElementById('strip-toggle').innerText = 'Pause'; step(); });
+      strip.addEventListener('focusin', () => { auto = false; document.getElementById('strip-toggle').innerText = 'Play'; });
+      strip.addEventListener('focusout', () => { auto = true; document.getElementById('strip-toggle').innerText = 'Pause'; step(); });
+    })();
+
     // Excel preview using SheetJS and populate structured admissions table
     async function previewExcel(path) {
       const previewEl = document.getElementById('excel-preview');
@@ -244,29 +292,28 @@
         const sheet = workbook.Sheets[firstSheetName];
         const json = XLSX.utils.sheet_to_json(sheet, { defval: '' });
 
-        // Render a simple HTML table for the preview
+        // Render the full table for the preview (full table per request)
         const tableHtml = XLSX.utils.sheet_to_html(sheet);
         previewEl.innerHTML = tableHtml;
 
-        // If sheet appears to contain admission rows (common headers), try to extract summary
+        // Also insert the full table into the Admissions section below the intro
         if (json.length > 0) {
-          // Create a summary block: columns and a few first rows
-          let summary = '<h4 class="mt-4 font-semibold">Admissions Data (preview)</h4>';
-          summary += '<div class="overflow-auto"><table class="min-w-full text-sm text-gray-700 border-collapse">';
+          let fullTable = '<h4 class="mt-4 font-semibold">Admissions Data (Full table)</h4>';
+          fullTable += '<div class="overflow-auto"><table class="min-w-full text-sm text-gray-700 border-collapse">';
           // headers
-          summary += '<thead class="bg-gray-200"><tr>';
-          Object.keys(json[0]).forEach(h => { summary += `<th class="p-2 text-left border">${h}</th>`; });
-          summary += '</tr></thead>';
-          // rows (limit to first 10)
-          summary += '<tbody>';
-          json.slice(0,10).forEach(row => {
-            summary += '<tr>';
-            Object.values(row).forEach(v => { summary += `<td class="p-2 border">${String(v)}</td>`; });
-            summary += '</tr>';
+          fullTable += '<thead class="bg-gray-200"><tr>';
+          Object.keys(json[0]).forEach(h => { fullTable += `<th class="p-2 text-left border">${h}</th>`; });
+          fullTable += '</tr></thead>';
+          // rows
+          fullTable += '<tbody>';
+          json.forEach(row => {
+            fullTable += '<tr>';
+            Object.values(row).forEach(v => { fullTable += `<td class="p-2 border">${String(v)}</td>`; });
+            fullTable += '</tr>';
           });
-          summary += '</tbody></table></div>';
+          fullTable += '</tbody></table></div>';
 
-          admissionContent.innerHTML = summary;
+          admissionContent.innerHTML = fullTable;
         }
       } catch (err) {
         previewEl.innerHTML = '<div class="text-red-600">Unable to load Excel file. Please download it instead.</div>';
@@ -286,7 +333,7 @@
         const result = await mammoth.convertToHtml({ arrayBuffer: ab });
         previewEl.innerHTML = result.value;
 
-        // Insert the main converted HTML into the classes section as well (sanitized minimal)
+        // Insert the converted HTML into the classes section
         classesEl.innerHTML = result.value;
       } catch (err) {
         previewEl.innerHTML = '<div class="text-red-600">Unable to load DOCX file. Please download it instead.</div>';
@@ -316,11 +363,8 @@
 
     // Auto-load document previews into structured sections if files exist
     (function autoLoadDocs() {
-      // Try to auto-preview DOCX and XLSX into page sections (failures are console-logged)
-      // Use existing filenames in repo root
       const xlsxPath = 'website%20new%20doc%20TODAY.xlsx';
       const docxPath = 'ABOUT%20CLASSES.docx';
-      // Kick off previews, they will silently fail if files are missing
       previewExcel(xlsxPath).catch(()=>{});
       previewDocx(docxPath).catch(()=>{});
     })();
