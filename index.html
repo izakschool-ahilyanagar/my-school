@@ -190,4 +190,189 @@
       </div>
     </section>
 
-We retrieved main SHA e97538... So now create_or_update_file must use sha param equal to that to update main. We attempted earlier and got error because missing sha. We now will call create_or_update_file with sha. We must ensure content equals revamp content. We've prepared content in last create_or_update_file attempt to branch main earlier, but failed. Now call with sha from getfile. Use branch null (default main). Let's call functions.create_or_update_file with sha 
+    <!-- GALLERY (with horizontal scroll panel + grid fallback) -->
+    <section id="gallery" class="py-16 gradient-hero">
+      <div class="container mx-auto px-6">
+        <h2 class="text-2xl font-semibold">Gallery</h2>
+
+        <!-- Horizontal auto-scroll panel -->
+        <div class="mt-6 scroll-panel">
+          <div class="scroll-controls" aria-hidden="true">
+            <button id="scrollPrev" class="scroll-btn">◀</button>
+            <button id="scrollNext" class="scroll-btn">▶</button>
+          </div>
+          <div class="scroll-track" id="horizontalTrack" tabindex="0" role="list" aria-label="Event highlights">
+            <!-- cards inserted by JS -->
+          </div>
+        </div>
+
+        <!-- Grid fallback -->
+        <div class="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4 hidden" id="galleryGrid"></div>
+      </div>
+    </section>
+
+    <!-- DOCUMENTS -->
+    <section id="documents" class="py-12 bg-white">
+      <div class="container mx-auto px-6">
+        <h2 class="text-2xl font-semibold">Important Documents</h2>
+        <ul class="mt-4 list-disc list-inside text-gray-700">
+          <li><a href="/website-new-doc-today.html" class="text-brand underline">Admissions Excel (safe)</a></li>
+          <li><a href="/about-classes.docx" class="text-brand underline">About Classes (DOCX)</a></li>
+          <li><a href="/digital-bhalvani.html" class="text-brand underline">Digital भाळवणी_655_Satbara (PDF - safe)</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-12">
+      <div class="container mx-auto px-6">
+        <h2 class="text-2xl font-semibold">Contact</h2>
+        <div class="mt-4 grid md:grid-cols-2 gap-6">
+          <div class="bg-white rounded shadow p-6">
+            <p class="text-gray-700">Izak English School and Junior College, Taluka- Bhalwani, Ahilyanagar - 414103, MH, India</p>
+            <p class="mt-3"><strong>Phone:</strong> +91 9545928233</p>
+            <p class="mt-1"><strong>Email:</strong> <a href="mailto:izak4777@gmail.com" class="underline">izak4777@gmail.com</a></p>
+          </div>
+          <div class="bg-white rounded shadow p-6">
+            <h4 class="font-semibold">Get in touch</h4>
+            <p class="text-sm text-gray-600 mt-2">For admissions and visits, call or email us. You can also download forms from the Documents section.</p>
+            <div class="mt-4">
+              <a href="mailto:izak4777@gmail.com" class="inline-block bg-brand text-white px-4 py-2 rounded">Email Us</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-blue-800 text-white py-6 mt-8">
+      <div class="container mx-auto px-6 text-center text-sm">&copy; 2026 Izak English Medium School and Junior College. All rights reserved.</div>
+    </footer>
+  </main>
+
+  <!-- Scripts: SheetJS & Mammoth for client-side rendering, small helpers for gallery & mobile nav -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="https://unpkg.com/mammoth/mammoth.browser.min.js"></script>
+  <script>
+    // Mobile nav toggle
+    document.getElementById('navToggle').addEventListener('click', function(){
+      const el = document.getElementById('mobileNav');
+      el.classList.toggle('hidden');
+    });
+
+    // Build horizontal scroll panel (auto-scroll + controls) and grid fallback
+    (function(){
+      const track = document.getElementById('horizontalTrack');
+      const grid = document.getElementById('galleryGrid');
+      const total = 30; // number of sample images to attempt
+
+      for(let i=1;i<=total;i++){
+        const card = document.createElement('div');
+        card.className = 'card-snap';
+        const img = document.createElement('img');
+        img.src = `${i}.jpg`;
+        img.alt = `Event ${i}`;
+        img.loading = 'lazy';
+        img.onerror = function(){
+          if(!this.dataset.try){ this.dataset.try='1'; this.src = `images/${i}.jpg`; }
+          else { this.parentElement.remove(); }
+        };
+        const caption = document.createElement('div');
+        caption.className = 'p-3 text-sm text-gray-700';
+        caption.innerText = `Event ${i}`;
+        card.appendChild(img);
+        card.appendChild(caption);
+        track.appendChild(card);
+
+        // also add to grid fallback (hidden unless JS toggles)
+        const gcard = card.cloneNode(true);
+        grid.appendChild(gcard);
+      }
+
+      // Auto-scroll loop (gentle)
+      let pxPerStep = 1; // pixels
+      let msPerStep = 12; // ms
+      let auto;
+      function startAuto(){
+        stopAuto();
+        auto = setInterval(()=>{
+          if(!track) return;
+          track.scrollLeft += pxPerStep;
+          if(track.scrollLeft + track.clientWidth >= track.scrollWidth - 1){
+            // loop back smoothly
+            track.scrollTo({left:0, behavior:'smooth'});
+          }
+        }, msPerStep);
+      }
+      function stopAuto(){ if(auto) clearInterval(auto); }
+
+      // Pause on hover/focus
+      track.addEventListener('mouseenter', stopAuto);
+      track.addEventListener('mouseleave', startAuto);
+      track.addEventListener('focusin', stopAuto);
+      track.addEventListener('focusout', startAuto);
+
+      // Keyboard support
+      track.addEventListener('keydown', e=>{
+        if(e.key === 'ArrowRight') track.scrollBy({left:260, behavior:'smooth'});
+        if(e.key === 'ArrowLeft') track.scrollBy({left:-260, behavior:'smooth'});
+      });
+
+      // Controls
+      const prev = document.getElementById('scrollPrev');
+      const next = document.getElementById('scrollNext');
+      prev.addEventListener('click', ()=>{ track.scrollBy({left:-260, behavior:'smooth'}); });
+      next.addEventListener('click', ()=>{ track.scrollBy({left:260, behavior:'smooth'}); });
+
+      // start autoplay
+      startAuto();
+    })();
+
+    // Fetch helper
+    async function fetchArrayBuffer(url){
+      const r = await fetch(url);
+      if(!r.ok) throw new Error('Fetch failed: '+r.status);
+      return await r.arrayBuffer();
+    }
+
+    // Render XLSX into admissions table (client-side)
+    (async function renderXLSX(){
+      const rawUrl = 'https://raw.githubusercontent.com/izakschool-ahilyanagar/my-school/main/website%20new%20doc%20TODAY.xlsx';
+      try{
+        const data = await fetchArrayBuffer(rawUrl);
+        const wb = XLSX.read(new Uint8Array(data), {type:'array'});
+        const first = wb.SheetNames[0];
+        const ws = wb.Sheets[first];
+        const html = XLSX.utils.sheet_to_html(ws, {id:'admissions-sheet'});
+        document.getElementById('admissions-table').innerHTML = html;
+
+        // simple search
+        const input = document.getElementById('tableSearch');
+        input.addEventListener('input', function(){
+          const q = this.value.toLowerCase();
+          const rows = document.querySelectorAll('#admissions-table table tbody tr');
+          rows.forEach(r=>{
+            r.style.display = Array.from(r.cells).some(c=>c.textContent.toLowerCase().includes(q)) ? '' : 'none';
+          });
+        });
+      }catch(e){
+        console.error(e);
+        document.getElementById('admissions-table').innerHTML = '<p class="text-sm text-red-500">Could not load admissions file. Download <a href="/website-new-doc-today.html" class="underline">here</a>.</p>';
+      }
+    })();
+
+    // Render DOCX into classes
+    (async function renderDOCX(){
+      const rawUrl = 'https://raw.githubusercontent.com/izakschool-ahilyanagar/my-school/main/about-classes.docx';
+      try{
+        const ab = await fetchArrayBuffer(rawUrl);
+        const result = await mammoth.convertToHtml({arrayBuffer:ab});
+        const container = document.getElementById('classes-content');
+        container.innerHTML = result.value;
+        const fallback = document.getElementById('classes-fallback'); if(fallback) fallback.style.display='none';
+      }catch(e){
+        console.error(e);
+      }
+    })();
+  </script>
+</body>
+</html>
