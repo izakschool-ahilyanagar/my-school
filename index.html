@@ -3,677 +3,431 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IZAK English medium school— A School That Grows With You</title>
+<title>IZAK English Medium School & Junior College, Bhalwani</title>
+<meta name="description" content="IZAK English Medium School & Junior College, Bhalwani — Nursery to Standard 12, run by Alfa Social & Educational Foundation. Knowledge Empowers.">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,450;0,9..144,600;0,9..144,700;1,9..144,450&family=Sora:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- Tailwind CSS (CDN build — no bundler needed, works out of the box on GitHub Pages) -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink: '#14231F',
+          inksoft: '#1D2E28',
+          paper: '#F1EEE3',
+          paperdim: '#E7E2D2',
+          lime: '#C6FF6B',
+          gold: '#E8A33D',
+          ruledark: '#33473E',
+          rulelight: '#B9B39F',
+          inktext: '#EDE9DA',
+          inktextdim: '#9AA89E',
+          papertext: '#1B2622',
+          papertextdim: '#5B6259',
+        },
+        fontFamily: {
+          display: ['Fraunces', 'serif'],
+          body: ['Sora', 'sans-serif'],
+          mono: ['"IBM Plex Mono"', 'monospace'],
+        },
+        borderRadius: {
+          DEFAULT: '2px',
+        },
+      }
+    }
+  }
+</script>
+
 <style>
-  :root{
-    --ink:#14231F;
-    --ink-soft:#1D2E28;
-    --paper:#F1EEE3;
-    --paper-dim:#E7E2D2;
-    --lime:#C6FF6B;
-    --gold:#E8A33D;
-    --rule-dark:#33473E;
-    --rule-light:#B9B39F;
-    --text-on-ink:#EDE9DA;
-    --text-on-ink-dim:#9AA89E;
-    --text-on-paper:#1B2622;
-    --text-on-paper-dim:#5B6259;
-    --radius:2px;
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Sora', sans-serif; }
+  h1,h2,h3,h4 { font-family: 'Fraunces', serif; letter-spacing: -0.01em; line-height: 1.05; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
   }
 
-  *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
-  body{
-    background:var(--paper);
-    color:var(--text-on-paper);
-    font-family:'Sora',sans-serif;
-    font-weight:400;
-    line-height:1.5;
-    overflow-x:hidden;
-  }
-  @media (prefers-reduced-motion: reduce){
-    html{scroll-behavior:auto;}
-    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  .eyebrow::before { content:''; width:18px; height:1px; background:currentColor; opacity:0.6; display:inline-block; }
+
+  /* Hero ring draw-in (banyan growth rings) */
+  #ringSVG circle.ring { fill:none; stroke-width:1.4; stroke-dasharray:1400; stroke-dashoffset:1400; animation:draw 2.4s ease forwards; }
+  @keyframes draw { to { stroke-dashoffset:0; } }
+  #ringSVG circle.r1 { stroke:#33473E; animation-delay:.1s; }
+  #ringSVG circle.r2 { stroke:#33473E; animation-delay:.35s; }
+  #ringSVG circle.r3 { stroke:#E8A33D; animation-delay:.6s; }
+  #ringSVG circle.r4 { stroke:#C6FF6B; animation-delay:.9s; }
+
+  .nav-link { position:relative; }
+  .nav-link::after { content:''; position:absolute; bottom:-2px; left:0; width:0; height:1px; background:#C6FF6B; transition:width .25s ease; }
+  .nav-link:hover::after { width:100%; }
+
+  .no-scrollbar::-webkit-scrollbar { display:none; }
+  .no-scrollbar { scrollbar-width:none; -ms-overflow-style:none; }
+
+  .reveal { opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal.in { opacity:1; transform:translateY(0); }
+
+  .campus-tile::after { content:''; position:absolute; inset:0; background:linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.55)); }
+
+  #mobileMenu { max-height:0; overflow:hidden; transition:max-height .35s ease; }
+  #mobileMenu.open { max-height:460px; }
+
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible {
+    outline:2px solid #E8A33D; outline-offset:3px;
   }
 
-  h1,h2,h3,h4{
-    font-family:'Fraunces',serif;
-    font-weight:600;
-    letter-spacing:-0.01em;
-    line-height:1.05;
-  }
-  .eyebrow{
-    font-family:'IBM Plex Mono',monospace;
-    font-size:12px;
-    letter-spacing:0.14em;
-    text-transform:uppercase;
-    display:flex;
-    align-items:center;
-    gap:10px;
-  }
-  .eyebrow::before{
-    content:'';
-    width:18px; height:1px;
-    background:currentColor;
-    opacity:0.6;
-  }
-  a{color:inherit; text-decoration:none;}
-  img,svg{display:block; max-width:100%;}
-  .wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
-  @media (max-width:640px){ .wrap{padding:0 20px;} }
-
-  section{position:relative;}
-
-  /* ---------- BUTTONS ---------- */
-  .btn{
-    font-family:'IBM Plex Mono',monospace;
-    font-size:13px;
-    letter-spacing:0.06em;
-    text-transform:uppercase;
-    padding:14px 26px;
-    border-radius:var(--radius);
-    display:inline-flex;
-    align-items:center;
-    gap:10px;
-    cursor:pointer;
-    border:1px solid transparent;
-    transition:transform .25s ease, background .25s ease, color .25s ease, border-color .25s ease;
-  }
-  .btn:hover{transform:translateY(-2px);}
-  .btn:focus-visible{outline:2px solid var(--gold); outline-offset:3px;}
-  .btn-primary{background:var(--lime); color:var(--ink);}
-  .btn-primary:hover{background:#d8ff92;}
-  .btn-ghost-dark{border-color:var(--rule-dark); color:var(--text-on-ink);}
-  .btn-ghost-dark:hover{border-color:var(--lime); color:var(--lime);}
-  .btn-ghost-light{border-color:var(--rule-light); color:var(--text-on-paper);}
-  .btn-ghost-light:hover{border-color:var(--ink); }
-
-  /* ---------- NAV ---------- */
-  header{
-    position:fixed; top:0; left:0; right:0; z-index:100;
-    background:rgba(20,35,31,0.88);
-    backdrop-filter:blur(10px);
-    border-bottom:1px solid var(--rule-dark);
-  }
-  nav.wrap{
-    display:flex; align-items:center; justify-content:space-between;
-    height:76px;
-    color:var(--text-on-ink);
-  }
-  .logo{
-    display:flex; align-items:center; gap:12px;
-    font-family:'Fraunces',serif; font-weight:600; font-size:19px;
-    color:var(--text-on-ink);
-  }
-  .logo .ring-mark{width:30px; height:30px; flex-shrink:0;}
-  .navlinks{display:flex; gap:36px; font-family:'IBM Plex Mono',monospace; font-size:12.5px; letter-spacing:0.06em; text-transform:uppercase;}
-  .navlinks a{color:var(--text-on-ink-dim); transition:color .2s ease; position:relative; padding:4px 0;}
-  .navlinks a:hover{color:var(--lime);}
-  .navlinks a::after{content:''; position:absolute; bottom:0; left:0; width:0; height:1px; background:var(--lime); transition:width .25s ease;}
-  .navlinks a:hover::after{width:100%;}
-  .nav-cta{display:flex; align-items:center; gap:22px;}
-  .navlinks-mobile-toggle{display:none;}
-  @media (max-width:860px){
-    .navlinks{display:none;}
-    nav.wrap{height:66px;}
-  }
-
-  /* ---------- HERO ---------- */
-  .hero{
-    background:var(--ink);
-    color:var(--text-on-ink);
-    padding:170px 0 90px;
-    position:relative;
-    overflow:hidden;
-  }
-  .hero .wrap{
-    display:grid;
-    grid-template-columns:1.1fr 0.9fr;
-    gap:40px;
-    align-items:center;
-  }
-  @media (max-width:900px){
-    .hero .wrap{grid-template-columns:1fr; gap:60px;}
-    .hero{padding:140px 0 70px;}
-  }
-  .hero .eyebrow{color:var(--lime); margin-bottom:26px;}
-  .hero h1{
-    font-size:clamp(40px, 6vw, 68px);
-    color:var(--text-on-ink);
-  }
-  .hero h1 em{font-style:italic; color:var(--lime); font-weight:450;}
-  .hero p.lede{
-    margin-top:26px;
-    max-width:46ch;
-    font-size:18px;
-    color:var(--text-on-ink-dim);
-  }
-  .hero .cta-row{display:flex; gap:16px; margin-top:40px; flex-wrap:wrap;}
-  .hero-ring-holder{position:relative; display:flex; align-items:center; justify-content:center;}
-  .ring-caption{
-    position:absolute;
-    font-family:'IBM Plex Mono',monospace;
-    font-size:11px;
-    letter-spacing:0.08em;
-    text-transform:uppercase;
-    color:var(--text-on-ink-dim);
-  }
-
-  #ringSVG circle.ring{
-    fill:none;
-    stroke-width:1.4;
-    stroke-dasharray:1400;
-    stroke-dashoffset:1400;
-    animation:draw 2.4s ease forwards;
-  }
-  @keyframes draw{ to{ stroke-dashoffset:0; } }
-  #ringSVG circle.r1{stroke:var(--rule-dark); animation-delay:.1s;}
-  #ringSVG circle.r2{stroke:var(--rule-dark); animation-delay:.35s;}
-  #ringSVG circle.r3{stroke:var(--gold); animation-delay:.6s;}
-  #ringSVG circle.r4{stroke:var(--lime); animation-delay:.9s;}
-
-  /* ---------- SECTION LABEL / INTRO ---------- */
-  .section-head{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-end;
-    gap:40px;
-    margin-bottom:56px;
-    flex-wrap:wrap;
-  }
-  .section-head h2{font-size:clamp(30px,4vw,44px);}
-  .section-head p{max-width:38ch; color:var(--text-on-paper-dim); font-size:15.5px;}
-
-  /* ---------- PHILOSOPHY ---------- */
-  .philosophy{padding:120px 0; background:var(--paper);}
-  .pillars{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:1px;
-    background:var(--rule-light);
-    border:1px solid var(--rule-light);
-  }
-  @media (max-width:760px){ .pillars{grid-template-columns:1fr;} }
-  .pillar{
-    background:var(--paper);
-    padding:44px 34px;
-    transition:background .3s ease;
-  }
-  .pillar:hover{background:var(--paper-dim);}
-  .pillar .num{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--gold); margin-bottom:22px; display:block;}
-  .pillar h3{font-size:24px; margin-bottom:14px;}
-  .pillar p{color:var(--text-on-paper-dim); font-size:15px;}
-
-  /* ---------- ACADEMICS / RINGS ---------- */
-  .academics{background:var(--ink); color:var(--text-on-ink); padding:130px 0;}
-  .academics .section-head h2, .academics .section-head p{color:var(--text-on-ink);}
-  .academics .section-head p{color:var(--text-on-ink-dim);}
-  .ring-rows{border-top:1px solid var(--rule-dark);}
-  .ring-row{
-    display:grid;
-    grid-template-columns:90px 200px 1fr 140px;
-    gap:24px;
-    align-items:center;
-    padding:30px 0;
-    border-bottom:1px solid var(--rule-dark);
-    transition:padding-left .3s ease, background .3s ease;
-  }
-  .ring-row:hover{padding-left:14px; background:rgba(198,255,107,0.04);}
-  @media (max-width:760px){
-    .ring-row{grid-template-columns:50px 1fr; row-gap:8px;}
-    .ring-row .ring-age, .ring-row .ring-desc{grid-column:2;}
-  }
-  .ring-swatch{width:44px; height:44px; border-radius:50%; border:2px solid; flex-shrink:0;}
-  .ring-row:nth-child(1) .ring-swatch{border-color:var(--rule-light); }
-  .ring-row:nth-child(2) .ring-swatch{border-color:var(--gold);}
-  .ring-row:nth-child(3) .ring-swatch{border-color:var(--lime); box-shadow:inset 0 0 0 6px transparent;}
-  .ring-row:nth-child(4) .ring-swatch{border-color:#EDE9DA;}
-  .ring-band{font-family:'Fraunces',serif; font-size:22px;}
-  .ring-age{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--text-on-ink-dim);}
-  .ring-desc{color:var(--text-on-ink-dim); font-size:14.5px;}
-  .ring-count{font-family:'IBM Plex Mono',monospace; font-size:12px; text-align:right; color:var(--text-on-ink-dim);}
-
-  /* ---------- CAMPUS LIFE GALLERY ---------- */
-  .campus{padding:130px 0; background:var(--paper);}
-  .campus-grid{
-    display:grid;
-    grid-template-columns:repeat(6,1fr);
-    grid-auto-rows:120px;
-    gap:14px;
-  }
-  .campus-tile{
-    border-radius:var(--radius);
-    position:relative;
-    overflow:hidden;
-    display:flex;
-    align-items:flex-end;
-    padding:18px;
-    color:var(--text-on-ink);
-  }
-  .campus-tile .tile-label{
-    font-family:'IBM Plex Mono',monospace;
-    font-size:11px;
-    text-transform:uppercase;
-    letter-spacing:0.08em;
-    position:relative; z-index:2;
-  }
-  .campus-tile::after{
-    content:'';
-    position:absolute; inset:0;
-    background:linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.55));
-    z-index:1;
-  }
-  .t1{grid-column:span 3; grid-row:span 3; background:linear-gradient(135deg,#2E4038,#14231F);}
-  .t2{grid-column:span 3; grid-row:span 2; background:linear-gradient(135deg,#3F5548,#1D2E28);}
-  .t3{grid-column:span 3; grid-row:span 2; background:linear-gradient(135deg,#B98A34,#7A5A22);}
-  .t4{grid-column:span 3; grid-row:span 3; background:linear-gradient(135deg,#5C7A63,#233830);}
-  @media (max-width:760px){
-    .campus-grid{grid-template-columns:1fr; grid-auto-rows:180px;}
-    .t1,.t2,.t3,.t4{grid-column:span 1; grid-row:span 1;}
-  }
-
-  /* ---------- STATS ---------- */
-  .stats{background:var(--ink); padding:80px 0; border-top:1px solid var(--rule-dark); border-bottom:1px solid var(--rule-dark);}
-  .stats-row{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:30px;
-    color:var(--text-on-ink);
-  }
-  @media (max-width:760px){ .stats-row{grid-template-columns:1fr 1fr;} }
-  .stat .figure{font-family:'Fraunces',serif; font-size:clamp(34px,4vw,52px); color:var(--lime);}
-  .stat .label{font-family:'IBM Plex Mono',monospace; font-size:11.5px; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-on-ink-dim); margin-top:8px;}
-
-  /* ---------- TESTIMONIALS ---------- */
-  .testimonials{padding:130px 0; background:var(--paper);}
-  .quote-scroll{
-    display:flex;
-    gap:1px;
-    background:var(--rule-light);
-    border:1px solid var(--rule-light);
-    overflow-x:auto;
-    scrollbar-width:none;
-  }
-  .quote-scroll::-webkit-scrollbar{display:none;}
-  .quote-card{
-    background:var(--paper);
-    min-width:340px;
-    flex:1 0 340px;
-    padding:40px 36px;
-  }
-  .quote-card p.quote-text{
-    font-family:'Fraunces',serif;
-    font-style:italic;
-    font-size:19px;
-    line-height:1.4;
-    color:var(--text-on-paper);
-  }
-  .quote-card .attribution{
-    margin-top:26px;
-    font-family:'IBM Plex Mono',monospace;
-    font-size:11.5px;
-    text-transform:uppercase;
-    letter-spacing:0.06em;
-    color:var(--text-on-paper-dim);
-  }
-
-  /* ---------- ADMISSIONS ---------- */
-  .admissions{background:var(--ink); color:var(--text-on-ink); padding:130px 0;}
-  .admissions .section-head h2, .admissions .section-head p{color:var(--text-on-ink);}
-  .admissions .section-head p{color:var(--text-on-ink-dim);}
-  .steps{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:24px;
-    margin-bottom:70px;
-  }
-  @media (max-width:900px){ .steps{grid-template-columns:1fr 1fr;} }
-  .step{border-top:1px solid var(--rule-dark); padding-top:20px;}
-  .step .step-index{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--gold);}
-  .step h4{font-size:18px; margin:12px 0 8px;}
-  .step p{font-size:14px; color:var(--text-on-ink-dim);}
-
-  .inquiry-panel{
-    background:var(--ink-soft);
-    border:1px solid var(--rule-dark);
-    border-radius:var(--radius);
-    padding:48px;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:48px;
-  }
-  @media (max-width:800px){ .inquiry-panel{grid-template-columns:1fr; padding:32px 26px;} }
-  .inquiry-panel h3{font-size:28px; margin-bottom:14px;}
-  .inquiry-panel p{color:var(--text-on-ink-dim); font-size:14.5px; max-width:36ch;}
-  .form-grid{display:flex; flex-direction:column; gap:16px;}
-  .field label{
-    display:block;
-    font-family:'IBM Plex Mono',monospace;
-    font-size:11px; text-transform:uppercase; letter-spacing:0.06em;
-    color:var(--text-on-ink-dim);
-    margin-bottom:8px;
-  }
-  .field input, .field select{
-    width:100%;
-    background:transparent;
-    border:none;
-    border-bottom:1px solid var(--rule-dark);
-    color:var(--text-on-ink);
-    font-family:'Sora',sans-serif;
-    font-size:15px;
-    padding:10px 2px;
-    transition:border-color .2s ease;
-  }
-  .field input:focus, .field select:focus{outline:none; border-bottom-color:var(--lime);}
-  .field select option{background:var(--ink);}
-  .form-grid .btn{margin-top:8px; align-self:flex-start;}
-
-  /* ---------- FOOTER ---------- */
-  footer{background:var(--paper); padding:60px 0 34px; border-top:1px solid var(--rule-light);}
-  .foot-top{
-    display:flex; justify-content:space-between; align-items:flex-start;
-    gap:40px; flex-wrap:wrap;
-    padding-bottom:44px;
-    border-bottom:1px solid var(--rule-light);
-  }
-  .foot-logo{display:flex; align-items:center; gap:12px; font-family:'Fraunces',serif; font-size:18px;}
-  .foot-links{display:flex; gap:60px; flex-wrap:wrap;}
-  .foot-col h5{font-family:'IBM Plex Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-on-paper-dim); margin-bottom:14px;}
-  .foot-col a{display:block; font-size:14px; margin-bottom:9px; color:var(--text-on-paper); transition:color .2s ease;}
-  .foot-col a:hover{color:var(--gold);}
-  .foot-bottom{
-    display:flex; justify-content:space-between; padding-top:26px;
-    font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--text-on-paper-dim);
-    flex-wrap:wrap; gap:10px;
-  }
-
-  /* ---------- SCROLL REVEAL ---------- */
-  .reveal{opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease;}
-  .reveal.in{opacity:1; transform:translateY(0);}
+  .portrait { object-fit:cover; }
 </style>
 </head>
-<body>
 
-<header>
-  <nav class="wrap">
-    <a href="#top" class="logo">
-      <svg class="ring-mark" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="15" cy="15" r="13.5" stroke="#33473E" stroke-width="1"/>
-        <circle cx="15" cy="15" r="9.5" stroke="#E8A33D" stroke-width="1"/>
-        <circle cx="15" cy="15" r="5" stroke="#C6FF6B" stroke-width="1.4"/>
-      </svg>
-      Meridian Academy
+<body class="bg-paper text-papertext overflow-x-hidden">
+
+<!-- ============ NAV ============ -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-ink/90 backdrop-blur border-b border-ruledark">
+  <nav class="max-w-6xl mx-auto px-5 sm:px-8 h-[70px] md:h-[76px] flex items-center justify-between text-inktext">
+    <a href="#top" class="flex items-center gap-3 font-display font-semibold text-base sm:text-lg">
+      <img src="images/school-crest.jpg" alt="IZAK English Medium School crest" class="w-9 h-9 rounded-full object-cover shrink-0">
+      <span class="leading-tight">IZAK English Medium<br class="sm:hidden"> School</span>
     </a>
-    <div class="navlinks">
-      <a href="#philosophy">Philosophy</a>
-      <a href="#academics">Academics</a>
-      <a href="#campus">Campus Life</a>
-      <a href="#testimonials">Voices</a>
-      <a href="#admissions">Admissions</a>
+
+    <div class="hidden lg:flex gap-8 font-mono text-[12px] tracking-wider uppercase">
+      <a href="#about" class="nav-link text-inktextdim hover:text-lime transition-colors">About</a>
+      <a href="#founder" class="nav-link text-inktextdim hover:text-lime transition-colors">Founder</a>
+      <a href="#academics" class="nav-link text-inktextdim hover:text-lime transition-colors">Classes</a>
+      <a href="#campus" class="nav-link text-inktextdim hover:text-lime transition-colors">Campus Life</a>
+      <a href="#management" class="nav-link text-inktextdim hover:text-lime transition-colors">Management</a>
+      <a href="#admissions" class="nav-link text-inktextdim hover:text-lime transition-colors">Admissions</a>
     </div>
-    <div class="nav-cta">
-      <a href="#admissions" class="btn btn-ghost-dark">Visit Campus</a>
+
+    <div class="flex items-center gap-4">
+      <a href="#admissions" class="hidden lg:inline-flex items-center gap-2 font-mono text-[13px] uppercase tracking-wide px-6 py-3 rounded border border-ruledark hover:border-lime hover:text-lime transition-all">
+        Enquire Now
+      </a>
+      <button id="menuBtn" aria-label="Toggle menu" aria-expanded="false" class="lg:hidden w-9 h-9 flex flex-col items-center justify-center gap-1.5 shrink-0">
+        <span class="block w-6 h-px bg-inktext"></span>
+        <span class="block w-6 h-px bg-inktext"></span>
+      </button>
     </div>
   </nav>
+
+  <div id="mobileMenu" class="lg:hidden bg-ink border-t border-ruledark">
+    <div class="flex flex-col px-6 py-4 gap-1 font-mono text-[13px] uppercase tracking-wide">
+      <a href="#about" class="py-3 border-b border-ruledark text-inktextdim hover:text-lime">About</a>
+      <a href="#founder" class="py-3 border-b border-ruledark text-inktextdim hover:text-lime">Founder</a>
+      <a href="#academics" class="py-3 border-b border-ruledark text-inktextdim hover:text-lime">Classes</a>
+      <a href="#campus" class="py-3 border-b border-ruledark text-inktextdim hover:text-lime">Campus Life</a>
+      <a href="#management" class="py-3 border-b border-ruledark text-inktextdim hover:text-lime">Management</a>
+      <a href="#admissions" class="py-3 text-lime">Admissions →</a>
+    </div>
+  </div>
 </header>
 
-<section class="hero" id="top">
-  <div class="wrap">
+<!-- ============ HERO ============ -->
+<section id="top" class="bg-ink text-inktext pt-[130px] md:pt-[170px] pb-20">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 grid grid-cols-1 md:grid-cols-[1.1fr_0.9fr] gap-14 items-center">
     <div>
-      <div class="eyebrow">Est. 1987 · Grades PK–12 · Riverdale, NY</div>
-      <h1>Every year<br>leaves <em>a ring.</em></h1>
-      <p class="lede">Meridian is a PK–12 school built on a simple idea: growth is visible when you know how to look for it. Every student's years here compound into something you can actually trace.</p>
-      <div class="cta-row">
-        <a href="#admissions" class="btn btn-primary">Begin an Application</a>
-        <a href="#academics" class="btn btn-ghost-dark">See the Curriculum</a>
+      <div class="eyebrow flex items-center gap-2.5 font-mono text-xs tracking-widest uppercase text-lime mb-6">
+        Est. 2004 · Nursery to Std 12 · Bhalwani, Ahilyanagar
+      </div>
+      <h1 class="text-[36px] leading-[1.08] sm:text-5xl md:text-6xl font-semibold">
+        A sapling once.<br>Today, <em class="not-italic md:italic text-lime font-normal">a banyan tree.</em>
+      </h1>
+      <p class="mt-6 max-w-[48ch] text-lg text-inktextdim">
+        IZAK English Medium School & Junior College brought quality English-medium education to a remote, drought-affected corner of Parner Taluka. Two decades on, over 2,500 students learn here — many of them the first in their family to do so.
+      </p>
+      <div class="flex gap-4 flex-wrap mt-10">
+        <a href="#admissions" class="inline-flex items-center gap-2 bg-lime text-ink font-mono text-[13px] uppercase tracking-wide px-7 py-4 rounded hover:bg-[#d8ff92] hover:-translate-y-0.5 transition-all">Enquire About Admission</a>
+        <a href="#founder" class="inline-flex items-center gap-2 border border-ruledark font-mono text-[13px] uppercase tracking-wide px-7 py-4 rounded hover:border-lime hover:text-lime hover:-translate-y-0.5 transition-all">Meet the Founder</a>
       </div>
     </div>
-    <div class="hero-ring-holder">
-      <svg id="ringSVG" viewBox="0 0 420 420" width="100%" style="max-width:420px;">
+
+    <div class="relative flex items-center justify-center">
+      <svg id="ringSVG" viewBox="0 0 420 420" class="w-full max-w-[420px]">
         <circle class="ring r1" cx="210" cy="210" r="190"/>
         <circle class="ring r2" cx="210" cy="210" r="145"/>
         <circle class="ring r3" cx="210" cy="210" r="100"/>
         <circle class="ring r4" cx="210" cy="210" r="55"/>
       </svg>
-      <span class="ring-caption" style="top:6%;">upper school</span>
-      <span class="ring-caption" style="bottom:8%; right:6%;">early years</span>
+      <span class="absolute top-[6%] font-mono text-[11px] uppercase tracking-widest text-inktextdim">higher secondary</span>
+      <span class="absolute bottom-[8%] right-[6%] font-mono text-[11px] uppercase tracking-widest text-inktextdim">nursery</span>
     </div>
   </div>
 </section>
 
-<section class="philosophy" id="philosophy">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <h2>A philosophy built<br>on plain sight.</h2>
-      <p>We don't measure growth by test season. We measure it the way you'd read a cross-section of a trunk — season by season, out loud, in front of the whole community.</p>
+<!-- ============ ABOUT ============ -->
+<section id="about" class="py-24 md:py-32 bg-paper">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="reveal flex justify-between items-end gap-10 flex-wrap mb-14">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-semibold">About the<br>institution.</h2>
+      <p class="max-w-[42ch] text-papertextdim text-[15.5px]">Run by Alfa Social & Educational Foundation, Ahmednagar (Reg. No. F 8812), a Minority Status institution working in health, education, and social welfare across Bhalwani for over 24 years.</p>
     </div>
-    <div class="pillars reveal">
-      <div class="pillar">
-        <span class="num">01</span>
-        <h3>Taught, not tracked</h3>
-        <p>Small advisory groups follow a student across subjects, so no single teacher is guessing at the whole picture.</p>
-      </div>
-      <div class="pillar">
-        <span class="num">02</span>
-        <h3>Made, not memorized</h3>
-        <p>Every discipline ends in a made thing — a built bridge, a staged scene, a published paper — not just a score.</p>
-      </div>
-      <div class="pillar">
-        <span class="num">03</span>
-        <h3>Slow, on purpose</h3>
-        <p>We resist the rush to "cover material." Depth in fewer places outlasts breadth in many.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
-<section class="academics" id="academics">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <h2>Four rings,<br>one trunk.</h2>
-      <p>Our curriculum is organized like growth itself — each band builds outward from the one inside it, never replacing what came before.</p>
-    </div>
-    <div class="ring-rows reveal">
-      <div class="ring-row">
-        <div class="ring-swatch"></div>
-        <div class="ring-band">Early Years</div>
-        <div class="ring-desc">Play-based literacy, number sense, and the outdoor classroom. Ages 4–6.</div>
-        <div class="ring-count">3 classrooms</div>
+    <div class="reveal grid grid-cols-1 md:grid-cols-3 gap-px bg-rulelight border border-rulelight">
+      <div class="bg-paper hover:bg-paperdim transition-colors p-10">
+        <span class="font-mono text-xs text-gold block mb-6">01</span>
+        <h3 class="text-2xl mb-3">A doctor's observation</h3>
+        <p class="text-papertextdim text-[15px]">While practicing medicine in Bhalwani, our founder saw how many children from poor families around him had no access to school — and set out to change that.</p>
       </div>
-      <div class="ring-row">
-        <div class="ring-swatch"></div>
-        <div class="ring-band">Lower School</div>
-        <div class="ring-desc">Core literacy and math alongside science labs, studio art, and a second language. Grades 1–5.</div>
-        <div class="ring-count">8 classrooms</div>
+      <div class="bg-paper hover:bg-paperdim transition-colors p-10">
+        <span class="font-mono text-xs text-gold block mb-6">02</span>
+        <h3 class="text-2xl mb-3">Open to every community</h3>
+        <p class="text-papertextdim text-[15px]">Around 550 students from Scheduled Tribes study here on state government placements, alongside separate hostels for boys and girls from further afield.</p>
       </div>
-      <div class="ring-row">
-        <div class="ring-swatch"></div>
-        <div class="ring-band">Middle School</div>
-        <div class="ring-desc">Subject specialists, first design-build projects, and a full arts rotation. Grades 6–8.</div>
-        <div class="ring-count">6 classrooms</div>
-      </div>
-      <div class="ring-row">
-        <div class="ring-swatch"></div>
-        <div class="ring-band">Upper School</div>
-        <div class="ring-desc">College-level seminars, independent research, and a required senior capstone. Grades 9–12.</div>
-        <div class="ring-count">9 classrooms</div>
+      <div class="bg-paper hover:bg-paperdim transition-colors p-10">
+        <span class="font-mono text-xs text-gold block mb-6">03</span>
+        <h3 class="text-2xl mb-3">Results that hold up</h3>
+        <p class="text-papertextdim text-[15px]">A 100% pass rate in Standards 10 and 12, with graduates going on to become doctors, engineers, lawyers, IT professionals, and government officers.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="campus" id="campus">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <h2>Where the day<br>actually happens.</h2>
-      <p>Sixteen acres along the Saw Mill River — classrooms, workshops, a working greenhouse, and a lot of places to sit and think.</p>
+<!-- ============ FOUNDER ============ -->
+<section id="founder" class="bg-ink text-inktext py-24 md:py-32">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 grid grid-cols-1 md:grid-cols-[0.8fr_1.2fr] gap-14 items-center">
+    <div class="reveal">
+      <img src="images/founder-dr-saeed-kazi.jpg" alt="Late Dr. Saeed Ahmed Kazi, Founder" class="w-full max-w-[320px] mx-auto md:mx-0 rounded border border-ruledark portrait">
     </div>
-    <div class="campus-grid reveal">
-      <div class="campus-tile t1"><span class="tile-label">The Maker Barn — design &amp; build studio</span></div>
-      <div class="campus-tile t2"><span class="tile-label">River Trail — outdoor science classroom</span></div>
-      <div class="campus-tile t3"><span class="tile-label">The Greenhouse — botany &amp; food systems</span></div>
-      <div class="campus-tile t4"><span class="tile-label">Founders Hall — library &amp; assembly</span></div>
-    </div>
-  </div>
-</section>
-
-<section class="stats">
-  <div class="wrap">
-    <div class="stats-row reveal">
-      <div class="stat">
-        <div class="figure">8:1</div>
-        <div class="label">Student to teacher ratio</div>
-      </div>
-      <div class="stat">
-        <div class="figure">36</div>
-        <div class="label">Countries represented</div>
-      </div>
-      <div class="stat">
-        <div class="figure">94%</div>
-        <div class="label">Attend first-choice college</div>
-      </div>
-      <div class="stat">
-        <div class="figure">16</div>
-        <div class="label">Acres along the river</div>
-      </div>
+    <div class="reveal">
+      <div class="eyebrow flex items-center gap-2.5 font-mono text-xs tracking-widest uppercase text-lime mb-6">Founder</div>
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-semibold mb-2">Late Dr. Saeed Ahmed Kazi</h2>
+      <p class="font-mono text-xs text-inktextdim tracking-wide mb-6">17 December 1952 — 24 April 2020 · BHMS, Gune Ayurved College, Ahilyanagar</p>
+      <p class="text-inktextdim text-[15.5px] mb-4 max-w-[56ch]">Dr. Kazi began his medical practice in Bhalwani. Believing that education is like the milk of a tigress — meant for every section of society — he brought quality schooling to this remote, tribal part of Parner Taluka, starting IZAK English Medium School in 2004.</p>
+      <p class="text-inktextdim text-[15.5px] max-w-[56ch]">What began as a small primary Ashram school has, in his words and in the community's, grown into a banyan tree — today supporting campuses at both Bhalawani and Dhawalpuri, and roughly 300 to 350 staff drawn from different communities across the region.</p>
     </div>
   </div>
 </section>
 
-<section class="testimonials" id="testimonials">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <h2>In their words.</h2>
-      <p>Families and students describe Meridian better than we can.</p>
+<!-- ============ ACADEMICS ============ -->
+<section id="academics" class="py-24 md:py-32 bg-paper">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="reveal flex justify-between items-end gap-10 flex-wrap mb-14">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-semibold">Nursery<br>to Standard 12.</h2>
+      <p class="max-w-[38ch] text-papertextdim text-[15.5px]">Three stages, each building on the last — with personalised attention, regular assessment, and a clear line through to board exam results.</p>
     </div>
-    <div class="quote-scroll reveal">
-      <div class="quote-card">
-        <p class="quote-text">"My daughter's advisor has known her since kindergarten. She's not a file — she's a person someone has been paying attention to for a decade."</p>
-        <div class="attribution">— Parent, Class of 2031 family</div>
+
+    <div class="reveal border-t border-rulelight">
+      <div class="grid grid-cols-[44px_1fr] md:grid-cols-[90px_220px_1fr_170px] gap-4 md:gap-6 items-center py-8 border-b border-rulelight hover:bg-ink/[0.03] hover:pl-3 transition-all">
+        <div class="w-11 h-11 rounded-full border-2 border-rulelight"></div>
+        <div class="font-display text-xl md:text-2xl">Primary</div>
+        <div class="col-span-2 md:col-span-1 text-papertextdim text-sm">Standards 1st–5th. Mathematics, English, and Environmental Studies, building basic reading, writing, counting, and problem-solving through activities, practice, and personalised attention.</div>
+        <div class="hidden md:block font-mono text-xs text-papertextdim text-right">1st – 5th</div>
       </div>
-      <div class="quote-card">
-        <p class="quote-text">"I built an actual water filtration system for my capstone. Nobody asked me to bubble in an answer about one."</p>
-        <div class="attribution">— Graduating senior, Upper School</div>
+      <div class="grid grid-cols-[44px_1fr] md:grid-cols-[90px_220px_1fr_170px] gap-4 md:gap-6 items-center py-8 border-b border-rulelight hover:bg-ink/[0.03] hover:pl-3 transition-all">
+        <div class="w-11 h-11 rounded-full border-2 border-gold"></div>
+        <div class="font-display text-xl md:text-2xl">Secondary</div>
+        <div class="col-span-2 md:col-span-1 text-papertextdim text-sm">Standards 6th–8th. Mathematics, Science, and Language Arts alongside extracurriculars, homework support, and test preparation, with a growing focus on critical thinking.</div>
+        <div class="hidden md:block font-mono text-xs text-papertextdim text-right">6th – 8th</div>
       </div>
-      <div class="quote-card">
-        <p class="quote-text">"We toured six schools. Meridian was the only one where the kids were still talking about class at pickup."</p>
-        <div class="attribution">— Parent, Lower School family</div>
-      </div>
-      <div class="quote-card">
-        <p class="quote-text">"The Maker Barn is basically my whole personality now. I go there before school starts most days."</p>
-        <div class="attribution">— Eighth grade student</div>
+      <div class="grid grid-cols-[44px_1fr] md:grid-cols-[90px_220px_1fr_170px] gap-4 md:gap-6 items-center py-8 border-b border-rulelight hover:bg-ink/[0.03] hover:pl-3 transition-all">
+        <div class="w-11 h-11 rounded-full border-2 border-ink"></div>
+        <div class="font-display text-xl md:text-2xl">Higher Secondary</div>
+        <div class="col-span-2 md:col-span-1 text-papertextdim text-sm">Standards 9th–12th. Mathematics, Physics, Chemistry, Biology, and English, with mock exams and revision built around board exams and competitive entrance tests.</div>
+        <div class="hidden md:block font-mono text-xs text-papertextdim text-right">9th – 12th</div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="admissions" id="admissions">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <h2>How to join<br>the trunk.</h2>
-      <p>Admissions runs on a rolling basis for mid-year openings, with a primary round each fall for the following school year.</p>
-    </div>
-    <div class="steps reveal">
-      <div class="step">
-        <div class="step-index">Step 1</div>
-        <h4>Visit</h4>
-        <p>Tour the campus on a regular school day — no staged assemblies.</p>
-      </div>
-      <div class="step">
-        <div class="step-index">Step 2</div>
-        <h4>Apply</h4>
-        <p>Submit records and a short written reflection — from the student, not a parent.</p>
-      </div>
-      <div class="step">
-        <div class="step-index">Step 3</div>
-        <h4>Spend a Day</h4>
-        <p>Applicants shadow a class in their grade band for a full day.</p>
-      </div>
-      <div class="step">
-        <div class="step-index">Step 4</div>
-        <h4>Decide</h4>
-        <p>Offers go out on a rolling basis, typically within three weeks.</p>
-      </div>
+<!-- ============ CAMPUS LIFE ============ -->
+<section id="campus" class="bg-ink text-inktext py-24 md:py-32">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="reveal flex justify-between items-end gap-10 flex-wrap mb-14">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-semibold">Beyond<br>the classroom.</h2>
+      <p class="max-w-[38ch] text-inktextdim text-[15.5px]">Sports, arts, cultural activities, and competitive-exam coaching, with hostel life for students who travel in from further afield.</p>
     </div>
 
-    <div class="inquiry-panel reveal">
+    <div class="reveal grid grid-cols-1 md:grid-cols-6 gap-3.5 auto-rows-[180px] md:auto-rows-[120px]">
+      <div class="campus-tile relative overflow-hidden rounded flex items-end p-5 text-inktext md:col-span-3 md:row-span-3" style="background:linear-gradient(135deg,#2E4038,#14231F)">
+        <span class="relative z-10 font-mono text-[11px] uppercase tracking-wide">Boys' & girls' hostels — for students from further afield</span>
+      </div>
+      <div class="campus-tile relative overflow-hidden rounded flex items-end p-5 text-inktext md:col-span-3 md:row-span-2" style="background:linear-gradient(135deg,#3F5548,#1D2E28)">
+        <span class="relative z-10 font-mono text-[11px] uppercase tracking-wide">State-level sports achievers, most years</span>
+      </div>
+      <div class="campus-tile relative overflow-hidden rounded flex items-end p-5 text-inktext md:col-span-3 md:row-span-2" style="background:linear-gradient(135deg,#B98A34,#7A5A22)">
+        <span class="relative z-10 font-mono text-[11px] uppercase tracking-wide">Arts & cultural activities</span>
+      </div>
+      <div class="campus-tile relative overflow-hidden rounded flex items-end p-5 text-inktext md:col-span-3 md:row-span-3" style="background:linear-gradient(135deg,#5C7A63,#233830)">
+        <span class="relative z-10 font-mono text-[11px] uppercase tracking-wide">Competitive exam & technical education coaching</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<section class="bg-ink py-16 border-y border-ruledark">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="reveal grid grid-cols-2 md:grid-cols-4 gap-8 text-inktext">
       <div>
-        <h3>Start an inquiry</h3>
-        <p>Tell us a little about your student and we'll follow up to schedule a visit within two business days.</p>
+        <div class="font-display text-4xl md:text-5xl text-lime">2,500+</div>
+        <div class="font-mono text-[11.5px] uppercase tracking-wide text-inktextdim mt-2">Students, Nursery to Std 12</div>
       </div>
-      <form class="form-grid" onsubmit="event.preventDefault(); this.querySelector('.btn').textContent='Sent — we\'ll be in touch';">
-        <div class="field">
-          <label for="pname">Parent / guardian name</label>
-          <input id="pname" type="text" required>
+      <div>
+        <div class="font-display text-4xl md:text-5xl text-lime">100%</div>
+        <div class="font-mono text-[11.5px] uppercase tracking-wide text-inktextdim mt-2">Pass rate, Std 10 & 12</div>
+      </div>
+      <div>
+        <div class="font-display text-4xl md:text-5xl text-lime">550</div>
+        <div class="font-mono text-[11.5px] uppercase tracking-wide text-inktextdim mt-2">Scheduled Tribe students placed</div>
+      </div>
+      <div>
+        <div class="font-display text-4xl md:text-5xl text-lime">24</div>
+        <div class="font-mono text-[11.5px] uppercase tracking-wide text-inktextdim mt-2">Years serving Bhalwani</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MANAGEMENT ============ -->
+<section id="management" class="py-24 md:py-32 bg-paper">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="reveal flex justify-between items-end gap-10 flex-wrap mb-14">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-semibold">Members of<br>management.</h2>
+      <p class="max-w-[38ch] text-papertextdim text-[15.5px]">Alfa Social & Educational Foundation, carrying the founder's work forward.</p>
+    </div>
+
+    <div class="reveal grid grid-cols-1 sm:grid-cols-3 gap-px bg-rulelight border border-rulelight">
+      <div class="bg-paper p-8 text-center">
+        <img src="images/president-shahid-kazi.jpg" alt="Mr. Shahid Saeed Kazi, President" class="w-28 h-28 rounded-full mx-auto object-cover mb-5 portrait">
+        <div class="font-mono text-[11px] uppercase tracking-wide text-gold mb-2">President</div>
+        <h3 class="text-xl mb-1">Mr. Shahid Saeed Kazi</h3>
+        <p class="text-papertextdim text-sm">MCA — Master of Computer Application</p>
+      </div>
+      <div class="bg-paper p-8 text-center">
+        <img src="images/secretary-rehan-kazi.jpg" alt="Mr. Rehan Shafi Kazi, Secretary" class="w-28 h-28 rounded-full mx-auto object-cover mb-5 portrait">
+        <div class="font-mono text-[11px] uppercase tracking-wide text-gold mb-2">Secretary</div>
+        <h3 class="text-xl mb-1">Mr. Rehan Shafi Kazi</h3>
+        <p class="text-papertextdim text-sm">Bachelor of Arts</p>
+      </div>
+      <div class="bg-paper p-8 text-center">
+        <img src="images/director-asma-kazi.jpg" alt="Dr. Asma Shahid Kazi, Director" class="w-28 h-28 rounded-full mx-auto object-cover mb-5 portrait">
+        <div class="font-mono text-[11px] uppercase tracking-wide text-gold mb-2">Director</div>
+        <h3 class="text-xl mb-1">Dr. Asma Shahid Kazi</h3>
+        <p class="text-papertextdim text-sm">BPTh · Diploma in Nutrition Education</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ADMISSIONS ============ -->
+<section id="admissions" class="bg-ink text-inktext py-24 md:py-32">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="reveal flex justify-between items-end gap-10 flex-wrap mb-14">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-semibold">Admissions.</h2>
+      <p class="max-w-[38ch] text-inktextdim text-[15.5px]">Open across Nursery through Standard 12, with hostel places available for boys and girls from outside Bhalwani.</p>
+    </div>
+
+    <div class="reveal grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+      <div class="border-t border-ruledark pt-5">
+        <div class="font-mono text-xs text-gold">Step 1</div>
+        <h4 class="text-lg my-3">Visit</h4>
+        <p class="text-sm text-inktextdim">Tour the Bhalwani campus and meet the teaching staff.</p>
+      </div>
+      <div class="border-t border-ruledark pt-5">
+        <div class="font-mono text-xs text-gold">Step 2</div>
+        <h4 class="text-lg my-3">Enquire</h4>
+        <p class="text-sm text-inktextdim">Share your child's details below and we'll follow up directly.</p>
+      </div>
+      <div class="border-t border-ruledark pt-5">
+        <div class="font-mono text-xs text-gold">Step 3</div>
+        <h4 class="text-lg my-3">Submit Records</h4>
+        <p class="text-sm text-inktextdim">Bring prior school records, if any, along with basic documents.</p>
+      </div>
+      <div class="border-t border-ruledark pt-5">
+        <div class="font-mono text-xs text-gold">Step 4</div>
+        <h4 class="text-lg my-3">Confirm</h4>
+        <p class="text-sm text-inktextdim">The school office confirms placement and, where needed, hostel accommodation.</p>
+      </div>
+    </div>
+
+    <div class="reveal bg-inksoft border border-ruledark rounded p-7 md:p-12 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12">
+      <div>
+        <h3 class="text-2xl md:text-3xl mb-3">Start an enquiry</h3>
+        <p class="text-inktextdim text-sm max-w-[36ch]">Tell us a little about your child and the school office will follow up about a visit and admission.</p>
+      </div>
+      <form class="flex flex-col gap-4" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Sent — the school office will be in touch';">
+        <div>
+          <label for="pname" class="block font-mono text-[11px] uppercase tracking-wide text-inktextdim mb-2">Parent / guardian name</label>
+          <input id="pname" type="text" required class="w-full bg-transparent border-0 border-b border-ruledark text-inktext text-[15px] py-2.5 focus:outline-none focus:border-lime transition-colors">
         </div>
-        <div class="field">
-          <label for="email">Email</label>
-          <input id="email" type="email" required>
+        <div>
+          <label for="phone" class="block font-mono text-[11px] uppercase tracking-wide text-inktextdim mb-2">Phone number</label>
+          <input id="phone" type="tel" required class="w-full bg-transparent border-0 border-b border-ruledark text-inktext text-[15px] py-2.5 focus:outline-none focus:border-lime transition-colors">
         </div>
-        <div class="field">
-          <label for="grade">Grade of interest</label>
-          <select id="grade">
-            <option>Early Years</option>
-            <option>Lower School</option>
-            <option>Middle School</option>
-            <option>Upper School</option>
+        <div>
+          <label for="grade" class="block font-mono text-[11px] uppercase tracking-wide text-inktextdim mb-2">Class of interest</label>
+          <select id="grade" class="w-full bg-transparent border-0 border-b border-ruledark text-inktext text-[15px] py-2.5 focus:outline-none focus:border-lime transition-colors">
+            <option class="bg-ink">Primary (1st – 5th)</option>
+            <option class="bg-ink">Secondary (6th – 8th)</option>
+            <option class="bg-ink">Higher Secondary (9th – 12th)</option>
           </select>
         </div>
-        <button class="btn btn-primary" type="submit">Request a Visit</button>
+        <button type="submit" class="self-start mt-2 inline-flex items-center gap-2 bg-lime text-ink font-mono text-[13px] uppercase tracking-wide px-7 py-4 rounded hover:bg-[#d8ff92] hover:-translate-y-0.5 transition-all">Send Enquiry</button>
       </form>
     </div>
   </div>
 </section>
 
-<footer>
-  <div class="wrap">
-    <div class="foot-top">
-      <div class="foot-logo">
-        <svg class="ring-mark" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" width="26" height="26">
-          <circle cx="15" cy="15" r="13.5" stroke="#B9B39F" stroke-width="1"/>
-          <circle cx="15" cy="15" r="9.5" stroke="#E8A33D" stroke-width="1"/>
-          <circle cx="15" cy="15" r="5" stroke="#14231F" stroke-width="1.4"/>
-        </svg>
-        Meridian Academy
+<!-- ============ FOOTER ============ -->
+<footer class="bg-paper pt-16 pb-9 border-t border-rulelight">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="flex justify-between items-start gap-10 flex-wrap pb-11 border-b border-rulelight">
+      <div class="flex items-center gap-3 font-display text-lg max-w-[280px]">
+        <img src="images/school-crest.jpg" alt="IZAK English Medium School crest" class="w-8 h-8 rounded-full object-cover shrink-0">
+        IZAK English Medium School
       </div>
-      <div class="foot-links">
-        <div class="foot-col">
-          <h5>School</h5>
-          <a href="#philosophy">Philosophy</a>
-          <a href="#academics">Academics</a>
-          <a href="#campus">Campus Life</a>
+      <div class="flex gap-14 flex-wrap">
+        <div>
+          <h5 class="font-mono text-[11px] uppercase tracking-wide text-papertextdim mb-3.5">School</h5>
+          <a href="#about" class="block text-sm mb-2.5 hover:text-gold transition-colors">About</a>
+          <a href="#founder" class="block text-sm mb-2.5 hover:text-gold transition-colors">Founder</a>
+          <a href="#academics" class="block text-sm mb-2.5 hover:text-gold transition-colors">Classes</a>
         </div>
-        <div class="foot-col">
-          <h5>Community</h5>
-          <a href="#testimonials">Family Voices</a>
-          <a href="#admissions">Admissions</a>
-          <a href="#">Alumni</a>
+        <div>
+          <h5 class="font-mono text-[11px] uppercase tracking-wide text-papertextdim mb-3.5">Community</h5>
+          <a href="#campus" class="block text-sm mb-2.5 hover:text-gold transition-colors">Campus Life</a>
+          <a href="#management" class="block text-sm mb-2.5 hover:text-gold transition-colors">Management</a>
+          <a href="#admissions" class="block text-sm mb-2.5 hover:text-gold transition-colors">Admissions</a>
         </div>
-        <div class="foot-col">
-          <h5>Visit</h5>
-          <a href="#">220 River Road, Riverdale, NY</a>
-          <a href="#">admissions@meridianacademy.edu</a>
-          <a href="#">(914) 555-0132</a>
+        <div>
+          <h5 class="font-mono text-[11px] uppercase tracking-wide text-papertextdim mb-3.5">Visit</h5>
+          <span class="block text-sm mb-2.5 text-papertext">Bhalwani, Tal-Parner</span>
+          <span class="block text-sm mb-2.5 text-papertext">Dist-Ahilyanagar, Maharashtra</span>
+          <span class="block text-sm mb-2.5 text-papertextdim">— add phone / email here —</span>
         </div>
       </div>
     </div>
-    <div class="foot-bottom">
-      <span>© 2026 Meridian Academy. All rights reserved.</span>
-      <span>PK–12 · Non-denominational · Est. 1987</span>
+    <div class="flex justify-between flex-wrap gap-2.5 pt-6 font-mono text-[11.5px] text-papertextdim">
+      <span>© 2026 IZAK English Medium School & Junior College. Run by Alfa Social & Educational Foundation.</span>
+      <span>Nursery – Std 12 · Minority Status · Est. 2004</span>
     </div>
   </div>
 </footer>
 
 <script>
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', isOpen);
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    menuBtn.setAttribute('aria-expanded', 'false');
+  }));
+
   const revealEls = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
     });
-  }, {threshold:0.12});
-  revealEls.forEach(el=>io.observe(el));
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => io.observe(el));
 </script>
 
 </body>
