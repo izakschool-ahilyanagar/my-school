@@ -1,378 +1,680 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Izak English Medium School & Junior College</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meridian Academy — A School That Grows With You</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,450;0,9..144,600;0,9..144,700;1,9..144,450&family=Sora:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14231F;
+    --ink-soft:#1D2E28;
+    --paper:#F1EEE3;
+    --paper-dim:#E7E2D2;
+    --lime:#C6FF6B;
+    --gold:#E8A33D;
+    --rule-dark:#33473E;
+    --rule-light:#B9B39F;
+    --text-on-ink:#EDE9DA;
+    --text-on-ink-dim:#9AA89E;
+    --text-on-paper:#1B2622;
+    --text-on-paper-dim:#5B6259;
+    --radius:2px;
+  }
 
-  <!-- Tailwind CDN + Inter font -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root{--brand: #0ea5a4; --brand-dark:#036b6a}
-    body{font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial}
-    .top-shadow{box-shadow:0 8px 30px rgba(2,6,23,0.08)}
-    .gradient-hero{background:linear-gradient(180deg, rgba(14,165,164,0.06), rgba(14,165,164,0.02))}
-    .container{max-width:1100px}
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--text-on-paper);
+    font-family:'Sora',sans-serif;
+    font-weight:400;
+    line-height:1.5;
+    overflow-x:hidden;
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  }
 
-    /* Horizontal scroll panel */
-    .scroll-track{display:flex; gap:1rem; overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; padding:1rem 0}
-    .scroll-track::-webkit-scrollbar{height:8px}
-    .scroll-track::-webkit-scrollbar-thumb{background:rgba(15,23,42,0.12); border-radius:999px}
-    .card-snap{flex:0 0 260px; scroll-snap-align:start; background:white; border-radius:0.5rem; overflow:hidden; box-shadow:0 6px 20px rgba(2,6,23,0.06)}
-    .card-snap img{width:100%; height:160px; object-fit:cover}
-    .scroll-panel{position:relative}
-    .scroll-controls{position:absolute; right:8px; top:8px; display:flex; gap:6px}
-    .scroll-btn{background:rgba(255,255,255,0.85); border-radius:999px; padding:6px; box-shadow:0 4px 12px rgba(2,6,23,0.08)}
-  </style>
+  h1,h2,h3,h4{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    line-height:1.05;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:'';
+    width:18px; height:1px;
+    background:currentColor;
+    opacity:0.6;
+  }
+  a{color:inherit; text-decoration:none;}
+  img,svg{display:block; max-width:100%;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
+  @media (max-width:640px){ .wrap{padding:0 20px;} }
+
+  section{position:relative;}
+
+  /* ---------- BUTTONS ---------- */
+  .btn{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    padding:14px 26px;
+    border-radius:var(--radius);
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    cursor:pointer;
+    border:1px solid transparent;
+    transition:transform .25s ease, background .25s ease, color .25s ease, border-color .25s ease;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn:focus-visible{outline:2px solid var(--gold); outline-offset:3px;}
+  .btn-primary{background:var(--lime); color:var(--ink);}
+  .btn-primary:hover{background:#d8ff92;}
+  .btn-ghost-dark{border-color:var(--rule-dark); color:var(--text-on-ink);}
+  .btn-ghost-dark:hover{border-color:var(--lime); color:var(--lime);}
+  .btn-ghost-light{border-color:var(--rule-light); color:var(--text-on-paper);}
+  .btn-ghost-light:hover{border-color:var(--ink); }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    background:rgba(20,35,31,0.88);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--rule-dark);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:76px;
+    color:var(--text-on-ink);
+  }
+  .logo{
+    display:flex; align-items:center; gap:12px;
+    font-family:'Fraunces',serif; font-weight:600; font-size:19px;
+    color:var(--text-on-ink);
+  }
+  .logo .ring-mark{width:30px; height:30px; flex-shrink:0;}
+  .navlinks{display:flex; gap:36px; font-family:'IBM Plex Mono',monospace; font-size:12.5px; letter-spacing:0.06em; text-transform:uppercase;}
+  .navlinks a{color:var(--text-on-ink-dim); transition:color .2s ease; position:relative; padding:4px 0;}
+  .navlinks a:hover{color:var(--lime);}
+  .navlinks a::after{content:''; position:absolute; bottom:0; left:0; width:0; height:1px; background:var(--lime); transition:width .25s ease;}
+  .navlinks a:hover::after{width:100%;}
+  .nav-cta{display:flex; align-items:center; gap:22px;}
+  .navlinks-mobile-toggle{display:none;}
+  @media (max-width:860px){
+    .navlinks{display:none;}
+    nav.wrap{height:66px;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:var(--ink);
+    color:var(--text-on-ink);
+    padding:170px 0 90px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero .wrap{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:40px;
+    align-items:center;
+  }
+  @media (max-width:900px){
+    .hero .wrap{grid-template-columns:1fr; gap:60px;}
+    .hero{padding:140px 0 70px;}
+  }
+  .hero .eyebrow{color:var(--lime); margin-bottom:26px;}
+  .hero h1{
+    font-size:clamp(40px, 6vw, 68px);
+    color:var(--text-on-ink);
+  }
+  .hero h1 em{font-style:italic; color:var(--lime); font-weight:450;}
+  .hero p.lede{
+    margin-top:26px;
+    max-width:46ch;
+    font-size:18px;
+    color:var(--text-on-ink-dim);
+  }
+  .hero .cta-row{display:flex; gap:16px; margin-top:40px; flex-wrap:wrap;}
+  .hero-ring-holder{position:relative; display:flex; align-items:center; justify-content:center;}
+  .ring-caption{
+    position:absolute;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--text-on-ink-dim);
+  }
+
+  #ringSVG circle.ring{
+    fill:none;
+    stroke-width:1.4;
+    stroke-dasharray:1400;
+    stroke-dashoffset:1400;
+    animation:draw 2.4s ease forwards;
+  }
+  @keyframes draw{ to{ stroke-dashoffset:0; } }
+  #ringSVG circle.r1{stroke:var(--rule-dark); animation-delay:.1s;}
+  #ringSVG circle.r2{stroke:var(--rule-dark); animation-delay:.35s;}
+  #ringSVG circle.r3{stroke:var(--gold); animation-delay:.6s;}
+  #ringSVG circle.r4{stroke:var(--lime); animation-delay:.9s;}
+
+  /* ---------- SECTION LABEL / INTRO ---------- */
+  .section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:40px;
+    margin-bottom:56px;
+    flex-wrap:wrap;
+  }
+  .section-head h2{font-size:clamp(30px,4vw,44px);}
+  .section-head p{max-width:38ch; color:var(--text-on-paper-dim); font-size:15.5px;}
+
+  /* ---------- PHILOSOPHY ---------- */
+  .philosophy{padding:120px 0; background:var(--paper);}
+  .pillars{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1px;
+    background:var(--rule-light);
+    border:1px solid var(--rule-light);
+  }
+  @media (max-width:760px){ .pillars{grid-template-columns:1fr;} }
+  .pillar{
+    background:var(--paper);
+    padding:44px 34px;
+    transition:background .3s ease;
+  }
+  .pillar:hover{background:var(--paper-dim);}
+  .pillar .num{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--gold); margin-bottom:22px; display:block;}
+  .pillar h3{font-size:24px; margin-bottom:14px;}
+  .pillar p{color:var(--text-on-paper-dim); font-size:15px;}
+
+  /* ---------- ACADEMICS / RINGS ---------- */
+  .academics{background:var(--ink); color:var(--text-on-ink); padding:130px 0;}
+  .academics .section-head h2, .academics .section-head p{color:var(--text-on-ink);}
+  .academics .section-head p{color:var(--text-on-ink-dim);}
+  .ring-rows{border-top:1px solid var(--rule-dark);}
+  .ring-row{
+    display:grid;
+    grid-template-columns:90px 200px 1fr 140px;
+    gap:24px;
+    align-items:center;
+    padding:30px 0;
+    border-bottom:1px solid var(--rule-dark);
+    transition:padding-left .3s ease, background .3s ease;
+  }
+  .ring-row:hover{padding-left:14px; background:rgba(198,255,107,0.04);}
+  @media (max-width:760px){
+    .ring-row{grid-template-columns:50px 1fr; row-gap:8px;}
+    .ring-row .ring-age, .ring-row .ring-desc{grid-column:2;}
+  }
+  .ring-swatch{width:44px; height:44px; border-radius:50%; border:2px solid; flex-shrink:0;}
+  .ring-row:nth-child(1) .ring-swatch{border-color:var(--rule-light); }
+  .ring-row:nth-child(2) .ring-swatch{border-color:var(--gold);}
+  .ring-row:nth-child(3) .ring-swatch{border-color:var(--lime); box-shadow:inset 0 0 0 6px transparent;}
+  .ring-row:nth-child(4) .ring-swatch{border-color:#EDE9DA;}
+  .ring-band{font-family:'Fraunces',serif; font-size:22px;}
+  .ring-age{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--text-on-ink-dim);}
+  .ring-desc{color:var(--text-on-ink-dim); font-size:14.5px;}
+  .ring-count{font-family:'IBM Plex Mono',monospace; font-size:12px; text-align:right; color:var(--text-on-ink-dim);}
+
+  /* ---------- CAMPUS LIFE GALLERY ---------- */
+  .campus{padding:130px 0; background:var(--paper);}
+  .campus-grid{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    grid-auto-rows:120px;
+    gap:14px;
+  }
+  .campus-tile{
+    border-radius:var(--radius);
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    align-items:flex-end;
+    padding:18px;
+    color:var(--text-on-ink);
+  }
+  .campus-tile .tile-label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    position:relative; z-index:2;
+  }
+  .campus-tile::after{
+    content:'';
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.55));
+    z-index:1;
+  }
+  .t1{grid-column:span 3; grid-row:span 3; background:linear-gradient(135deg,#2E4038,#14231F);}
+  .t2{grid-column:span 3; grid-row:span 2; background:linear-gradient(135deg,#3F5548,#1D2E28);}
+  .t3{grid-column:span 3; grid-row:span 2; background:linear-gradient(135deg,#B98A34,#7A5A22);}
+  .t4{grid-column:span 3; grid-row:span 3; background:linear-gradient(135deg,#5C7A63,#233830);}
+  @media (max-width:760px){
+    .campus-grid{grid-template-columns:1fr; grid-auto-rows:180px;}
+    .t1,.t2,.t3,.t4{grid-column:span 1; grid-row:span 1;}
+  }
+
+  /* ---------- STATS ---------- */
+  .stats{background:var(--ink); padding:80px 0; border-top:1px solid var(--rule-dark); border-bottom:1px solid var(--rule-dark);}
+  .stats-row{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:30px;
+    color:var(--text-on-ink);
+  }
+  @media (max-width:760px){ .stats-row{grid-template-columns:1fr 1fr;} }
+  .stat .figure{font-family:'Fraunces',serif; font-size:clamp(34px,4vw,52px); color:var(--lime);}
+  .stat .label{font-family:'IBM Plex Mono',monospace; font-size:11.5px; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-on-ink-dim); margin-top:8px;}
+
+  /* ---------- TESTIMONIALS ---------- */
+  .testimonials{padding:130px 0; background:var(--paper);}
+  .quote-scroll{
+    display:flex;
+    gap:1px;
+    background:var(--rule-light);
+    border:1px solid var(--rule-light);
+    overflow-x:auto;
+    scrollbar-width:none;
+  }
+  .quote-scroll::-webkit-scrollbar{display:none;}
+  .quote-card{
+    background:var(--paper);
+    min-width:340px;
+    flex:1 0 340px;
+    padding:40px 36px;
+  }
+  .quote-card p.quote-text{
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-size:19px;
+    line-height:1.4;
+    color:var(--text-on-paper);
+  }
+  .quote-card .attribution{
+    margin-top:26px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:var(--text-on-paper-dim);
+  }
+
+  /* ---------- ADMISSIONS ---------- */
+  .admissions{background:var(--ink); color:var(--text-on-ink); padding:130px 0;}
+  .admissions .section-head h2, .admissions .section-head p{color:var(--text-on-ink);}
+  .admissions .section-head p{color:var(--text-on-ink-dim);}
+  .steps{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:24px;
+    margin-bottom:70px;
+  }
+  @media (max-width:900px){ .steps{grid-template-columns:1fr 1fr;} }
+  .step{border-top:1px solid var(--rule-dark); padding-top:20px;}
+  .step .step-index{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--gold);}
+  .step h4{font-size:18px; margin:12px 0 8px;}
+  .step p{font-size:14px; color:var(--text-on-ink-dim);}
+
+  .inquiry-panel{
+    background:var(--ink-soft);
+    border:1px solid var(--rule-dark);
+    border-radius:var(--radius);
+    padding:48px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:48px;
+  }
+  @media (max-width:800px){ .inquiry-panel{grid-template-columns:1fr; padding:32px 26px;} }
+  .inquiry-panel h3{font-size:28px; margin-bottom:14px;}
+  .inquiry-panel p{color:var(--text-on-ink-dim); font-size:14.5px; max-width:36ch;}
+  .form-grid{display:flex; flex-direction:column; gap:16px;}
+  .field label{
+    display:block;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px; text-transform:uppercase; letter-spacing:0.06em;
+    color:var(--text-on-ink-dim);
+    margin-bottom:8px;
+  }
+  .field input, .field select{
+    width:100%;
+    background:transparent;
+    border:none;
+    border-bottom:1px solid var(--rule-dark);
+    color:var(--text-on-ink);
+    font-family:'Sora',sans-serif;
+    font-size:15px;
+    padding:10px 2px;
+    transition:border-color .2s ease;
+  }
+  .field input:focus, .field select:focus{outline:none; border-bottom-color:var(--lime);}
+  .field select option{background:var(--ink);}
+  .form-grid .btn{margin-top:8px; align-self:flex-start;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--paper); padding:60px 0 34px; border-top:1px solid var(--rule-light);}
+  .foot-top{
+    display:flex; justify-content:space-between; align-items:flex-start;
+    gap:40px; flex-wrap:wrap;
+    padding-bottom:44px;
+    border-bottom:1px solid var(--rule-light);
+  }
+  .foot-logo{display:flex; align-items:center; gap:12px; font-family:'Fraunces',serif; font-size:18px;}
+  .foot-links{display:flex; gap:60px; flex-wrap:wrap;}
+  .foot-col h5{font-family:'IBM Plex Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-on-paper-dim); margin-bottom:14px;}
+  .foot-col a{display:block; font-size:14px; margin-bottom:9px; color:var(--text-on-paper); transition:color .2s ease;}
+  .foot-col a:hover{color:var(--gold);}
+  .foot-bottom{
+    display:flex; justify-content:space-between; padding-top:26px;
+    font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--text-on-paper-dim);
+    flex-wrap:wrap; gap:10px;
+  }
+
+  /* ---------- SCROLL REVEAL ---------- */
+  .reveal{opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+</style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body>
 
-  <!-- NAV -->
-  <header class="bg-white sticky top-0 z-40 top-shadow">
-    <div class="container mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="#home" class="flex items-center gap-3">
-        <img src="logo.jpg" alt="logo" class="h-12 w-12 rounded-full object-cover" />
-        <div>
-          <div class="text-lg font-semibold">Izak English Medium School</div>
-          <div class="text-xs text-gray-500">Alfa Social & Educational Foundation</div>
-        </div>
-      </a>
-      <nav class="hidden md:flex items-center gap-6 text-sm">
-        <a href="#about" class="hover:text-brand-dark">About</a>
-        <a href="#programs" class="hover:text-brand-dark">Programs</a>
-        <a href="#admissions" class="hover:text-brand-dark">Admissions</a>
-        <a href="#facilities" class="hover:text-brand-dark">Facilities</a>
-        <a href="#staff" class="hover:text-brand-dark">Staff</a>
-        <a href="#gallery" class="hover:text-brand-dark">Gallery</a>
-        <a href="#contact" class="hover:text-brand-dark">Contact</a>
-      </nav>
-      <div class="md:hidden">
-        <button id="navToggle" class="p-2 rounded bg-gray-100">Menu</button>
+<header>
+  <nav class="wrap">
+    <a href="#top" class="logo">
+      <svg class="ring-mark" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="15" cy="15" r="13.5" stroke="#33473E" stroke-width="1"/>
+        <circle cx="15" cy="15" r="9.5" stroke="#E8A33D" stroke-width="1"/>
+        <circle cx="15" cy="15" r="5" stroke="#C6FF6B" stroke-width="1.4"/>
+      </svg>
+      Meridian Academy
+    </a>
+    <div class="navlinks">
+      <a href="#philosophy">Philosophy</a>
+      <a href="#academics">Academics</a>
+      <a href="#campus">Campus Life</a>
+      <a href="#testimonials">Voices</a>
+      <a href="#admissions">Admissions</a>
+    </div>
+    <div class="nav-cta">
+      <a href="#admissions" class="btn btn-ghost-dark">Visit Campus</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Est. 1987 · Grades PK–12 · Riverdale, NY</div>
+      <h1>Every year<br>leaves <em>a ring.</em></h1>
+      <p class="lede">Meridian is a PK–12 school built on a simple idea: growth is visible when you know how to look for it. Every student's years here compound into something you can actually trace.</p>
+      <div class="cta-row">
+        <a href="#admissions" class="btn btn-primary">Begin an Application</a>
+        <a href="#academics" class="btn btn-ghost-dark">See the Curriculum</a>
       </div>
     </div>
-    <div id="mobileNav" class="hidden md:hidden bg-white border-t">
-      <div class="px-6 py-4 flex flex-col gap-3">
-        <a href="#about">About</a>
-        <a href="#programs">Programs</a>
-        <a href="#admissions">Admissions</a>
-        <a href="#facilities">Facilities</a>
-        <a href="#staff">Staff</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#contact">Contact</a>
+    <div class="hero-ring-holder">
+      <svg id="ringSVG" viewBox="0 0 420 420" width="100%" style="max-width:420px;">
+        <circle class="ring r1" cx="210" cy="210" r="190"/>
+        <circle class="ring r2" cx="210" cy="210" r="145"/>
+        <circle class="ring r3" cx="210" cy="210" r="100"/>
+        <circle class="ring r4" cx="210" cy="210" r="55"/>
+      </svg>
+      <span class="ring-caption" style="top:6%;">upper school</span>
+      <span class="ring-caption" style="bottom:8%; right:6%;">early years</span>
+    </div>
+  </div>
+</section>
+
+<section class="philosophy" id="philosophy">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2>A philosophy built<br>on plain sight.</h2>
+      <p>We don't measure growth by test season. We measure it the way you'd read a cross-section of a trunk — season by season, out loud, in front of the whole community.</p>
+    </div>
+    <div class="pillars reveal">
+      <div class="pillar">
+        <span class="num">01</span>
+        <h3>Taught, not tracked</h3>
+        <p>Small advisory groups follow a student across subjects, so no single teacher is guessing at the whole picture.</p>
+      </div>
+      <div class="pillar">
+        <span class="num">02</span>
+        <h3>Made, not memorized</h3>
+        <p>Every discipline ends in a made thing — a built bridge, a staged scene, a published paper — not just a score.</p>
+      </div>
+      <div class="pillar">
+        <span class="num">03</span>
+        <h3>Slow, on purpose</h3>
+        <p>We resist the rush to "cover material." Depth in fewer places outlasts breadth in many.</p>
       </div>
     </div>
-  </header>
+  </div>
+</section>
 
-  <!-- HERO -->
-  <main id="home">
-    <section class="gradient-hero py-20">
-      <div class="container mx-auto px-6 grid gap-8 md:grid-cols-2 items-center">
-        <div>
-          <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">Learn. Grow. Lead.</h1>
-          <p class="mt-4 text-gray-600 max-w-xl">Izak English Medium School and Junior College provides a caring environment, strong academics and modern facilities to prepare students for future success.</p>
-          <div class="mt-6 flex gap-3">
-            <a href="#admissions" class="inline-block bg-brand text-white px-5 py-3 rounded shadow hover:bg-brand-dark">Admissions</a>
-            <a href="#contact" class="inline-block border border-gray-200 px-5 py-3 rounded text-gray-700 hover:bg-gray-50">Contact Us</a>
-          </div>
-          <div class="mt-6 text-sm text-gray-500">Since 2005 — Alfa Social & Educational Foundation</div>
+<section class="academics" id="academics">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2>Four rings,<br>one trunk.</h2>
+      <p>Our curriculum is organized like growth itself — each band builds outward from the one inside it, never replacing what came before.</p>
+    </div>
+    <div class="ring-rows reveal">
+      <div class="ring-row">
+        <div class="ring-swatch"></div>
+        <div class="ring-band">Early Years</div>
+        <div class="ring-desc">Play-based literacy, number sense, and the outdoor classroom. Ages 4–6.</div>
+        <div class="ring-count">3 classrooms</div>
+      </div>
+      <div class="ring-row">
+        <div class="ring-swatch"></div>
+        <div class="ring-band">Lower School</div>
+        <div class="ring-desc">Core literacy and math alongside science labs, studio art, and a second language. Grades 1–5.</div>
+        <div class="ring-count">8 classrooms</div>
+      </div>
+      <div class="ring-row">
+        <div class="ring-swatch"></div>
+        <div class="ring-band">Middle School</div>
+        <div class="ring-desc">Subject specialists, first design-build projects, and a full arts rotation. Grades 6–8.</div>
+        <div class="ring-count">6 classrooms</div>
+      </div>
+      <div class="ring-row">
+        <div class="ring-swatch"></div>
+        <div class="ring-band">Upper School</div>
+        <div class="ring-desc">College-level seminars, independent research, and a required senior capstone. Grades 9–12.</div>
+        <div class="ring-count">9 classrooms</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="campus" id="campus">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2>Where the day<br>actually happens.</h2>
+      <p>Sixteen acres along the Saw Mill River — classrooms, workshops, a working greenhouse, and a lot of places to sit and think.</p>
+    </div>
+    <div class="campus-grid reveal">
+      <div class="campus-tile t1"><span class="tile-label">The Maker Barn — design &amp; build studio</span></div>
+      <div class="campus-tile t2"><span class="tile-label">River Trail — outdoor science classroom</span></div>
+      <div class="campus-tile t3"><span class="tile-label">The Greenhouse — botany &amp; food systems</span></div>
+      <div class="campus-tile t4"><span class="tile-label">Founders Hall — library &amp; assembly</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="wrap">
+    <div class="stats-row reveal">
+      <div class="stat">
+        <div class="figure">8:1</div>
+        <div class="label">Student to teacher ratio</div>
+      </div>
+      <div class="stat">
+        <div class="figure">36</div>
+        <div class="label">Countries represented</div>
+      </div>
+      <div class="stat">
+        <div class="figure">94%</div>
+        <div class="label">Attend first-choice college</div>
+      </div>
+      <div class="stat">
+        <div class="figure">16</div>
+        <div class="label">Acres along the river</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials" id="testimonials">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2>In their words.</h2>
+      <p>Families and students describe Meridian better than we can.</p>
+    </div>
+    <div class="quote-scroll reveal">
+      <div class="quote-card">
+        <p class="quote-text">"My daughter's advisor has known her since kindergarten. She's not a file — she's a person someone has been paying attention to for a decade."</p>
+        <div class="attribution">— Parent, Class of 2031 family</div>
+      </div>
+      <div class="quote-card">
+        <p class="quote-text">"I built an actual water filtration system for my capstone. Nobody asked me to bubble in an answer about one."</p>
+        <div class="attribution">— Graduating senior, Upper School</div>
+      </div>
+      <div class="quote-card">
+        <p class="quote-text">"We toured six schools. Meridian was the only one where the kids were still talking about class at pickup."</p>
+        <div class="attribution">— Parent, Lower School family</div>
+      </div>
+      <div class="quote-card">
+        <p class="quote-text">"The Maker Barn is basically my whole personality now. I go there before school starts most days."</p>
+        <div class="attribution">— Eighth grade student</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="admissions" id="admissions">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2>How to join<br>the trunk.</h2>
+      <p>Admissions runs on a rolling basis for mid-year openings, with a primary round each fall for the following school year.</p>
+    </div>
+    <div class="steps reveal">
+      <div class="step">
+        <div class="step-index">Step 1</div>
+        <h4>Visit</h4>
+        <p>Tour the campus on a regular school day — no staged assemblies.</p>
+      </div>
+      <div class="step">
+        <div class="step-index">Step 2</div>
+        <h4>Apply</h4>
+        <p>Submit records and a short written reflection — from the student, not a parent.</p>
+      </div>
+      <div class="step">
+        <div class="step-index">Step 3</div>
+        <h4>Spend a Day</h4>
+        <p>Applicants shadow a class in their grade band for a full day.</p>
+      </div>
+      <div class="step">
+        <div class="step-index">Step 4</div>
+        <h4>Decide</h4>
+        <p>Offers go out on a rolling basis, typically within three weeks.</p>
+      </div>
+    </div>
+
+    <div class="inquiry-panel reveal">
+      <div>
+        <h3>Start an inquiry</h3>
+        <p>Tell us a little about your student and we'll follow up to schedule a visit within two business days.</p>
+      </div>
+      <form class="form-grid" onsubmit="event.preventDefault(); this.querySelector('.btn').textContent='Sent — we\'ll be in touch';">
+        <div class="field">
+          <label for="pname">Parent / guardian name</label>
+          <input id="pname" type="text" required>
         </div>
-        <div class="rounded-lg overflow-hidden shadow-lg bg-white p-6">
-          <img src="logo1.jpeg" alt="school" class="w-full h-64 object-cover rounded" />
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" type="email" required>
+        </div>
+        <div class="field">
+          <label for="grade">Grade of interest</label>
+          <select id="grade">
+            <option>Early Years</option>
+            <option>Lower School</option>
+            <option>Middle School</option>
+            <option>Upper School</option>
+          </select>
+        </div>
+        <button class="btn btn-primary" type="submit">Request a Visit</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-logo">
+        <svg class="ring-mark" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" width="26" height="26">
+          <circle cx="15" cy="15" r="13.5" stroke="#B9B39F" stroke-width="1"/>
+          <circle cx="15" cy="15" r="9.5" stroke="#E8A33D" stroke-width="1"/>
+          <circle cx="15" cy="15" r="5" stroke="#14231F" stroke-width="1.4"/>
+        </svg>
+        Meridian Academy
+      </div>
+      <div class="foot-links">
+        <div class="foot-col">
+          <h5>School</h5>
+          <a href="#philosophy">Philosophy</a>
+          <a href="#academics">Academics</a>
+          <a href="#campus">Campus Life</a>
+        </div>
+        <div class="foot-col">
+          <h5>Community</h5>
+          <a href="#testimonials">Family Voices</a>
+          <a href="#admissions">Admissions</a>
+          <a href="#">Alumni</a>
+        </div>
+        <div class="foot-col">
+          <h5>Visit</h5>
+          <a href="#">220 River Road, Riverdale, NY</a>
+          <a href="#">admissions@meridianacademy.edu</a>
+          <a href="#">(914) 555-0132</a>
         </div>
       </div>
-    </section>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Meridian Academy. All rights reserved.</span>
+      <span>PK–12 · Non-denominational · Est. 1987</span>
+    </div>
+  </div>
+</footer>
 
-    <!-- ABOUT -->
-    <section id="about" class="py-16">
-      <div class="container mx-auto px-6">
-        <div class="grid md:grid-cols-3 gap-8 items-center">
-          <div class="md:col-span-2">
-            <h2 class="text-2xl font-semibold">About Izak</h2>
-            <p class="mt-4 text-gray-700">Established to provide quality education to students from diverse backgrounds, Izak English Medium School and Junior College focuses on holistic development — academics, sports, arts and values. We offer Nursery through Grade 12 on the State Board syllabus, computer education from Grade 1, science labs, and a resource-rich library.</p>
-            <ul class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-2 text-gray-700">
-              <li>Experienced & qualified teaching staff</li>
-              <li>Computer lab and smart classrooms</li>
-              <li>Physics, Chemistry & Biology labs</li>
-              <li>Library with 5000+ books</li>
-              <li>School bus within 10 km</li>
-              <li>Hostel options nearby</li>
-            </ul>
-          </div>
-          <div class="bg-white rounded-lg shadow p-4">
-            <h4 class="font-semibold">Quick Facts</h4>
-            <div class="mt-2 text-sm text-gray-600">
-              <p><strong>Location:</strong> Ahilyanagar, Taluka - Bhalwani, 414103</p>
-              <p><strong>Contact:</strong> +91 9545928233</p>
-              <p><strong>Email:</strong> izak4777@gmail.com</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROGRAMS / CLASSES -->
-    <section id="programs" class="py-12 bg-white">
-      <div class="container mx-auto px-6">
-        <h2 class="text-2xl font-semibold">Programs & Classes</h2>
-        <div id="classes-content" class="mt-4 bg-gray-50 rounded p-6 text-gray-700">
-          <!-- Will be filled by converted DOCX (Mammoth) or static fallback -->
-          <p id="classes-fallback" class="text-sm text-gray-500">Class and program details are loading. If they do not appear, download the document below.</p>
-          <div class="mt-3">
-            <a href="/about-classes.docx" class="text-sm text-brand underline">Download About Classes (DOCX)</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ADMISSIONS -->
-    <section id="admissions" class="py-16 gradient-hero">
-      <div class="container mx-auto px-6">
-        <div class="flex items-center justify-between">
-          <h2 class="text-2xl font-semibold">Admissions & Fees</h2>
-          <div class="text-sm text-gray-600">Admissions open from April 1st • Nursery to Grade 12</div>
-        </div>
-
-        <div class="mt-6 bg-white rounded shadow p-6">
-          <div class="mb-4 flex items-center justify-between">
-            <div class="text-sm text-gray-600">Search the table:</div>
-            <input id="tableSearch" type="search" placeholder="Search..." class="border px-3 py-2 rounded text-sm" />
-          </div>
-          <div id="admissions-table">Loading admissions table...</div>
-          <div class="mt-4 text-sm text-gray-500">Download: <a href="/website-new-doc-today.html" class="underline text-brand">Excel (safe)</a> • <a href="/website%20new%20doc%20TODAY.xlsx" class="underline">Original</a></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FACILITIES -->
-    <section id="facilities" class="py-12">
-      <div class="container mx-auto px-6">
-        <h2 class="text-2xl font-semibold">Facilities</h2>
-        <div class="mt-4 grid md:grid-cols-3 gap-6">
-          <div class="p-4 bg-white rounded shadow">
-            <h4 class="font-semibold">Labs</h4>
-            <p class="text-sm text-gray-600 mt-2">Well-equipped Physics, Chemistry and Biology labs for practical learning.</p>
-          </div>
-          <div class="p-4 bg-white rounded shadow">
-            <h4 class="font-semibold">Library</h4>
-            <p class="text-sm text-gray-600 mt-2">Over 5000 books across subjects and reading spaces for students.</p>
-          </div>
-          <div class="p-4 bg-white rounded shadow">
-            <h4 class="font-semibold">Transport & Security</h4>
-            <p class="text-sm text-gray-600 mt-2">School bus service (max 10 km) and campus CCTV coverage.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- STAFF -->
-    <section id="staff" class="py-12 bg-white">
-      <div class="container mx-auto px-6">
-        <h2 class="text-2xl font-semibold">Our Staff & Leadership</h2>
-        <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div class="bg-white rounded shadow p-4 text-center">
-            <img src="WhatsApp Image 2026-08-29 at 14.22.30.jpeg" alt="chairman" class="mx-auto h-28 w-28 object-cover rounded-full" />
-            <h4 class="font-semibold mt-3">Shahid Kazi</h4>
-            <div class="text-sm text-gray-600">Chairman</div>
-            <div class="text-sm text-gray-700 mt-2">+91 8087235235</div>
-          </div>
-          <div class="bg-white rounded shadow p-4 text-center">
-            <h4 class="font-semibold mt-3">Rehan Kazi</h4>
-            <div class="text-sm text-gray-600">Secretary</div>
-            <div class="text-sm text-gray-700 mt-2">+91 9422088991</div>
-          </div>
-          <div class="bg-white rounded shadow p-4 text-center">
-            <h4 class="font-semibold mt-3">Shirin Pathan</h4>
-            <div class="text-sm text-gray-600">Principal</div>
-            <div class="text-sm text-gray-700 mt-2">+91 9890537444</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- GALLERY (with horizontal scroll panel + grid fallback) -->
-    <section id="gallery" class="py-16 gradient-hero">
-      <div class="container mx-auto px-6">
-        <h2 class="text-2xl font-semibold">Gallery</h2>
-
-        <!-- Horizontal auto-scroll panel -->
-        <div class="mt-6 scroll-panel">
-          <div class="scroll-controls" aria-hidden="true">
-            <button id="scrollPrev" class="scroll-btn">◀</button>
-            <button id="scrollNext" class="scroll-btn">▶</button>
-          </div>
-          <div class="scroll-track" id="horizontalTrack" tabindex="0" role="list" aria-label="Event highlights">
-            <!-- cards inserted by JS -->
-          </div>
-        </div>
-
-        <!-- Grid fallback -->
-        <div class="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4 hidden" id="galleryGrid"></div>
-      </div>
-    </section>
-
-    <!-- DOCUMENTS -->
-    <section id="documents" class="py-12 bg-white">
-      <div class="container mx-auto px-6">
-        <h2 class="text-2xl font-semibold">Important Documents</h2>
-        <ul class="mt-4 list-disc list-inside text-gray-700">
-          <li><a href="/website-new-doc-today.html" class="text-brand underline">Admissions Excel (safe)</a></li>
-          <li><a href="/about-classes.docx" class="text-brand underline">About Classes (DOCX)</a></li>
-          <li><a href="/digital-bhalvani.html" class="text-brand underline">Digital भाळवणी_655_Satbara (PDF - safe)</a></li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="py-12">
-      <div class="container mx-auto px-6">
-        <h2 class="text-2xl font-semibold">Contact</h2>
-        <div class="mt-4 grid md:grid-cols-2 gap-6">
-          <div class="bg-white rounded shadow p-6">
-            <p class="text-gray-700">Izak English School and Junior College, Taluka- Bhalwani, Ahilyanagar - 414103, MH, India</p>
-            <p class="mt-3"><strong>Phone:</strong> +91 9545928233</p>
-            <p class="mt-1"><strong>Email:</strong> <a href="mailto:izak4777@gmail.com" class="underline">izak4777@gmail.com</a></p>
-          </div>
-          <div class="bg-white rounded shadow p-6">
-            <h4 class="font-semibold">Get in touch</h4>
-            <p class="text-sm text-gray-600 mt-2">For admissions and visits, call or email us. You can also download forms from the Documents section.</p>
-            <div class="mt-4">
-              <a href="mailto:izak4777@gmail.com" class="inline-block bg-brand text-white px-4 py-2 rounded">Email Us</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <footer class="bg-blue-800 text-white py-6 mt-8">
-      <div class="container mx-auto px-6 text-center text-sm">&copy; 2026 Izak English Medium School and Junior College. All rights reserved.</div>
-    </footer>
-  </main>
-
-  <!-- Scripts: SheetJS & Mammoth for client-side rendering, small helpers for gallery & mobile nav -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-  <script src="https://unpkg.com/mammoth/mammoth.browser.min.js"></script>
-  <script>
-    // Mobile nav toggle
-    document.getElementById('navToggle').addEventListener('click', function(){
-      const el = document.getElementById('mobileNav');
-      el.classList.toggle('hidden');
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
     });
+  }, {threshold:0.12});
+  revealEls.forEach(el=>io.observe(el));
+</script>
 
-    // Build horizontal scroll panel (auto-scroll + controls) and grid fallback
-    (function(){
-      const track = document.getElementById('horizontalTrack');
-      const grid = document.getElementById('galleryGrid');
-      const total = 30; // number of sample images to attempt
-
-      for(let i=1;i<=total;i++){
-        const card = document.createElement('div');
-        card.className = 'card-snap';
-        const img = document.createElement('img');
-        img.src = `${i}.jpg`;
-        img.alt = `Event ${i}`;
-        img.loading = 'lazy';
-        img.onerror = function(){
-          if(!this.dataset.try){ this.dataset.try='1'; this.src = `images/${i}.jpg`; }
-          else { this.parentElement.remove(); }
-        };
-        const caption = document.createElement('div');
-        caption.className = 'p-3 text-sm text-gray-700';
-        caption.innerText = `Event ${i}`;
-        card.appendChild(img);
-        card.appendChild(caption);
-        track.appendChild(card);
-
-        // also add to grid fallback (hidden unless JS toggles)
-        const gcard = card.cloneNode(true);
-        grid.appendChild(gcard);
-      }
-
-      // Auto-scroll loop (gentle)
-      let pxPerStep = 1; // pixels
-      let msPerStep = 12; // ms
-      let auto;
-      function startAuto(){
-        stopAuto();
-        auto = setInterval(()=>{
-          if(!track) return;
-          track.scrollLeft += pxPerStep;
-          if(track.scrollLeft + track.clientWidth >= track.scrollWidth - 1){
-            // loop back smoothly
-            track.scrollTo({left:0, behavior:'smooth'});
-          }
-        }, msPerStep);
-      }
-      function stopAuto(){ if(auto) clearInterval(auto); }
-
-      // Pause on hover/focus
-      track.addEventListener('mouseenter', stopAuto);
-      track.addEventListener('mouseleave', startAuto);
-      track.addEventListener('focusin', stopAuto);
-      track.addEventListener('focusout', startAuto);
-
-      // Keyboard support
-      track.addEventListener('keydown', e=>{
-        if(e.key === 'ArrowRight') track.scrollBy({left:260, behavior:'smooth'});
-        if(e.key === 'ArrowLeft') track.scrollBy({left:-260, behavior:'smooth'});
-      });
-
-      // Controls
-      const prev = document.getElementById('scrollPrev');
-      const next = document.getElementById('scrollNext');
-      prev.addEventListener('click', ()=>{ track.scrollBy({left:-260, behavior:'smooth'}); });
-      next.addEventListener('click', ()=>{ track.scrollBy({left:260, behavior:'smooth'}); });
-
-      // start autoplay
-      startAuto();
-    })();
-
-    // Fetch helper
-    async function fetchArrayBuffer(url){
-      const r = await fetch(url);
-      if(!r.ok) throw new Error('Fetch failed: '+r.status);
-      return await r.arrayBuffer();
-    }
-
-    // Render XLSX into admissions table (client-side)
-    (async function renderXLSX(){
-      const rawUrl = 'https://raw.githubusercontent.com/izakschool-ahilyanagar/my-school/main/website%20new%20doc%20TODAY.xlsx';
-      try{
-        const data = await fetchArrayBuffer(rawUrl);
-        const wb = XLSX.read(new Uint8Array(data), {type:'array'});
-        const first = wb.SheetNames[0];
-        const ws = wb.Sheets[first];
-        const html = XLSX.utils.sheet_to_html(ws, {id:'admissions-sheet'});
-        document.getElementById('admissions-table').innerHTML = html;
-
-        // simple search
-        const input = document.getElementById('tableSearch');
-        input.addEventListener('input', function(){
-          const q = this.value.toLowerCase();
-          const rows = document.querySelectorAll('#admissions-table table tbody tr');
-          rows.forEach(r=>{
-            r.style.display = Array.from(r.cells).some(c=>c.textContent.toLowerCase().includes(q)) ? '' : 'none';
-          });
-        });
-      }catch(e){
-        console.error(e);
-        document.getElementById('admissions-table').innerHTML = '<p class="text-sm text-red-500">Could not load admissions file. Download <a href="/website-new-doc-today.html" class="underline">here</a>.</p>';
-      }
-    })();
-
-    // Render DOCX into classes
-    (async function renderDOCX(){
-      const rawUrl = 'https://raw.githubusercontent.com/izakschool-ahilyanagar/my-school/main/about-classes.docx';
-      try{
-        const ab = await fetchArrayBuffer(rawUrl);
-        const result = await mammoth.convertToHtml({arrayBuffer:ab});
-        const container = document.getElementById('classes-content');
-        container.innerHTML = result.value;
-        const fallback = document.getElementById('classes-fallback'); if(fallback) fallback.style.display='none';
-      }catch(e){
-        console.error(e);
-      }
-    })();
-  </script>
 </body>
 </html>
