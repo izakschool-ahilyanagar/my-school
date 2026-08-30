@@ -1,433 +1,671 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IZAK English Medium School & Junior College, Bhalwani</title>
-<meta name="description" content="IZAK English Medium School & Junior College, Bhalwani — Nursery to Standard 12, run by Alfa Social & Educational Foundation. Knowledge Empowers.">
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>IZAK English Medium School & Junior College, Bhalwani</title>
+    <meta content="IZAK English Medium School & Junior College, Bhalwani — Nursery to Standard 12, run by Alfa Social & Educational Foundation. Knowledge Empowers."
+          name="description">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,450;0,9..144,600;0,9..144,700;1,9..144,450&family=Sora:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,450;0,9..144,600;0,9..144,700;1,9..144,450&family=Sora:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+          rel="stylesheet">
 
-<!-- Tailwind CSS (CDN build — no bundler needed, works out of the box on GitHub Pages) -->
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          ink: '#14231F',
-          inksoft: '#1D2E28',
-          paper: '#F1EEE3',
-          paperdim: '#E7E2D2',
-          lime: '#C6FF6B',
-          gold: '#E8A33D',
-          ruledark: '#33473E',
-          rulelight: '#B9B39F',
-          inktext: '#EDE9DA',
-          inktextdim: '#9AA89E',
-          papertext: '#1B2622',
-          papertextdim: '#5B6259',
-        },
-        fontFamily: {
-          display: ['Fraunces', 'serif'],
-          body: ['Sora', 'sans-serif'],
-          mono: ['"IBM Plex Mono"', 'monospace'],
-        },
-        borderRadius: {
-          DEFAULT: '2px',
-        },
-      }
-    }
-  }
-</script>
+    <!-- Tailwind CSS (CDN build — no bundler needed, works out of the box on GitHub Pages) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ink: '#14231F',
+                        inksoft: '#1D2E28',
+                        paper: '#F1EEE3',
+                        paperdim: '#E7E2D2',
+                        lime: '#C6FF6B',
+                        gold: '#E8A33D',
+                        ruledark: '#33473E',
+                        rulelight: '#B9B39F',
+                        inktext: '#EDE9DA',
+                        inktextdim: '#9AA89E',
+                        papertext: '#1B2622',
+                        papertextdim: '#5B6259',
+                    },
+                    fontFamily: {
+                        display: ['Fraunces', 'serif'],
+                        body: ['Sora', 'sans-serif'],
+                        mono: ['"IBM Plex Mono"', 'monospace'],
+                    },
+                    borderRadius: {
+                        DEFAULT: '2px',
+                    },
+                }
+            }
+        }
+    </script>
 
-<style>
-  html { scroll-behavior: smooth; }
-  body { font-family: 'Sora', sans-serif; }
-  h1,h2,h3,h4 { font-family: 'Fraunces', serif; letter-spacing: -0.01em; line-height: 1.05; }
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
 
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
-  }
+        body {
+            font-family: 'Sora', sans-serif;
+        }
 
-  .eyebrow::before { content:''; width:18px; height:1px; background:currentColor; opacity:0.6; display:inline-block; }
+        h1, h2, h3, h4 {
+            font-family: 'Fraunces', serif;
+            letter-spacing: -0.01em;
+            line-height: 1.05;
+        }
 
-  /* Hero ring draw-in (banyan growth rings) */
-  #ringSVG circle.ring { fill:none; stroke-width:1.4; stroke-dasharray:1400; stroke-dashoffset:1400; animation:draw 2.4s ease forwards; }
-  @keyframes draw { to { stroke-dashoffset:0; } }
-  #ringSVG circle.r1 { stroke:#33473E; animation-delay:.1s; }
-  #ringSVG circle.r2 { stroke:#33473E; animation-delay:.35s; }
-  #ringSVG circle.r3 { stroke:#E8A33D; animation-delay:.6s; }
-  #ringSVG circle.r4 { stroke:#C6FF6B; animation-delay:.9s; }
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
 
-  .nav-link { position:relative; }
-  .nav-link::after { content:''; position:absolute; bottom:-2px; left:0; width:0; height:1px; background:#C6FF6B; transition:width .25s ease; }
-  .nav-link:hover::after { width:100%; }
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
 
-  .no-scrollbar::-webkit-scrollbar { display:none; }
-  .no-scrollbar { scrollbar-width:none; -ms-overflow-style:none; }
+        .eyebrow::before {
+            content: '';
+            width: 18px;
+            height: 1px;
+            background: currentColor;
+            opacity: 0.6;
+            display: inline-block;
+        }
 
-  .reveal { opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease; }
-  .reveal.in { opacity:1; transform:translateY(0); }
+        /* Hero ring draw-in (banyan growth rings) */
+        #ringSVG circle.ring {
+            fill: none;
+            stroke-width: 1.4;
+            stroke-dasharray: 1400;
+            stroke-dashoffset: 1400;
+            animation: draw 2.4s ease forwards;
+        }
 
-  .campus-tile::after { content:''; position:absolute; inset:0; background:linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.55)); }
+        @keyframes draw {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
 
-  #mobileMenu { max-height:0; overflow:hidden; transition:max-height .35s ease; }
-  #mobileMenu.open { max-height:460px; }
+        #ringSVG circle.r1 {
+            stroke: #33473E;
+            animation-delay: .1s;
+        }
 
-  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible {
-    outline:2px solid #E8A33D; outline-offset:3px;
-  }
+        #ringSVG circle.r2 {
+            stroke: #33473E;
+            animation-delay: .35s;
+        }
 
-  .portrait { object-fit:cover; }
-</style>
+        #ringSVG circle.r3 {
+            stroke: #E8A33D;
+            animation-delay: .6s;
+        }
+
+        #ringSVG circle.r4 {
+            stroke: #C6FF6B;
+            animation-delay: .9s;
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: #C6FF6B;
+            transition: width .25s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity .7s ease, transform .7s ease;
+        }
+
+        .reveal.in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .campus-tile::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.55));
+        }
+
+        #mobileMenu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .35s ease;
+        }
+
+        #mobileMenu.open {
+            max-height: 460px;
+        }
+
+        a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible {
+            outline: 2px solid #E8A33D;
+            outline-offset: 3px;
+        }
+
+        .portrait {
+            object-fit: cover;
+        }
+    </style>
 </head>
 
 <body class="bg-paper text-papertext overflow-x-hidden">
 
 <!-- ============ NAV ============ -->
 <header class="fixed top-0 left-0 right-0 z-50 bg-ink/90 backdrop-blur border-b border-ruledark">
-  <nav class="max-w-6xl mx-auto px-5 sm:px-8 h-[70px] md:h-[76px] flex items-center justify-between text-inktext">
-    <a href="#top" class="flex items-center gap-3 font-display font-semibold text-base sm:text-lg">
-      <img src="images/school-crest.jpg" alt="IZAK English Medium School crest" class="w-9 h-9 rounded-full object-cover shrink-0">
-      <span class="leading-tight">IZAK English Medium<br class="sm:hidden"> School</span>
-    </a>
+    <nav class="max-w-6xl mx-auto px-5 sm:px-8 h-[70px] md:h-[76px] flex items-center justify-between text-inktext">
+        <a class="flex items-center gap-3 font-display font-semibold text-base sm:text-lg" href="#top">
+            <img alt="IZAK English Medium School crest" class="w-9 h-9 rounded-full object-cover shrink-0"
+                 src="images/school-crest.jpg">
+            <span class="leading-tight">IZAK English Medium<br class="sm:hidden"> School</span>
+        </a>
 
-    <div class="hidden lg:flex gap-8 font-mono text-[12px] tracking-wider uppercase">
-      <a href="#about" class="nav-link text-inktextdim hover:text-lime transition-colors">About</a>
-      <a href="#founder" class="nav-link text-inktextdim hover:text-lime transition-colors">Founder</a>
-      <a href="#academics" class="nav-link text-inktextdim hover:text-lime transition-colors">Classes</a>
-      <a href="#campus" class="nav-link text-inktextdim hover:text-lime transition-colors">Campus Life</a>
-      <a href="#management" class="nav-link text-inktextdim hover:text-lime transition-colors">Management</a>
-      <a href="#admissions" class="nav-link text-inktextdim hover:text-lime transition-colors">Admissions</a>
-    </div>
+        <div class="hidden lg:flex gap-8 font-mono text-[12px] tracking-wider uppercase">
+            <a class="nav-link text-inktextdim hover:text-lime transition-colors" href="#about">About</a>
+            <a class="nav-link text-inktextdim hover:text-lime transition-colors" href="#founder">Founder</a>
+            <a class="nav-link text-inktextdim hover:text-lime transition-colors" href="#academics">Classes</a>
+            <a class="nav-link text-inktextdim hover:text-lime transition-colors" href="#campus">Campus Life</a>
+            <a class="nav-link text-inktextdim hover:text-lime transition-colors" href="#management">Management</a>
+            <a class="nav-link text-inktextdim hover:text-lime transition-colors" href="#admissions">Admissions</a>
+        </div>
 
-    <div class="flex items-center gap-4">
-      <a href="#admissions" class="hidden lg:inline-flex items-center gap-2 font-mono text-[13px] uppercase tracking-wide px-6 py-3 rounded border border-ruledark hover:border-lime hover:text-lime transition-all">
-        Enquire Now
-      </a>
-      <button id="menuBtn" aria-label="Toggle menu" aria-expanded="false" class="lg:hidden w-9 h-9 flex flex-col items-center justify-center gap-1.5 shrink-0">
-        <span class="block w-6 h-px bg-inktext"></span>
-        <span class="block w-6 h-px bg-inktext"></span>
-      </button>
-    </div>
-  </nav>
+        <div class="flex items-center gap-4">
+            <a class="hidden lg:inline-flex items-center gap-2 font-mono text-[13px] uppercase tracking-wide px-6 py-3 rounded border border-ruledark hover:border-lime hover:text-lime transition-all"
+               href="#admissions">
+                Enquire Now
+            </a>
+            <button aria-expanded="false" aria-label="Toggle menu" class="lg:hidden w-9 h-9 flex flex-col items-center justify-center gap-1.5 shrink-0"
+                    id="menuBtn">
+                <span class="block w-6 h-px bg-inktext"></span>
+                <span class="block w-6 h-px bg-inktext"></span>
+            </button>
+        </div>
+    </nav>
 
-  <div id="mobileMenu" class="lg:hidden bg-ink border-t border-ruledark">
-    <div class="flex flex-col px-6 py-4 gap-1 font-mono text-[13px] uppercase tracking-wide">
-      <a href="#about" class="py-3 border-b border-ruledark text-inktextdim hover:text-lime">About</a>
-      <a href="#founder" class="py-3 border-b border-ruledark text-inktextdim hover:text-lime">Founder</a>
-      <a href="#academics" class="py-3 border-b border-ruledark text-inktextdim hover:text-lime">Classes</a>
-      <a href="#campus" class="py-3 border-b border-ruledark text-inktextdim hover:text-lime">Campus Life</a>
-      <a href="#management" class="py-3 border-b border-ruledark text-inktextdim hover:text-lime">Management</a>
-      <a href="#admissions" class="py-3 text-lime">Admissions →</a>
+    <div class="lg:hidden bg-ink border-t border-ruledark" id="mobileMenu">
+        <div class="flex flex-col px-6 py-4 gap-1 font-mono text-[13px] uppercase tracking-wide">
+            <a class="py-3 border-b border-ruledark text-inktextdim hover:text-lime" href="#about">About</a>
+            <a class="py-3 border-b border-ruledark text-inktextdim hover:text-lime" href="#founder">Founder</a>
+            <a class="py-3 border-b border-ruledark text-inktextdim hover:text-lime" href="#academics">Classes</a>
+            <a class="py-3 border-b border-ruledark text-inktextdim hover:text-lime" href="#campus">Campus Life</a>
+            <a class="py-3 border-b border-ruledark text-inktextdim hover:text-lime" href="#management">Management</a>
+            <a class="py-3 text-lime" href="#admissions">Admissions →</a>
+        </div>
     </div>
-  </div>
 </header>
 
 <!-- ============ HERO ============ -->
-<section id="top" class="bg-ink text-inktext pt-[130px] md:pt-[170px] pb-20">
-  <div class="max-w-6xl mx-auto px-5 sm:px-8 grid grid-cols-1 md:grid-cols-[1.1fr_0.9fr] gap-14 items-center">
-    <div>
-      <div class="eyebrow flex items-center gap-2.5 font-mono text-xs tracking-widest uppercase text-lime mb-6">
-        Est. 2004 · Nursery to Std 12 · Bhalwani, Ahilyanagar
-      </div>
-      <h1 class="text-[36px] leading-[1.08] sm:text-5xl md:text-6xl font-semibold">
-        A sapling once.<br>Today, <em class="not-italic md:italic text-lime font-normal">a banyan tree.</em>
-      </h1>
-      <p class="mt-6 max-w-[48ch] text-lg text-inktextdim">
-        IZAK English Medium School & Junior College brought quality English-medium education to a remote, drought-affected corner of Parner Taluka. Two decades on, over 2,500 students learn here — many of them the first in their family to do so.
-      </p>
-      <div class="flex gap-4 flex-wrap mt-10">
-        <a href="#admissions" class="inline-flex items-center gap-2 bg-lime text-ink font-mono text-[13px] uppercase tracking-wide px-7 py-4 rounded hover:bg-[#d8ff92] hover:-translate-y-0.5 transition-all">Enquire About Admission</a>
-        <a href="#founder" class="inline-flex items-center gap-2 border border-ruledark font-mono text-[13px] uppercase tracking-wide px-7 py-4 rounded hover:border-lime hover:text-lime hover:-translate-y-0.5 transition-all">Meet the Founder</a>
-      </div>
-    </div>
+<section class="bg-ink text-inktext pt-[130px] md:pt-[170px] pb-20" id="top">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 grid grid-cols-1 md:grid-cols-[1.1fr_0.9fr] gap-14 items-center">
+        <div>
+            <div class="eyebrow flex items-center gap-2.5 font-mono text-xs tracking-widest uppercase text-lime mb-6">
+                Est. 2004 · Nursery to Std 12 · Bhalwani, Ahilyanagar
+            </div>
+            <h1 class="text-[36px] leading-[1.08] sm:text-5xl md:text-6xl font-semibold">
+                A sapling once.<br>Today, <em class="not-italic md:italic text-lime font-normal">a banyan tree.</em>
+            </h1>
+            <p class="mt-6 max-w-[48ch] text-lg text-inktextdim">
+                IZAK English Medium School & Junior College brought quality English-medium education to a remote,
+                drought-affected corner of Parner Taluka. Two decades on, over 2,500 students learn here — many of them
+                the first in their family to do so.
+            </p>
+            <div class="flex gap-4 flex-wrap mt-10">
+                <a class="inline-flex items-center gap-2 bg-lime text-ink font-mono text-[13px] uppercase tracking-wide px-7 py-4 rounded hover:bg-[#d8ff92] hover:-translate-y-0.5 transition-all"
+                   href="#admissions">Enquire
+                    About Admission</a>
+                <a class="inline-flex items-center gap-2 border border-ruledark font-mono text-[13px] uppercase tracking-wide px-7 py-4 rounded hover:border-lime hover:text-lime hover:-translate-y-0.5 transition-all"
+                   href="#founder">Meet
+                    the Founder</a>
+            </div>
+        </div>
 
-    <div class="relative flex items-center justify-center">
-      <svg id="ringSVG" viewBox="0 0 420 420" class="w-full max-w-[420px]">
-        <circle class="ring r1" cx="210" cy="210" r="190"/>
-        <circle class="ring r2" cx="210" cy="210" r="145"/>
-        <circle class="ring r3" cx="210" cy="210" r="100"/>
-        <circle class="ring r4" cx="210" cy="210" r="55"/>
-      </svg>
-      <span class="absolute top-[6%] font-mono text-[11px] uppercase tracking-widest text-inktextdim">higher secondary</span>
-      <span class="absolute bottom-[8%] right-[6%] font-mono text-[11px] uppercase tracking-widest text-inktextdim">nursery</span>
+        <div class="relative flex items-center justify-center">
+            <svg class="w-full max-w-[420px]" id="ringSVG" viewBox="0 0 420 420">
+
+                <circle class="ring r2" cx="210" cy="210" r="145"/>
+                <circle class="ring r3" cx="210" cy="210" r="100"/>
+                <circle class="ring r4" cx="210" cy="210" r="55"/>
+            </svg>
+            <span class="absolute bottom-[75%] right-[36%] font-mono text-[11px] uppercase tracking-widest text-inktextdim">Higher Secondary</span>
+            <span class="absolute bottom-[30%] right-[46%] font-mono text-[11px] uppercase tracking-widest text-inktextdim">Secondary</span>
+            <span class="absolute bottom-[47%] right-[44%] font-mono text-[11px] uppercase tracking-widest text-inktextdim">Primary</span>
+        </div>
     </div>
-  </div>
 </section>
 
 <!-- ============ ABOUT ============ -->
-<section id="about" class="py-24 md:py-32 bg-paper">
-  <div class="max-w-6xl mx-auto px-5 sm:px-8">
-    <div class="reveal flex justify-between items-end gap-10 flex-wrap mb-14">
-      <h2 class="text-3xl sm:text-4xl md:text-5xl font-semibold">About the<br>institution.</h2>
-      <p class="max-w-[42ch] text-papertextdim text-[15.5px]">Run by Alfa Social & Educational Foundation, Ahmednagar (Reg. No. F 8812), a Minority Status institution working in health, education, and social welfare across Bhalwani for over 24 years.</p>
-    </div>
+<section class="py-24 md:py-32 bg-paper" id="about">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8">
+        <div class="reveal flex justify-between items-end gap-10 flex-wrap mb-14">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-semibold">About the<br>institution.</h2>
+            <p class="max-w-[42ch] text-papertextdim text-[15.5px]">Run by Alfa Social & Educational Foundation,
+                Ahmednagar (Reg. No. F 8812), a Minority Status institution working in health, education, and social
+                welfare across Bhalwani for over 24 years.</p>
+        </div>
 
-    <div class="reveal grid grid-cols-1 md:grid-cols-3 gap-px bg-rulelight border border-rulelight">
-      <div class="bg-paper hover:bg-paperdim transition-colors p-10">
-        <span class="font-mono text-xs text-gold block mb-6">01</span>
-        <h3 class="text-2xl mb-3">A doctor's observation</h3>
-        <p class="text-papertextdim text-[15px]">While practicing medicine in Bhalwani, our founder saw how many children from poor families around him had no access to school — and set out to change that.</p>
-      </div>
-      <div class="bg-paper hover:bg-paperdim transition-colors p-10">
-        <span class="font-mono text-xs text-gold block mb-6">02</span>
-        <h3 class="text-2xl mb-3">Open to every community</h3>
-        <p class="text-papertextdim text-[15px]">Around 550 students from Scheduled Tribes study here on state government placements, alongside separate hostels for boys and girls from further afield.</p>
-      </div>
-      <div class="bg-paper hover:bg-paperdim transition-colors p-10">
-        <span class="font-mono text-xs text-gold block mb-6">03</span>
-        <h3 class="text-2xl mb-3">Results that hold up</h3>
-        <p class="text-papertextdim text-[15px]">A 100% pass rate in Standards 10 and 12, with graduates going on to become doctors, engineers, lawyers, IT professionals, and government officers.</p>
-      </div>
+        <div class="reveal grid grid-cols-1 md:grid-cols-3 gap-px bg-rulelight border border-rulelight">
+            <div class="bg-paper hover:bg-paperdim transition-colors p-10">
+                <span class="font-mono text-xs text-gold block mb-6">01</span>
+                <h3 class="text-2xl mb-3">A doctor's observation</h3>
+                <p class="text-papertextdim text-[15px]">Alfa Social and Educational Foundation,  Ahmednagar, Registration No. F 8812, is a registered institution and has been granted Minority Status. For the last 24 years, the institution has been working in the health, education, and social sectors in Bhalwani, a remote and drought-affected area of Parner Taluka.
+                  The founder of the institution, Dr. Saeed Ahmed Kazi, began his medical practice at Bhalawani. While practicing medicine, he observed that many children from poor families in the surrounding area were deprived of education. Inspired by the noble belief that education is like the milk of a tigress and should be accessible to every section of society, Dr.Saeed Ahmed Kazi brought quality education to a remote and tribal area such as Bhalawani in Parner Taluka. He has become a strong pillar of support for the students of this region.
+                </p>
+            </div>
+            <div class="bg-paper hover:bg-paperdim transition-colors p-10">
+                <span class="font-mono text-xs text-gold block mb-6">02</span>
+                <h3 class="text-2xl mb-3">Open to every community</h3>
+                <p class="text-papertextdim text-[15px]">In 2004, the IZAK English Medium School was started at Bhalwani with all necessary physical facilities. The school provides education from Standard Nursery to Standard 12, and more than 2,500 students are receiving education in English medium. Separate, well-equipped hostels for boys and girls are available for the accommodation of students.
+                  The State Government has recognized the school as a reputed English-medium school and has sent approximately 550 students belonging to Scheduled Tribes to study there. Due to the provision of quality education to students from rural areas, the school has achieved a 100% pass percentage in Standards 10 and 12. Many students have passed with distinction and have gone on to work as doctors, engineers, lawyers, IT professionals, and government officers.
+                </p>
+            </div>
+            <div class="bg-paper hover:bg-paperdim transition-colors p-10">
+                <span class="font-mono text-xs text-gold block mb-6">03</span>
+                <h3 class="text-2xl mb-3">Results that hold up</h3>
+                <p class="text-papertextdim text-[15px]">In the competitive era, continuous efforts are being made to help students progress in all fields. Education and training are provided according to students' interests in arts, sports, cultural activities, competitive examinations, and technical education. Every year, students achieve success at the state level in sports competitions.
+                  Due to the vision of Dr. Saeed Kazi, large and quality educational campuses have today been established in remote and drought-affected areas such as Dhawalpuri and Bhalawani. Approximately 300 to 350 employees from different communities are working at these campuses.
+                  The small sapling planted in the form of a primary Ashram School has today grown into a huge banyan tree. Dr. Saeed Ahmed Kazi is regarded as a strong pillar of support for the educationally deprived people belonging to nomadic and denotified communities, not only in Dhawalpuri and its surrounding areas but throughout Maharashtra.
+                </p>
+            </div>
+        </div>
     </div>
-  </div>
 </section>
 
 <!-- ============ FOUNDER ============ -->
-<section id="founder" class="bg-ink text-inktext py-24 md:py-32">
-  <div class="max-w-6xl mx-auto px-5 sm:px-8 grid grid-cols-1 md:grid-cols-[0.8fr_1.2fr] gap-14 items-center">
-    <div class="reveal">
-      <img src="images/founder-dr-saeed-kazi.jpg" alt="Late Dr. Saeed Ahmed Kazi, Founder" class="w-full max-w-[320px] mx-auto md:mx-0 rounded border border-ruledark portrait">
+<section class="bg-ink text-inktext py-24 md:py-32" id="founder">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 grid grid-cols-1 md:grid-cols-[0.8fr_1.2fr] gap-14 items-center">
+        <div class="reveal">
+            <img alt="Late Dr. Saeed Ahmed Kazi, Founder" class="w-full max-w-[320px] mx-auto md:mx-0 rounded border border-ruledark portrait"
+                 src="images/founder-dr-saeed-kazi.jpg">
+        </div>
+        <div class="reveal">
+            <div class="eyebrow flex items-center gap-2.5 font-mono text-xs tracking-widest uppercase text-lime mb-6">
+                Founder
+            </div>
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-semibold mb-2">Late Dr. Saeed Ahmed Kazi</h2>
+            <p class="font-mono text-xs text-inktextdim tracking-wide mb-6">17 December 1952 — 24 April 2020 · BHMS,
+                Gune Ayurved College, Ahilyanagar</p>
+            <p class="text-inktextdim text-[15.5px] mb-4 max-w-[56ch]">Dr. Kazi began his medical practice in Bhalwani.
+                Believing that education is like the milk of a tigress — meant for every section of society — he brought
+                quality schooling to this remote, tribal part of Parner Taluka, starting IZAK English Medium School in
+                2004.</p>
+            <p class="text-inktextdim text-[15.5px] max-w-[56ch]">What began as a small primary Ashram school has, in
+                his words and in the community's, grown into a banyan tree — today supporting campuses at both Bhalawani
+                and Dhawalpuri, and roughly 300 to 350 staff drawn from different communities across the region.</p>
+        </div>
     </div>
-    <div class="reveal">
-      <div class="eyebrow flex items-center gap-2.5 font-mono text-xs tracking-widest uppercase text-lime mb-6">Founder</div>
-      <h2 class="text-3xl sm:text-4xl md:text-5xl font-semibold mb-2">Late Dr. Saeed Ahmed Kazi</h2>
-      <p class="font-mono text-xs text-inktextdim tracking-wide mb-6">17 December 1952 — 24 April 2020 · BHMS, Gune Ayurved College, Ahilyanagar</p>
-      <p class="text-inktextdim text-[15.5px] mb-4 max-w-[56ch]">Dr. Kazi began his medical practice in Bhalwani. Believing that education is like the milk of a tigress — meant for every section of society — he brought quality schooling to this remote, tribal part of Parner Taluka, starting IZAK English Medium School in 2004.</p>
-      <p class="text-inktextdim text-[15.5px] max-w-[56ch]">What began as a small primary Ashram school has, in his words and in the community's, grown into a banyan tree — today supporting campuses at both Bhalawani and Dhawalpuri, and roughly 300 to 350 staff drawn from different communities across the region.</p>
-    </div>
-  </div>
 </section>
 
 <!-- ============ ACADEMICS ============ -->
-<section id="academics" class="py-24 md:py-32 bg-paper">
-  <div class="max-w-6xl mx-auto px-5 sm:px-8">
-    <div class="reveal flex justify-between items-end gap-10 flex-wrap mb-14">
-      <h2 class="text-3xl sm:text-4xl md:text-5xl font-semibold">Nursery<br>to Standard 12.</h2>
-      <p class="max-w-[38ch] text-papertextdim text-[15.5px]">Three stages, each building on the last — with personalised attention, regular assessment, and a clear line through to board exam results.</p>
-    </div>
+<section class="py-24 md:py-32 bg-paper" id="academics">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8">
+        <div class="reveal flex justify-between items-end gap-10 flex-wrap mb-14">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-semibold">Class 1<br>to Class 12.</h2>
+            <p class="max-w-[38ch] text-papertextdim text-[15.5px]">Three stages, each building on the last — with
+                personalised attention, regular assessment, and a clear line through to board exam results.</p>
+        </div>
 
-    <div class="reveal border-t border-rulelight">
-      <div class="grid grid-cols-[44px_1fr] md:grid-cols-[90px_220px_1fr_170px] gap-4 md:gap-6 items-center py-8 border-b border-rulelight hover:bg-ink/[0.03] hover:pl-3 transition-all">
-        <div class="w-11 h-11 rounded-full border-2 border-rulelight"></div>
-        <div class="font-display text-xl md:text-2xl">Primary</div>
-        <div class="col-span-2 md:col-span-1 text-papertextdim text-sm">Standards 1st–5th. Mathematics, English, and Environmental Studies, building basic reading, writing, counting, and problem-solving through activities, practice, and personalised attention.</div>
-        <div class="hidden md:block font-mono text-xs text-papertextdim text-right">1st – 5th</div>
-      </div>
-      <div class="grid grid-cols-[44px_1fr] md:grid-cols-[90px_220px_1fr_170px] gap-4 md:gap-6 items-center py-8 border-b border-rulelight hover:bg-ink/[0.03] hover:pl-3 transition-all">
-        <div class="w-11 h-11 rounded-full border-2 border-gold"></div>
-        <div class="font-display text-xl md:text-2xl">Secondary</div>
-        <div class="col-span-2 md:col-span-1 text-papertextdim text-sm">Standards 6th–8th. Mathematics, Science, and Language Arts alongside extracurriculars, homework support, and test preparation, with a growing focus on critical thinking.</div>
-        <div class="hidden md:block font-mono text-xs text-papertextdim text-right">6th – 8th</div>
-      </div>
-      <div class="grid grid-cols-[44px_1fr] md:grid-cols-[90px_220px_1fr_170px] gap-4 md:gap-6 items-center py-8 border-b border-rulelight hover:bg-ink/[0.03] hover:pl-3 transition-all">
-        <div class="w-11 h-11 rounded-full border-2 border-ink"></div>
-        <div class="font-display text-xl md:text-2xl">Higher Secondary</div>
-        <div class="col-span-2 md:col-span-1 text-papertextdim text-sm">Standards 9th–12th. Mathematics, Physics, Chemistry, Biology, and English, with mock exams and revision built around board exams and competitive entrance tests.</div>
-        <div class="hidden md:block font-mono text-xs text-papertextdim text-right">9th – 12th</div>
-      </div>
+        <div class="reveal border-t border-rulelight">
+          <div>
+            <div class="hidden md:block font-mono text-xs text-papertextdim text-right">
+              Primary (1st to 5th)
+            </div>
+            <div class="grid grid-cols-[44px_1fr] md:grid-cols-[90px_220px_1fr_170px] gap-4 md:gap-6 items-center py-8 border-b border-rulelight hover:bg-ink/[0.03] hover:pl-3 transition-all">
+                <div class="w-11 h-11 rounded-full border-2 border-rulelight"></div>
+                <div class="font-display text-xl md:text-2xl">Class 1</div>
+                <div class="col-span-2 md:col-span-1 text-papertextdim text-sm">Class 1st is an important beginning of a child’s formal education, where students develop essential academic skills and positive learning habits. This service provides comprehensive tutoring in subjects such as Mathematics, English, Environmental Studies, and other subjects prescribed by the respective educational boards.
+                  Experienced instructors use engaging and age-appropriate teaching methods to help students develop basic reading, writing, counting, and problem-solving skills. Regular activities, practice sessions, assessments, and personalized attention help students build confidence and develop a strong foundation for future learning.
+                </div>
+            </div>
+          <div class="grid grid-cols-[44px_1fr] md:grid-cols-[90px_220px_1fr_170px] gap-4 md:gap-6 items-center py-8 border-b border-rulelight hover:bg-ink/[0.03] hover:pl-3 transition-all">
+            <div class="w-11 h-11 rounded-full border-2 border-rulelight"></div>
+            <div class="font-display text-xl md:text-2xl">Class 2</div>
+            <div class="col-span-2 md:col-span-1 text-papertextdim text-sm">Class 2nd is an important stage for strengthening the basic concepts developed in the early years of education. This service provides comprehensive tutoring in subjects such as Mathematics, English, Environmental Studies, and other subjects prescribed by the respective educational boards.
+              Experienced instructors provide personalized attention and interactive learning methods to improve students’ reading, writing, mathematical, and problem-solving abilities. Regular practice, activities, assessments, and feedback help students strengthen their concepts and develop greater confidence in their studies.
+            </div>
+          </div>
+          <div class="grid grid-cols-[44px_1fr] md:grid-cols-[90px_220px_1fr_170px] gap-4 md:gap-6 items-center py-8 border-b border-rulelight hover:bg-ink/[0.03] hover:pl-3 transition-all">
+            <div class="w-11 h-11 rounded-full border-2 border-rulelight"></div>
+            <div class="font-display text-xl md:text-2xl">Class 3</div>
+            <div class="col-span-2 md:col-span-1 text-papertextdim text-sm">Class 3rd is a key stage in a student’s academic development, where learners begin to build deeper understanding and apply their knowledge to different situations. This service provides comprehensive tutoring in subjects such as Mathematics, English, Environmental Studies, and other subjects prescribed by the respective educational boards.
+              Experienced instructors focus on conceptual understanding, reading comprehension, writing skills, numerical ability, and logical thinking. Regular assessments, practice exercises, doubt-solving sessions, and personalized guidance help students improve their academic performance and develop strong learning habits.
+            </div>
+          </div>
+          <div class="grid grid-cols-[44px_1fr] md:grid-cols-[90px_220px_1fr_170px] gap-4 md:gap-6 items-center py-8 border-b border-rulelight hover:bg-ink/[0.03] hover:pl-3 transition-all">
+            <div class="w-11 h-11 rounded-full border-2 border-rulelight"></div>
+            <div class="font-display text-xl md:text-2xl">Class 4</div>
+            <div class="col-span-2 md:col-span-1 text-papertextdim text-sm">Class 4th plays an important role in strengthening fundamental concepts and preparing students for more advanced learning. This service provides comprehensive tutoring in subjects such as Mathematics, English, Environmental Studies, and other subjects prescribed by the respective educational boards.
+              Experienced instructors provide personalized guidance with a focus on conceptual clarity, problem-solving, language development, and effective learning techniques. Regular assessments, practice sessions, activities, and feedback help students strengthen their knowledge and approach their examinations with confidence.
+            </div>
+          </div>
+          <div class="grid grid-cols-[44px_1fr] md:grid-cols-[90px_220px_1fr_170px] gap-4 md:gap-6 items-center py-8 border-b border-rulelight hover:bg-ink/[0.03] hover:pl-3 transition-all">
+            <div class="w-11 h-11 rounded-full border-2 border-rulelight"></div>
+            <div class="font-display text-xl md:text-2xl">Class 5</div>
+            <div class="col-span-2 md:col-span-1 text-papertextdim text-sm">Class 5th is an important stage that prepares students for the transition to higher classes and more advanced academic concepts. This service provides comprehensive tutoring in subjects such as Mathematics, English, Environmental Studies, Science, and other subjects prescribed by the respective educational boards.
+              Experienced instructors provide focused and personalized attention to strengthen conceptual understanding, analytical thinking, problem-solving skills, and subject knowledge. Regular assessments, mock tests, revision sessions, doubt-solving, and constructive feedback ensure that students are well-prepared for their examinations and develop a strong foundation for secondary education.
+            </div>
+          </div>
+        </div>
+          <div>
+            <div class="hidden md:block font-mono text-xs text-papertextdim text-right">
+              Secondary (6th to 8th)
+            </div>
+          <div class="grid grid-cols-[44px_1fr] md:grid-cols-[90px_220px_1fr_170px] gap-4 md:gap-6 items-center py-8 border-b border-rulelight hover:bg-ink/[0.03] hover:pl-3 transition-all">
+            <div class="w-11 h-11 rounded-full border-2 border-rulelight"></div>
+            <div class="font-display text-xl md:text-2xl">Class 6</div>
+            <div class="col-span-2 md:col-span-1 text-papertextdim text-sm">Class 6 refers to the educational curriculum designed for students in the sixth grade, typically around 11 to 12 years old. This stage is crucial as it builds foundational skills in various subjects including mathematics, science, language arts, and social studies. The curriculum often emphasizes critical thinking, problem-solving, and creativity, encouraging students to engage actively with the material. Class 6 also introduces more complex concepts and projects, aiming to prepare students for higher grades while fostering a love for learning.
+            </div>
+          </div>
+          <div class="grid grid-cols-[44px_1fr] md:grid-cols-[90px_220px_1fr_170px] gap-4 md:gap-6 items-center py-8 border-b border-rulelight hover:bg-ink/[0.03] hover:pl-3 transition-all">
+            <div class="w-11 h-11 rounded-full border-2 border-rulelight"></div>
+            <div class="font-display text-xl md:text-2xl">Class 7</div>
+            <div class="col-span-2 md:col-span-1 text-papertextdim text-sm">Class 7 services typically include a range of educational support tailored for students in this crucial stage of their academic journey. These services encompass personalized tutoring in core subjects such as mathematics, science, and language arts, aimed at reinforcing foundational knowledge and enhancing critical thinking skills. Additionally, extracurricular activities, homework assistance, and test preparation strategies are often part of the offering. Overall, Class 7 services are designed to foster a positive learning environment and promote academic success for students.
+            </div>
+          </div>
+          <div class="grid grid-cols-[44px_1fr] md:grid-cols-[90px_220px_1fr_170px] gap-4 md:gap-6 items-center py-8 border-b border-rulelight hover:bg-ink/[0.03] hover:pl-3 transition-all">
+            <div class="w-11 h-11 rounded-full border-2 border-rulelight"></div>
+            <div class="font-display text-xl md:text-2xl">Class 8</div>
+            <div class="col-span-2 md:col-span-1 text-papertextdim text-sm">Class 8 services refer to specialized offerings for students in the eighth grade, focusing on enhancing their academic skills and personal development. These services often include tutoring in core subjects such as mathematics, science, and language arts, tailored to meet the individual needs of students. Additionally, extracurricular activities like sports, arts, and leadership programs are designed to foster teamwork and creativity. With an emphasis on building a solid foundation for high school, Class 8 services aim to prepare students for future academic challenges while promoting a well-rounded education.
+            </div>
+          </div>
+        </div>
+          <div>
+            <div class="hidden md:block font-mono text-xs text-papertextdim text-right">
+              Higher Secondary (9th to 12th)
+            </div>
+          <div class="grid grid-cols-[44px_1fr] md:grid-cols-[90px_220px_1fr_170px] gap-4 md:gap-6 items-center py-8 border-b border-rulelight hover:bg-ink/[0.03] hover:pl-3 transition-all">
+            <div class="w-11 h-11 rounded-full border-2 border-rulelight"></div>
+            <div class="font-display text-xl md:text-2xl">Class 9</div>
+            <div class="col-span-2 md:col-span-1 text-papertextdim text-sm">Class 9 encompasses a critical stage in the educational journey, typically for students aged 14 to 15. This grade focuses on foundational subjects like Mathematics, Science, English, and Social Studies, aimed at preparing students for their secondary education and board examinations. The curriculum is designed to enhance analytical thinking. problem-solving skills, and conceptual understanding. Additionally, students may engage in practical experiments, project work, and group discussions, fostering collaborative learning and a deeper grasp of various topics.
+            </div>
+
+          </div>
+          <div class="grid grid-cols-[44px_1fr] md:grid-cols-[90px_220px_1fr_170px] gap-4 md:gap-6 items-center py-8 border-b border-rulelight hover:bg-ink/[0.03] hover:pl-3 transition-all">
+            <div class="w-11 h-11 rounded-full border-2 border-rulelight"></div>
+            <div class="font-display text-xl md:text-2xl">Class 10</div>
+            <div class="col-span-2 md:col-span-1 text-papertextdim text-sm">Class 10 education is a pivotal stage in a student's academic journey, as it prepares learners for higher secondary education and lays the groundwork for future studies. This service encompasses comprehensive tutoring in essential subjects such as Mathematics, Science, and English, focusing on the syllabus prescribed by educational boards. Experienced instructors provide personalized attention, facilitating conceptual understanding and problem-solving skills. Regular assessments, mock exams, and feedback sessions are integral to this service, ensuring students are well-prepared for their board examinations.
+            </div>
+          </div>
+          <div class="grid grid-cols-[44px_1fr] md:grid-cols-[90px_220px_1fr_170px] gap-4 md:gap-6 items-center py-8 border-b border-rulelight hover:bg-ink/[0.03] hover:pl-3 transition-all">
+            <div class="w-11 h-11 rounded-full border-2 border-rulelight"></div>
+            <div class="font-display text-xl md:text-2xl">Class 11</div>
+            <div class="col-span-2 md:col-span-1 text-papertextdim text-sm">Class 11th is a crucial stage in a student’s academic journey, as it marks the transition to higher secondary education and builds a strong foundation for future academic and career goals. This service provides comprehensive tutoring in essential subjects such as Mathematics, Physics, Chemistry, Biology, and English, based on the syllabus prescribed by the respective educational boards.
+              Experienced instructors provide personalized guidance, focusing on conceptual clarity, analytical thinking, problem-solving skills, and effective study techniques. Regular assessments, practice tests, doubt-solving sessions, and feedback help students strengthen their understanding and prepare confidently for Class 11 examinations as well as competitive entrance examinations.
+
+            </div>
+          </div>
+          <div class="grid grid-cols-[44px_1fr] md:grid-cols-[90px_220px_1fr_170px] gap-4 md:gap-6 items-center py-8 border-b border-rulelight hover:bg-ink/[0.03] hover:pl-3 transition-all">
+            <div class="w-11 h-11 rounded-full border-2 border-rulelight"></div>
+            <div class="font-display text-xl md:text-2xl">Class 12</div>
+            <div class="col-span-2 md:col-span-1 text-papertextdim text-sm">Class 12th is a significant milestone in a student’s academic journey, preparing learners for board examinations, higher education, and competitive entrance examinations. This service offers comprehensive tutoring in key subjects such as Mathematics, Physics, Chemistry, Biology, and English, following the syllabus prescribed by the respective educational boards.
+              Experienced instructors provide personalized attention and focused guidance to strengthen conceptual understanding, improve problem-solving abilities, and develop effective examination strategies. Regular assessments, mock examinations, doubt-solving sessions, revision programs, and constructive feedback ensure that students are thoroughly prepared to achieve their academic goals and perform confidently in board and competitive examinations.
+            </div>
+          </div>
+          </div>
+        </div>
     </div>
-  </div>
 </section>
 
 <!-- ============ CAMPUS LIFE ============ -->
-<section id="campus" class="bg-ink text-inktext py-24 md:py-32">
-  <div class="max-w-6xl mx-auto px-5 sm:px-8">
-    <div class="reveal flex justify-between items-end gap-10 flex-wrap mb-14">
-      <h2 class="text-3xl sm:text-4xl md:text-5xl font-semibold">Beyond<br>the classroom.</h2>
-      <p class="max-w-[38ch] text-inktextdim text-[15.5px]">Sports, arts, cultural activities, and competitive-exam coaching, with hostel life for students who travel in from further afield.</p>
-    </div>
+<section class="bg-ink text-inktext py-24 md:py-32" id="campus">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8">
+        <div class="reveal flex justify-between items-end gap-10 flex-wrap mb-14">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-semibold">Beyond<br>the classroom.</h2>
+            <p class="max-w-[38ch] text-inktextdim text-[15.5px]">Sports, arts, cultural activities, and
+                competitive-exam coaching, with hostel life for students who travel in from further afield.</p>
+        </div>
 
-    <div class="reveal grid grid-cols-1 md:grid-cols-6 gap-3.5 auto-rows-[180px] md:auto-rows-[120px]">
-      <div class="campus-tile relative overflow-hidden rounded flex items-end p-5 text-inktext md:col-span-3 md:row-span-3" style="background:linear-gradient(135deg,#2E4038,#14231F)">
-        <span class="relative z-10 font-mono text-[11px] uppercase tracking-wide">Boys' & girls' hostels — for students from further afield</span>
-      </div>
-      <div class="campus-tile relative overflow-hidden rounded flex items-end p-5 text-inktext md:col-span-3 md:row-span-2" style="background:linear-gradient(135deg,#3F5548,#1D2E28)">
-        <span class="relative z-10 font-mono text-[11px] uppercase tracking-wide">State-level sports achievers, most years</span>
-      </div>
-      <div class="campus-tile relative overflow-hidden rounded flex items-end p-5 text-inktext md:col-span-3 md:row-span-2" style="background:linear-gradient(135deg,#B98A34,#7A5A22)">
-        <span class="relative z-10 font-mono text-[11px] uppercase tracking-wide">Arts & cultural activities</span>
-      </div>
-      <div class="campus-tile relative overflow-hidden rounded flex items-end p-5 text-inktext md:col-span-3 md:row-span-3" style="background:linear-gradient(135deg,#5C7A63,#233830)">
-        <span class="relative z-10 font-mono text-[11px] uppercase tracking-wide">Competitive exam & technical education coaching</span>
-      </div>
+        <div class="reveal grid grid-cols-1 md:grid-cols-6 gap-3.5 auto-rows-[180px] md:auto-rows-[120px]">
+            <div class="campus-tile relative overflow-hidden rounded flex items-end p-5 text-inktext md:col-span-3 md:row-span-3"
+                 style="background:linear-gradient(135deg,#2E4038,#14231F)">
+                <span class="relative z-10 font-mono text-[11px] uppercase tracking-wide">Boys' & girls' hostels — for students from further afield</span>
+            </div>
+            <div class="campus-tile relative overflow-hidden rounded flex items-end p-5 text-inktext md:col-span-3 md:row-span-2"
+                 style="background:linear-gradient(135deg,#3F5548,#1D2E28)">
+                <span class="relative z-10 font-mono text-[11px] uppercase tracking-wide">State-level sports achievers, most years</span>
+            </div>
+            <div class="campus-tile relative overflow-hidden rounded flex items-end p-5 text-inktext md:col-span-3 md:row-span-2"
+                 style="background:linear-gradient(135deg,#B98A34,#7A5A22)">
+                <span class="relative z-10 font-mono text-[11px] uppercase tracking-wide">Arts & cultural activities</span>
+            </div>
+            <div class="campus-tile relative overflow-hidden rounded flex items-end p-5 text-inktext md:col-span-3 md:row-span-3"
+                 style="background:linear-gradient(135deg,#5C7A63,#233830)">
+                <span class="relative z-10 font-mono text-[11px] uppercase tracking-wide">Competitive exam & technical education coaching</span>
+            </div>
+        </div>
     </div>
-  </div>
 </section>
 
 <!-- ============ STATS ============ -->
 <section class="bg-ink py-16 border-y border-ruledark">
-  <div class="max-w-6xl mx-auto px-5 sm:px-8">
-    <div class="reveal grid grid-cols-2 md:grid-cols-4 gap-8 text-inktext">
-      <div>
-        <div class="font-display text-4xl md:text-5xl text-lime">2,500+</div>
-        <div class="font-mono text-[11.5px] uppercase tracking-wide text-inktextdim mt-2">Students, Nursery to Std 12</div>
-      </div>
-      <div>
-        <div class="font-display text-4xl md:text-5xl text-lime">100%</div>
-        <div class="font-mono text-[11.5px] uppercase tracking-wide text-inktextdim mt-2">Pass rate, Std 10 & 12</div>
-      </div>
-      <div>
-        <div class="font-display text-4xl md:text-5xl text-lime">550</div>
-        <div class="font-mono text-[11.5px] uppercase tracking-wide text-inktextdim mt-2">Scheduled Tribe students placed</div>
-      </div>
-      <div>
-        <div class="font-display text-4xl md:text-5xl text-lime">24</div>
-        <div class="font-mono text-[11.5px] uppercase tracking-wide text-inktextdim mt-2">Years serving Bhalwani</div>
-      </div>
+    <div class="max-w-6xl mx-auto px-5 sm:px-8">
+        <div class="reveal grid grid-cols-2 md:grid-cols-4 gap-8 text-inktext">
+            <div>
+                <div class="font-display text-4xl md:text-5xl text-lime">2,500+</div>
+                <div class="font-mono text-[11.5px] uppercase tracking-wide text-inktextdim mt-2">Students, Nursery to
+                    Std 12
+                </div>
+            </div>
+            <div>
+                <div class="font-display text-4xl md:text-5xl text-lime">100%</div>
+                <div class="font-mono text-[11.5px] uppercase tracking-wide text-inktextdim mt-2">Pass rate, Std 10 &
+                    12
+                </div>
+            </div>
+            <div>
+                <div class="font-display text-4xl md:text-5xl text-lime">550</div>
+                <div class="font-mono text-[11.5px] uppercase tracking-wide text-inktextdim mt-2">Scheduled Tribe
+                    students placed
+                </div>
+            </div>
+            <div>
+                <div class="font-display text-4xl md:text-5xl text-lime">24</div>
+                <div class="font-mono text-[11.5px] uppercase tracking-wide text-inktextdim mt-2">Years serving
+                    Bhalwani
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </section>
 
 <!-- ============ MANAGEMENT ============ -->
-<section id="management" class="py-24 md:py-32 bg-paper">
-  <div class="max-w-6xl mx-auto px-5 sm:px-8">
-    <div class="reveal flex justify-between items-end gap-10 flex-wrap mb-14">
-      <h2 class="text-3xl sm:text-4xl md:text-5xl font-semibold">Members of<br>management.</h2>
-      <p class="max-w-[38ch] text-papertextdim text-[15.5px]">Alfa Social & Educational Foundation, carrying the founder's work forward.</p>
-    </div>
+<section class="py-24 md:py-32 bg-paper" id="management">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8">
+        <div class="reveal flex justify-between items-end gap-10 flex-wrap mb-14">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-semibold">Members of<br>management.</h2>
+            <p class="max-w-[38ch] text-papertextdim text-[15.5px]">Alfa Social & Educational Foundation, carrying the
+                founder's work forward.</p>
+        </div>
 
-    <div class="reveal grid grid-cols-1 sm:grid-cols-3 gap-px bg-rulelight border border-rulelight">
-      <div class="bg-paper p-8 text-center">
-        <img src="images/president-shahid-kazi.jpg" alt="Mr. Shahid Saeed Kazi, President" class="w-28 h-28 rounded-full mx-auto object-cover mb-5 portrait">
-        <div class="font-mono text-[11px] uppercase tracking-wide text-gold mb-2">President</div>
-        <h3 class="text-xl mb-1">Mr. Shahid Saeed Kazi</h3>
-        <p class="text-papertextdim text-sm">MCA — Master of Computer Application</p>
-      </div>
-      <div class="bg-paper p-8 text-center">
-        <img src="images/secretary-rehan-kazi.jpg" alt="Mr. Rehan Shafi Kazi, Secretary" class="w-28 h-28 rounded-full mx-auto object-cover mb-5 portrait">
-        <div class="font-mono text-[11px] uppercase tracking-wide text-gold mb-2">Secretary</div>
-        <h3 class="text-xl mb-1">Mr. Rehan Shafi Kazi</h3>
-        <p class="text-papertextdim text-sm">Bachelor of Arts</p>
-      </div>
-      <div class="bg-paper p-8 text-center">
-        <img src="images/director-asma-kazi.jpg" alt="Dr. Asma Shahid Kazi, Director" class="w-28 h-28 rounded-full mx-auto object-cover mb-5 portrait">
-        <div class="font-mono text-[11px] uppercase tracking-wide text-gold mb-2">Director</div>
-        <h3 class="text-xl mb-1">Dr. Asma Shahid Kazi</h3>
-        <p class="text-papertextdim text-sm">BPTh · Diploma in Nutrition Education</p>
-      </div>
+        <div class="reveal grid grid-cols-1 sm:grid-cols-3 gap-px bg-rulelight border border-rulelight">
+            <div class="bg-paper p-8 text-center">
+                <img alt="Mr. Shahid Saeed Kazi, President" class="w-28 h-28 rounded-full mx-auto object-cover mb-5 portrait"
+                     src="images/president-shahid-kazi.jpg">
+                <div class="font-mono text-[11px] uppercase tracking-wide text-gold mb-2">President</div>
+                <h3 class="text-xl mb-1">Mr. Shahid Saeed Kazi</h3>
+                <p class="text-papertextdim text-sm">MCA — Master of Computer Application</p>
+            </div>
+            <div class="bg-paper p-8 text-center">
+                <img alt="Mr. Rehan Shafi Kazi, Secretary" class="w-28 h-28 rounded-full mx-auto object-cover mb-5 portrait"
+                     src="images/secretary-rehan-kazi.jpg">
+                <div class="font-mono text-[11px] uppercase tracking-wide text-gold mb-2">Secretary</div>
+                <h3 class="text-xl mb-1">Mr. Rehan Shafi Kazi</h3>
+                <p class="text-papertextdim text-sm">Bachelor of Arts</p>
+            </div>
+            <div class="bg-paper p-8 text-center">
+                <img alt="Dr. Asma Shahid Kazi, Director" class="w-28 h-28 rounded-full mx-auto object-cover mb-5 portrait"
+                     src="images/director-asma-kazi.jpg">
+                <div class="font-mono text-[11px] uppercase tracking-wide text-gold mb-2">Director</div>
+                <h3 class="text-xl mb-1">Dr. Asma Shahid Kazi</h3>
+                <p class="text-papertextdim text-sm">BPTh · Diploma in Nutrition Education</p>
+            </div>
+        </div>
     </div>
-  </div>
 </section>
 
 <!-- ============ ADMISSIONS ============ -->
-<section id="admissions" class="bg-ink text-inktext py-24 md:py-32">
-  <div class="max-w-6xl mx-auto px-5 sm:px-8">
-    <div class="reveal flex justify-between items-end gap-10 flex-wrap mb-14">
-      <h2 class="text-3xl sm:text-4xl md:text-5xl font-semibold">Admissions.</h2>
-      <p class="max-w-[38ch] text-inktextdim text-[15.5px]">Open across Nursery through Standard 12, with hostel places available for boys and girls from outside Bhalwani.</p>
-    </div>
+<section class="bg-ink text-inktext py-24 md:py-32" id="admissions">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8">
+        <div class="reveal flex justify-between items-end gap-10 flex-wrap mb-14">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-semibold">Admissions.</h2>
+            <p class="max-w-[38ch] text-inktextdim text-[15.5px]">Open across Nursery through Standard 12, with hostel
+                places available for boys and girls from outside Bhalwani.</p>
+        </div>
 
-    <div class="reveal grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-      <div class="border-t border-ruledark pt-5">
-        <div class="font-mono text-xs text-gold">Step 1</div>
-        <h4 class="text-lg my-3">Visit</h4>
-        <p class="text-sm text-inktextdim">Tour the Bhalwani campus and meet the teaching staff.</p>
-      </div>
-      <div class="border-t border-ruledark pt-5">
-        <div class="font-mono text-xs text-gold">Step 2</div>
-        <h4 class="text-lg my-3">Enquire</h4>
-        <p class="text-sm text-inktextdim">Share your child's details below and we'll follow up directly.</p>
-      </div>
-      <div class="border-t border-ruledark pt-5">
-        <div class="font-mono text-xs text-gold">Step 3</div>
-        <h4 class="text-lg my-3">Submit Records</h4>
-        <p class="text-sm text-inktextdim">Bring prior school records, if any, along with basic documents.</p>
-      </div>
-      <div class="border-t border-ruledark pt-5">
-        <div class="font-mono text-xs text-gold">Step 4</div>
-        <h4 class="text-lg my-3">Confirm</h4>
-        <p class="text-sm text-inktextdim">The school office confirms placement and, where needed, hostel accommodation.</p>
-      </div>
-    </div>
+        <div class="reveal grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+            <div class="border-t border-ruledark pt-5">
+                <div class="font-mono text-xs text-gold">Step 1</div>
+                <h4 class="text-lg my-3">Visit</h4>
+                <p class="text-sm text-inktextdim">Tour the Bhalwani campus and meet the teaching staff.</p>
+            </div>
+            <div class="border-t border-ruledark pt-5">
+                <div class="font-mono text-xs text-gold">Step 2</div>
+                <h4 class="text-lg my-3">Enquire</h4>
+                <p class="text-sm text-inktextdim">Share your child's details below and we'll follow up directly.</p>
+            </div>
+            <div class="border-t border-ruledark pt-5">
+                <div class="font-mono text-xs text-gold">Step 3</div>
+                <h4 class="text-lg my-3">Submit Records</h4>
+                <p class="text-sm text-inktextdim">Bring prior school records, if any, along with basic documents.</p>
+            </div>
+            <div class="border-t border-ruledark pt-5">
+                <div class="font-mono text-xs text-gold">Step 4</div>
+                <h4 class="text-lg my-3">Confirm</h4>
+                <p class="text-sm text-inktextdim">The school office confirms placement and, where needed, hostel
+                    accommodation.</p>
+            </div>
+        </div>
 
-    <div class="reveal bg-inksoft border border-ruledark rounded p-7 md:p-12 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12">
-      <div>
-        <h3 class="text-2xl md:text-3xl mb-3">Start an enquiry</h3>
-        <p class="text-inktextdim text-sm max-w-[36ch]">Tell us a little about your child and the school office will follow up about a visit and admission.</p>
-      </div>
-      <form class="flex flex-col gap-4" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Sent — the school office will be in touch';">
-        <div>
-          <label for="pname" class="block font-mono text-[11px] uppercase tracking-wide text-inktextdim mb-2">Parent / guardian name</label>
-          <input id="pname" type="text" required class="w-full bg-transparent border-0 border-b border-ruledark text-inktext text-[15px] py-2.5 focus:outline-none focus:border-lime transition-colors">
+        <div class="reveal bg-inksoft border border-ruledark rounded p-7 md:p-12 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12">
+            <div>
+                <h3 class="text-2xl md:text-3xl mb-3">Start an enquiry</h3>
+                <p class="text-inktextdim text-sm max-w-[36ch]">Tell us a little about your child and the school office
+                    will follow up about a visit and admission.</p>
+            </div>
+            <form class="flex flex-col gap-4"
+                  onsubmit="event.preventDefault(); this.querySelector('button').textContent='Sent — the school office will be in touch';">
+                <div>
+                    <label class="block font-mono text-[11px] uppercase tracking-wide text-inktextdim mb-2" for="pname">Parent
+                        / guardian name</label>
+                    <input class="w-full bg-transparent border-0 border-b border-ruledark text-inktext text-[15px] py-2.5 focus:outline-none focus:border-lime transition-colors" id="pname" required
+                           type="text">
+                </div>
+                <div>
+                    <label class="block font-mono text-[11px] uppercase tracking-wide text-inktextdim mb-2" for="phone">Phone
+                        number</label>
+                    <input class="w-full bg-transparent border-0 border-b border-ruledark text-inktext text-[15px] py-2.5 focus:outline-none focus:border-lime transition-colors" id="phone" required
+                           type="tel">
+                </div>
+                <div>
+                    <label class="block font-mono text-[11px] uppercase tracking-wide text-inktextdim mb-2" for="grade">Class
+                        of interest</label>
+                    <select class="w-full bg-transparent border-0 border-b border-ruledark text-inktext text-[15px] py-2.5 focus:outline-none focus:border-lime transition-colors"
+                            id="grade">
+                        <option class="bg-ink">Primary (1st – 5th)</option>
+                        <option class="bg-ink">Secondary (6th – 8th)</option>
+                        <option class="bg-ink">Higher Secondary (9th – 12th)</option>
+                    </select>
+                </div>
+                <button class="self-start mt-2 inline-flex items-center gap-2 bg-lime text-ink font-mono text-[13px] uppercase tracking-wide px-7 py-4 rounded hover:bg-[#d8ff92] hover:-translate-y-0.5 transition-all"
+                        type="submit">
+                    Send Enquiry
+                </button>
+            </form>
         </div>
-        <div>
-          <label for="phone" class="block font-mono text-[11px] uppercase tracking-wide text-inktextdim mb-2">Phone number</label>
-          <input id="phone" type="tel" required class="w-full bg-transparent border-0 border-b border-ruledark text-inktext text-[15px] py-2.5 focus:outline-none focus:border-lime transition-colors">
-        </div>
-        <div>
-          <label for="grade" class="block font-mono text-[11px] uppercase tracking-wide text-inktextdim mb-2">Class of interest</label>
-          <select id="grade" class="w-full bg-transparent border-0 border-b border-ruledark text-inktext text-[15px] py-2.5 focus:outline-none focus:border-lime transition-colors">
-            <option class="bg-ink">Primary (1st – 5th)</option>
-            <option class="bg-ink">Secondary (6th – 8th)</option>
-            <option class="bg-ink">Higher Secondary (9th – 12th)</option>
-          </select>
-        </div>
-        <button type="submit" class="self-start mt-2 inline-flex items-center gap-2 bg-lime text-ink font-mono text-[13px] uppercase tracking-wide px-7 py-4 rounded hover:bg-[#d8ff92] hover:-translate-y-0.5 transition-all">Send Enquiry</button>
-      </form>
     </div>
-  </div>
 </section>
 
 <!-- ============ FOOTER ============ -->
 <footer class="bg-paper pt-16 pb-9 border-t border-rulelight">
-  <div class="max-w-6xl mx-auto px-5 sm:px-8">
-    <div class="flex justify-between items-start gap-10 flex-wrap pb-11 border-b border-rulelight">
-      <div class="flex items-center gap-3 font-display text-lg max-w-[280px]">
-        <img src="images/school-crest.jpg" alt="IZAK English Medium School crest" class="w-8 h-8 rounded-full object-cover shrink-0">
-        IZAK English Medium School
-      </div>
-      <div class="flex gap-14 flex-wrap">
-        <div>
-          <h5 class="font-mono text-[11px] uppercase tracking-wide text-papertextdim mb-3.5">School</h5>
-          <a href="#about" class="block text-sm mb-2.5 hover:text-gold transition-colors">About</a>
-          <a href="#founder" class="block text-sm mb-2.5 hover:text-gold transition-colors">Founder</a>
-          <a href="#academics" class="block text-sm mb-2.5 hover:text-gold transition-colors">Classes</a>
+    <div class="max-w-6xl mx-auto px-5 sm:px-8">
+        <div class="flex justify-between items-start gap-10 flex-wrap pb-11 border-b border-rulelight">
+            <div class="flex items-center gap-3 font-display text-lg max-w-[280px]">
+                <img alt="IZAK English Medium School crest" class="w-8 h-8 rounded-full object-cover shrink-0"
+                     src="images/school-crest.jpg">
+                IZAK English Medium School
+            </div>
+            <div class="flex gap-14 flex-wrap">
+                <div>
+                    <h5 class="font-mono text-[11px] uppercase tracking-wide text-papertextdim mb-3.5">School</h5>
+                    <a class="block text-sm mb-2.5 hover:text-gold transition-colors" href="#about">About</a>
+                    <a class="block text-sm mb-2.5 hover:text-gold transition-colors" href="#founder">Founder</a>
+                    <a class="block text-sm mb-2.5 hover:text-gold transition-colors" href="#academics">Classes</a>
+                </div>
+                <div>
+                    <h5 class="font-mono text-[11px] uppercase tracking-wide text-papertextdim mb-3.5">Community</h5>
+                    <a class="block text-sm mb-2.5 hover:text-gold transition-colors" href="#campus">Campus Life</a>
+                    <a class="block text-sm mb-2.5 hover:text-gold transition-colors" href="#management">Management</a>
+                    <a class="block text-sm mb-2.5 hover:text-gold transition-colors" href="#admissions">Admissions</a>
+                </div>
+                <div>
+                    <h5 class="font-mono text-[11px] uppercase tracking-wide text-papertextdim mb-3.5">Visit</h5>
+                    <span class="block text-sm mb-2.5 text-papertext">Bhalwani, Tal-Parner</span>
+                    <span class="block text-sm mb-2.5 text-papertext">Dist-Ahilyanagar, Maharashtra</span>
+                    <span class="block text-sm mb-2.5 text-papertextdim">— add phone / email here —</span>
+                </div>
+            </div>
         </div>
-        <div>
-          <h5 class="font-mono text-[11px] uppercase tracking-wide text-papertextdim mb-3.5">Community</h5>
-          <a href="#campus" class="block text-sm mb-2.5 hover:text-gold transition-colors">Campus Life</a>
-          <a href="#management" class="block text-sm mb-2.5 hover:text-gold transition-colors">Management</a>
-          <a href="#admissions" class="block text-sm mb-2.5 hover:text-gold transition-colors">Admissions</a>
+        <div class="flex justify-between flex-wrap gap-2.5 pt-6 font-mono text-[11.5px] text-papertextdim">
+            <span>© 2026 IZAK English Medium School & Junior College. Run by Alfa Social & Educational Foundation.</span>
+            <span>Nursery – Std 12 · Minority Status · Est. 2004</span>
         </div>
-        <div>
-          <h5 class="font-mono text-[11px] uppercase tracking-wide text-papertextdim mb-3.5">Visit</h5>
-          <span class="block text-sm mb-2.5 text-papertext">Bhalwani, Tal-Parner</span>
-          <span class="block text-sm mb-2.5 text-papertext">Dist-Ahilyanagar, Maharashtra</span>
-          <span class="block text-sm mb-2.5 text-papertextdim">— add phone / email here —</span>
-        </div>
-      </div>
     </div>
-    <div class="flex justify-between flex-wrap gap-2.5 pt-6 font-mono text-[11.5px] text-papertextdim">
-      <span>© 2026 IZAK English Medium School & Junior College. Run by Alfa Social & Educational Foundation.</span>
-      <span>Nursery – Std 12 · Minority Status · Est. 2004</span>
-    </div>
-  </div>
 </footer>
 
 <script>
-  const menuBtn = document.getElementById('menuBtn');
-  const mobileMenu = document.getElementById('mobileMenu');
-  menuBtn.addEventListener('click', () => {
-    const isOpen = mobileMenu.classList.toggle('open');
-    menuBtn.setAttribute('aria-expanded', isOpen);
-  });
-  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    mobileMenu.classList.remove('open');
-    menuBtn.setAttribute('aria-expanded', 'false');
-  }));
-
-  const revealEls = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => {
+        const isOpen = mobileMenu.classList.toggle('open');
+        menuBtn.setAttribute('aria-expanded', isOpen);
     });
-  }, { threshold: 0.12 });
-  revealEls.forEach(el => io.observe(el));
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+    }));
+
+    const revealEls = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.classList.add('in');
+                io.unobserve(e.target);
+            }
+        });
+    }, {threshold: 0.12});
+    revealEls.forEach(el => io.observe(el));
 </script>
 
 </body>
